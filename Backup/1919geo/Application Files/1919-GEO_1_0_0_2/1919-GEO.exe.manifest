@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="1919-GEO.exe" version="1.0.0.2" publicKeyToken="cf9170b2f2c52a5b" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="Silver System Icon 21.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="1919-GEO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="1919-GEO.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC 清单选项
+          如果要更改 Windows 用户帐户控制级别，请用以下节点之一替换
+          requestedExecutionLevel 节点。
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+          如果要利用文件和注册表虚拟化提供
+          向后兼容性，请删除 requestedExecutionLevel 节点。
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="1919-GEO.exe" size="338368">
+      <assemblyIdentity name="1919-GEO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>yTCO1L9QaVOeZ/AfG99+v5Mcmu4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Connect.ico" size="161862">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Y+zTZyVAjb+XC+3uugoTac0nshI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="mcu.csv" size="56525">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>D3pFBYQNwtORQdfDA9x/C6KJets=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="PixOS 17.ico" size="123790">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>i/Rj6e2glipmMCpe3bCPmqdNnL8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="point.dat" size="17188">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>B9kG7kHa9r2twaaBGSnZMTediUg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Silver System Icon 21.ico" size="159406">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ADKNS4TqRAGOMAi36QXdGxKdpak=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="station.txt" size="28427">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>so4JDEA8B9yYGCYyE+QPirN/R9M=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="stationpoint.dat" size="36851">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>rjDMX2pBm2zDhCh/pfI2hsGxmCw=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-MFOA4B7\puhon" issuerKeyHash="3973b3946a07271bd0fc575bb768873538abbed8" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>BZAr4B5NksqENc1BNYtE2HOwp8Y=</DigestValue></Reference></SignedInfo><SignatureValue>UQG93Guk8xmyL4OXwJpq4Aw3g8xgQ4dNJkmB1hMzJSwLKs1m6tsDoFyRX3i/zoEX061GqATO4vB3QhKmortv2GA9PA4wXWFdUjInQSwn7YZwvJ+k/jjrWnrJCgIe8GCuM6GZGOqAbT8ElXQuQ1tzCfGVbC9doAGDY4NZ44G4xFo=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>sIpUat6NgroFB9vDJtkp/5+EvcHPZuSoJs0UrY1f0oynN2CQUXK6Pk9OR5EnG3X6GZTLl8OFFSxXVjSAcFPo5nx4NhR9ZSqmOojyJ/DXIZ3aWudIT/aSmos+bHeZ/RMwmaC6/VTtQ38C3Y885G7WdePKHELAkSj4yVhQxg1kJ7c=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="c6a7b073d8448b3541cd3584ca924d1ee02b9005" Description="" Url=""><as:assemblyIdentity name="1919-GEO.exe" version="1.0.0.2" publicKeyToken="cf9170b2f2c52a5b" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-MFOA4B7\puhon</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>NXrmFvrT2HCCoDHlo6O0yU6l/Xw=</DigestValue></Reference></SignedInfo><SignatureValue>g/MKJWb6rgj5VsKdOyGjZMHXh8PXBdai9d74sGNW1/AYaoQd6WHII/o1CFOKrXGVhfZfsIrIK9jpGQo/ZCGeuCcvWL1O/WHzqCBNNWScwC17rg7ztV6efwMbzZ06t69I/yDLxMre+v5NkZgTWlZ63qC5u8XbCFR7yXseIewUzTU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>sIpUat6NgroFB9vDJtkp/5+EvcHPZuSoJs0UrY1f0oynN2CQUXK6Pk9OR5EnG3X6GZTLl8OFFSxXVjSAcFPo5nx4NhR9ZSqmOojyJ/DXIZ3aWudIT/aSmos+bHeZ/RMwmaC6/VTtQ38C3Y885G7WdePKHELAkSj4yVhQxg1kJ7c=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQaoib0OWWIqVIWY3L1xTh5jANBgkqhkiG9w0BAQUFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAE0ARgBPAEEANABCADcAXABwAHUAaABvAG4wHhcNMTcwMzAxMTgxMTQ0WhcNMTgwMzAyMDAxMTQ0WjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAE0ARgBPAEEANABCADcAXABwAHUAaABvAG4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALCKVGrejYK6BQfbwybZKf+fhL3Bz2bkqCbNFK2NX9KMpzdgkFFyuj5PTkeRJxt1+hmUy5fDhRUsV1Y0gHBT6OZ8eDYUfWUqpjqI8ifw1yGd2lrnSE/2kpqLPmx3mf0TMJmguv1U7UN/At2PPORu1nXjyhxCwJEo+MlYUMYNZCe3AgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAjux7I4Ov47CiImFtO8KnHvi7cpDAwj4kJ7ja1hKLmkjwCs4Xsb+NG1ScZy20krLuxKSuQh4Gsl1NXk42Kh1Wm+HXKleur/pSj/jQQFTgJME5OvmX55LXKG2SLh2gPX0W1OWHIhydeGtsevcGeFhOq83rkjZcS2On0uw1qcKfcDA=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
