@@ -1,0 +1,1486 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>洛谷 &#8211; GGapa&#039;s website</title>
+	<atom:link href="http://ggapa.net/tag/%E6%B4%9B%E8%B0%B7/feed/?simply_static_page=1935" rel="self" type="application/rss+xml" />
+	<link>https://ggapa.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 06 Feb 2024 08:01:07 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
+
+<image>
+	<url>https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-32x32.png</url>
+	<title>洛谷 &#8211; GGapa&#039;s website</title>
+	<link>https://ggapa.github.io/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>做题笔记(洛谷题单)</title>
+		<link>https://ggapa.github.io/2024/02/01/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b01/</link>
+					<comments>https://ggapa.github.io/2024/02/01/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b01/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Thu, 01 Feb 2024 15:11:07 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[做题笔记]]></category>
+		<category><![CDATA[洛谷]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1043</guid>
+
+					<description><![CDATA[数据结构（线段树为主） 题单 P6569 [NOI Online #3 提高组] 魔法值 首先看题目数据范围， [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>数据结构（线段树为主）</h1>
+<p><a href="https://www.luogu.com.cn/training/456614">题单</a></p>
+<h3><a href="https://www.luogu.com.cn/problem/P6569">P6569 [NOI Online #3 提高组] 魔法值</a></h3>
+<p>首先看题目数据范围，$n \leq 100$ ，这种情况要么说明这道题的时间复杂度是比较高的，要么就和矩阵乘法脱不开关系。</p>
+<p>阅读题目之后，我们发现可以应用 Floyd 最短路，也就是矩阵乘法的思想去描述每一轮每一个城市的魔法值。</p>
+<p>故这道题应该先用邻接矩阵建图，矩阵快速幂求解。</p>
+<p>结果就超时了，考虑通过倍增，二进制分解优化。</p>
+<p>预处理时间复杂度 $O(n^3\log n)$ ，单次询问时间复杂度 $O(n^2\log n)$ 。</p>
+<p>总结：对于数据范围比较小的图论题要联想到邻接矩阵，对于经常会用到的数据不必重复计算，考虑记录下来优化程序的运行效率。</p>
+<h3><a href="https://www.luogu.com.cn/problem/P8820">P8820 [CSP-S 2022] 数据传输</a></h3>
+<p>试着由易到难，一步一步分析。</p>
+<p>对于 $k = 1$ 的情况，答案就是两点之间的简单路径，考虑通过树链剖分实现。时间复杂度 $O(n \log n)$</p>
+<p>对于 $n \leq 200 $时，可以考虑对于每一个节点，距离不超过 $k$ 的点连无向边，对于每一次询问跑最短路，时间复杂度 $O(q\cdot n^2\log n)$。</p>
+<p>这个特殊性质非常的玄学，不知道是给什么算法的，<del>这都不知道，我太菜了</del>。</p>
+<p>接着分析 $k = 2$ 的情况，额。</p>
+<h3><a href="https://www.luogu.com.cn/problem/P4159">P4159 [SCOI2009] 迷路</a></h3>
+<p>看到题目和数据范围后，不难想到矩阵快速幂求解 $k$ 步内到达某一结点的方案数这一类问题。</p>
+<p>但是问题出现了，因为上述做法只能满足 &quot;01矩阵&quot;。</p>
+<p>那我们就考虑将这个矩阵转化为 01矩阵不久完事了吗？</p>
+<p>考虑给每个节点建立 8 个虚点，我们令 $(i,j)$ 表示距离节点 $i$，$j$ 个距离的点，$(i,0)$ 就代表节点 $i$，我们需要将 $(i, j)$ 和 $(i, j-1 )$ 通过一条有向边连接起来。</p>
+<p>若此时有边连向这个节点，且距离为 $d$，那么我们就将它连接到 $(i, d - 1)$ 的节点处就可以了，此时这个邻接矩阵就转化为了 01 矩阵。</p>
+<p>时间复杂度：$O((9n)^3 \log T)$</p>
+<p>总结：如果一道题目是某类题型的变种，那我们可以将这道题想办法转化为我们熟悉的题型；</p>
+<h3><a href="https://www.luogu.com.cn/problem/P2894">P2894 [USACO08FEB] Hotel G</a></h3>
+<p>简单题。</p>
+<p>一眼可以看出这是一个连续段问题，考虑通过线段树解决。</p>
+<p>我们需要维护以下信息：</p>
+<ul>
+<li>
+<p><code>perl</code> 左端点开始的连续空房间个数</p>
+</li>
+<li>
+<p><code>perr</code> 右端点开始的连续空房间个数</p>
+</li>
+<li>
+<p><code>mx</code> 区间内最长的连续空房间个数</p>
+</li>
+</ul>
+<p>转移和区间最长子序列转移的思想差不多，值得注意的是，题目中要求是最靠左侧的，那么在查询的时候需要有限递归左儿子，接着是左儿子和右儿子，最后才是右儿子。</p>
+<p>其余操作和普通线段树无异。</p>
+<h3><a href="https://www.luogu.com.cn/problem/P8251">P8251 [NOI Online 2022 提高组] 丹钓战</a></h3>
+<p>这道题比较重视思维，观察数据范围，很明显是要让我们先预处理，接着以比较小的复杂度进行查询。</p>
+<p>考虑如何预处理，通过手推样例可以发现，如果一个二元组是成功的，那么它一定能将上一个成功的二元组弹出，而且一个二元组只可能被一个特定的二元组给弹出。</p>
+<p>那么就可以通过栈来维护每一个二元组是由谁将它弹出去的。</p>
+<p>时间复杂度：$O(n)$</p>
+<p>由于预处理已经花费了 $O(n)$ 的时间，查询操作被压榨成了 $\log$ 级或者是常数级。</p>
+<p>由之前的总结可以知道，对于可能会重复用到的数据，我们考虑通过倍增进行优化，这样查询的时间复杂度就变为了 $O(\log n)$ ，可以通过本题。</p>
+<p>总结：对于一个数据范围比较大的题，它的最大时间复杂度一般不会超过 $O(n)$，若此时的询问次数也非常多就需要考虑预处理；若一道题目中，大多数情况下，他叫你找的特殊的东西，小于普通的东西，那么这个时候就可以考虑直接从特殊的东西入手（出现次数比较少的入手），弱化在普通的东西上面所花费的时间。</p>
+<hr />
+<h1>括号序列</h1>
+<p><a href="https://www.luogu.com.cn/training/460433">题单</a></p>
+<h3><a href="https://www.luogu.com.cn/problem/P7914">P7914 [CSP-S 2021] 括号序列</a></h3>
+<p>看到题目，不难想到记忆化搜索。</p>
+<p>类比普通的括号序列记忆化搜索，这道题目非常良心，已经帮我们把所有的情况都摆了出来，那么我们就考虑对这些情况进行考虑就足够了。</p>
+<p>迅速打完记忆化，发现答案莫名其妙非常大，发现边界条件判断漏，寄了。</p>
+<p>总结：若记忆化搜索返回的结果很大，有可能时边界条件没有判断清楚。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/02/01/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b01/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>GenshinOI Round 3 赛后总结</title>
+		<link>https://ggapa.github.io/2023/10/30/genshinoi-round-3-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/</link>
+					<comments>https://ggapa.github.io/2023/10/30/genshinoi-round-3-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Mon, 30 Oct 2023 05:52:46 +0000</pubDate>
+				<category><![CDATA[总结]]></category>
+		<category><![CDATA[洛谷]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=787</guid>
+
+					<description><![CDATA[*比赛id:141486 T1 100pts 第一道题我一开始敲的暴力，接着通过暴力发现了这道题目的性质，可以 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p><a href="https://imgse.com/i/pimBcTI"><img decoding="async" src="https://z1.ax1x.com/2023/10/30/pimBcTI.png" alt="pimBcTI.png" /></a><br />
+*<em>比赛id:<a href="https://www.luogu.com.cn/contest/141486">141486</a></em></p>
+<h1>T1 100pts</h1>
+<p>第一道题我一开始敲的暴力，接着通过暴力发现了这道题目的性质，可以通过前缀和来判断大小求解。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int maxn = 1e5 + 5;
+
+int T, n;
+pair&lt;int, int&gt; a[maxn];
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; T;
+    while(T--) {   
+        cin &gt;&gt; n;
+        a[0].first = a[0].second = a[n + 1].first = a[n + 1].second = 0;
+        for(int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i].first &gt;&gt; a[i].second;
+        bool flag = true;
+        int x = 0, y = 1;
+        // while(flag || (x != 0 &amp;&amp; x != n + 1)) {
+        //     x += y;
+        //     flag = false;
+        //     if(y == 1 &amp;&amp; a[x].first &gt; 0) {
+        //         y = -1;
+        //         a[x].first--;
+        //     }
+        //     else if(y == -1 &amp;&amp; a[x].second &gt; 0) {
+        //         y = 1;
+        //         a[x].second--;
+        //     }
+        // }
+        int suma, sumb;
+        suma = sumb = 0;
+        for(int i = 0; i &lt;= n; i++) {
+            suma += a[i+1].first;
+            sumb += a[i].second;
+            if(suma &gt; sumb) {
+                flag = false;
+                break;
+            }
+        }
+        cout &lt;&lt; (flag ? n+1 : 0) &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}</code></pre>
+<h1>T2 15pts</h1>
+<p>这道题一开始看感觉是一道数论题，在推式子的时候没有退出来，后面打的暴力得到了15pts</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;map&gt;
+using namespace std;
+typedef long long ll;
+
+int m, p = 71, q;
+int a[30], b[30];
+bool b1 = true;
+
+ll qpow(ll x, ll y) {
+    ll ans = 1, base = x;
+    while(y != 0) {
+        if(y % 2) ans = (ans * base) % p;
+        base = (base * base) % p;
+        y &gt;&gt;= 1;
+    }
+    return ans;
+}
+
+ll qmul(ll x, ll y) {
+    ll ans = 0;
+    while(y != 0) {
+        if(y % 2) ans = (ans + x) % p;
+        x = (x + x) % p;
+        y &gt;&gt;= 1;
+    }
+    return ans;
+}
+
+ll calc(ll x) {
+    ll ans = 0;
+    for(int i = 1; i &lt;= m; i++) {
+        ans += a[i] * qpow(x, b[i]) % p;
+    }
+    return ans;
+}
+
+ll f(ll n, ll x) {
+    if(n == 1) return calc(x) % p;
+    return calc(f(n - 1, x)) % p;
+}
+
+namespace B1 {
+    ll A, B = 0;
+    int main(ll x, ll y) {
+        for(int i = 1; i &lt;= m; i++)  {
+            if(b[i] == 1)A += a[i];
+            else B += a[i];
+        }
+
+        x = qmul(x, qpow(A, y) % p) % p;
+        for(int i = 1; i &lt; y; i++) x = (x + qmul(qpow(A, i), B));
+        x = (x + B) % p;
+        cout &lt;&lt; x &lt;&lt; &#039;\n&#039;;
+        return 0;
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    // freopen(&quot;AKIOI.in&quot;, &quot;r&quot;, stdin);
+    // freopen(&quot;AKIOI.out&quot;, &quot;w&quot;, stdout);
+    cin &gt;&gt; m &gt;&gt; q &gt;&gt; p;
+    for(int i = 1; i &lt;= m; i++) {cin &gt;&gt; a[i] &gt;&gt; b[i]; if(b[i] &gt; 1) b1 = false;}
+    while(q--) {
+        ll x, y;
+        cin &gt;&gt; x &gt;&gt; y;
+        if(b1) B1::main(x, y);
+        else if(y &lt;= 10)cout &lt;&lt; f(y, x) &lt;&lt; &#039;\n&#039;;
+
+    }
+    return 0;
+}</code></pre>
+<h1>T3 100pts</h1>
+<p>T3 我依然从特殊性质开始打起，这也从侧面说明了特殊性质的重要性，有时候完全可以通过特殊性质来发现正解。在考试的时候并没有证明结论的正确性，因为是IOI赛制的缘故提交并且正确了。</p>
+<p>结论就是找离 $n$ 最近的质数，不是离 $n$ 最近的质数就全部取 1，后判断一下大小。</p>
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdio&gt;
+#include &lt;bitset&gt;
+using namespace std;
+typedef long long ll;
+
+ll T, n, k;
+
+ll qpow(ll x, ll y) {
+    ll ans = 1, base = x;
+    while(y != 0) {
+        if(y % 2) ans = (ans * base);
+        base = (base * base);
+        y &gt;&gt;= 1;
+    }
+    return ans;
+}
+
+ll qmul(ll x, ll y) {
+    ll ans = 0;
+    while(y != 0) {
+        if(y % 2) ans = (ans + x);
+        x = (x + x);
+        y &gt;&gt;= 1;
+    }
+    return ans;
+}
+
+bool check(ll x) {
+    if(x == 2 || x == 1) return true;
+    int si = sqrt(x) + 1;
+    for(int i = 2; i &lt;= si; i++) {
+        if(x % i == 0) return false;
+    }
+    return true;
+}
+
+ll sol(ll x) {
+    if(x &lt;= 0) return 0;
+    ll tmp = x;
+    while(!check(x)) x--;
+    return max(sol(tmp - x) + qpow(x-k, 2), qmul(qpow(1 - k, 2), tmp));
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    // freopen(&quot;AKIOI.in&quot;, &quot;r&quot;, stdin);
+    // freopen(&quot;AKIOI.out&quot;, &quot;w&quot;, stdout);
+    cin &gt;&gt; T;
+    while(T--) {
+        cin &gt;&gt; n &gt;&gt; k;
+        cout &lt;&lt; sol(n) &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}</code></pre>
+<h1>T4 0pts</h1>
+<p>看都没看，考试前睡午觉睡过头了，没时间看了。而且我太菜了，做题的速度没有那么快。</p>
+<h1>总结</h1>
+<ul>
+<li>考试的时候往往可以通过特殊性质合理外推发现正解，若没打出来正解特殊性质也能得分。</li>
+<li>第一次参加原神系列赛，感觉不错。</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/10/30/genshinoi-round-3-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>【LGR-164-Div.2】洛谷 CSP-S 2023 模拟赛 &#038;「KDOI」Round 6-S 赛后总结</title>
+		<link>https://ggapa.github.io/2023/10/15/%e3%80%90lgr-164-div-2%e3%80%91%e6%b4%9b%e8%b0%b7-csp-s-2023-%e6%a8%a1%e6%8b%9f%e8%b5%9b-%e3%80%8ckdoi%e3%80%8dround-6-s-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/</link>
+					<comments>https://ggapa.github.io/2023/10/15/%e3%80%90lgr-164-div-2%e3%80%91%e6%b4%9b%e8%b0%b7-csp-s-2023-%e6%a8%a1%e6%8b%9f%e8%b5%9b-%e3%80%8ckdoi%e3%80%8dround-6-s-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Sun, 15 Oct 2023 11:53:15 +0000</pubDate>
+				<category><![CDATA[总结]]></category>
+		<category><![CDATA[洛谷]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=696</guid>
+
+					<description><![CDATA[T1 60pts 关于我考试时没有想出来，但是考完试回头看突然就想出来这件事情。 我当时候为什么会这样子？考试 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p><img decoding="async" src="https://cdn.luogu.com.cn/upload/image_hosting/m7zlu7e1.png" alt="" /></p>
+<h1>T1 60pts</h1>
+<p>关于我考试时没有想出来，但是考完试回头看突然就想出来这件事情。<br />
+我当时候为什么会这样子？考试的时候看到第一题觉得很一般，没有多难。但我分析算法的时间复杂度的时候误分析成 $O(n)$ ，导致我充满信心的写完了“正解”之后测试大样例，结果发现我这个不是正解，我代码的时间复杂度是 $O(n^2)$ 的，我就开始找问题，发现有一些预处理可以省略，于是我就省略了，但是在考试的时候始终有一个问题困扰着我，如何处理 $a$数组？这个问题我冥思苦想，想了很久，但是我碰巧没有想出来对于每一个 $a$ 都可以进行递推求解。我就在想贪心等其他的事，知道最后和正解就差一个 $a$ 的递推了，我却选择跳过这道题目。提交了我最开始写的代码。<br />
+接着我就去看后面的题目了，直到考试结束后面的题目也没有看完。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int maxn = 5e5 + 5;
+#define int long long
+
+int read() {
+    int f = 1, x = 0;
+    char c;
+    c = getchar();
+    while(!isdigit(c)) {
+        if(c == &#039;-&#039;) f = -1;
+        c = getchar();
+    }
+    while(isdigit(c)) {
+        x = x * 10 + (c - &#039;0&#039;);
+        c = getchar();
+    }
+    return x;
+}
+
+int n, m;
+int a[maxn], b[maxn], c[maxn], p[maxn];
+int q;
+int sumb[maxn], sumc[maxn], suma[maxn];
+
+void init() {
+    for(int i = 1; i &lt;= n; i++) sumc[i] = sumb[i] = suma[i] = 0;
+    for(int i = 1; i &lt;= m; i++) sumc[p[i]] = c[p[i]], sumb[p[i]] = -1 * b[p[i]];
+    for(int i = 1; i &lt;= n; i++) sumc[i] += sumc[i-1], sumb[i] += sumb[i-1] + b[i]; //在p内的不用记录
+}
+
+signed main() {
+    //freopen(&quot;test.in&quot;, &quot;r&quot;, stdin);
+    //freopen(&quot;test.out&quot;, &quot;w&quot;, stdout);
+    n = read();
+    for(int i = 1; i &lt;= n; i++) a[i] = read();
+    for(int i = 1; i &lt;= n; i++) b[i] = read();
+    for(int i = 1; i &lt;= n; i++) c[i] = read();
+    q = read();
+    while(q--) {
+        long long ans = 1e18;
+        m = read();
+        for(int i = 1; i &lt;= m; i++) p[i] = read();
+
+        init();
+
+        for(int i = n; i &gt;= 0; i--) {
+            //cout &lt;&lt; sumc[i] &lt;&lt; &quot; &quot; &lt;&lt; sumb[n] - sumb[i] &lt;&lt; &quot; &quot; &lt;&lt; a[i] &lt;&lt; &quot;\n&quot;;
+            ans = min(sumc[i] + sumb[n] - sumb[i] + a[i], ans);
+        } 
+
+        cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}</code></pre>
+<p>后来改的</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+#include &lt;vector&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+using namespace std;
+const int maxn = 5e5 + 5;
+#define int long long
+
+int read() {
+    int f = 1, x = 0;
+    char c;
+    c = getchar();
+    while(!isdigit(c)) {
+        if(c == &#039;-&#039;) f = -1;
+        c = getchar();
+    }
+    while(isdigit(c)) {
+        x = x * 10 + (c - &#039;0&#039;);
+        c = getchar();
+    }
+    return x;
+}
+
+int n, m;
+int a[maxn], b[maxn], c[maxn], p[maxn];
+int q;
+int sumb[maxn], sumc[maxn], suma[maxn], mina[maxn], pc[maxn], pb[maxn];
+
+signed main() {
+    n = read();
+    for(int i = 1; i &lt;= n; i++) a[i] = read();
+    for(int i = 1; i &lt;= n; i++) b[i] = read(), sumb[i] = sumb[i-1] + b[i];
+    for(int i = 1; i &lt;= n; i++) c[i] = read();
+    for(int i = 1; i &lt;= n; i++) suma[i] = min(a[i], suma[i-1] + b[i]);
+    q = read();
+    while(q--) {
+        long long ans = sumb[n];
+        m = read();
+        for(int i = 1; i &lt;= m; i++) p[i] = read(), pc[i] = pc[i-1] + c[p[i]], ans -= b[p[i]];
+        for(int i = m; i &gt;= 1; i--) pb[i] = pb[i+1] + b[p[i]];
+        for(int i = 1; i &lt;= m; i++) {
+            ans = min(ans, suma[p[i]-1] + pc[i-1] + sumb[n] - sumb[p[i]-1] - pb[i]);
+        }
+         ans = min(ans, suma[n] + pc[m]);
+        cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+        for(int i = 1;  i&lt;= m; i++) pb[i] = pc[i] = 0;
+    }
+    return 0;
+}</code></pre>
+<h1>T2 0pts</h1>
+<p>考试的时候看了一眼这道题目，没思路，暴力打卦了。</p>
+<p>代码是不可以总司令，没啥好看的。</p>
+<h1>T3 40pts</h1>
+<p>考试的时候看到这道题就开始打搜索，在考试快结束的时候打出来了。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int T;
+int n;
+set&lt;vector&lt;int&gt; &gt; mp;
+struct Step {
+    int i, j, k;
+};
+vector&lt;Step&gt; step;
+bool flag = false;
+
+void out() {
+    cout &lt;&lt; &quot;Huoyu\n&quot;;
+    cout &lt;&lt; step.size() &lt;&lt; &quot;\n&quot;;
+    for(auto i : step) {
+        cout &lt;&lt; i.i &lt;&lt; &quot; &quot; &lt;&lt; i.j &lt;&lt; &quot; &quot; &lt;&lt; i.k &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+void dfs(vector&lt;int&gt; x) {
+    if(flag) return;
+    if(x.size() == 1) {
+        flag = true;
+        out();
+        return;
+    }
+    if(mp.count(x) || x.size() &lt; 3) return;
+    mp.insert(x);
+    vector &lt;int&gt; tmp = x;
+    int len = x.size();
+    for(int i = 0; i &lt; len; i++) 
+        for(int j = i + 1; j &lt; len; j++)
+            for(int k = j + 1; k &lt; len; k++) 
+                if((x[i] ^ x[j] ^ x[k]) == 0) {
+                    step.push_back(Step{i+1, j+1, k+1});
+                    int s = 0;
+                    for(int q = i; q &lt;= k; q++) s ^= x[q];
+                    x.insert(x.begin() + i, s);
+                    x.erase(x.begin() + i + 1, x.begin() + k + 2);
+                    dfs(x);
+                    x = tmp;
+                    step.pop_back();
+                }
+}
+
+int main() {
+    cin &gt;&gt; T;
+    while(T--) {
+        cin &gt;&gt; n;
+        vector&lt;int&gt; a(n);
+        mp.clear();
+        step.clear();
+        flag = false;
+        for(auto &amp;i : a) cin &gt;&gt; i;
+        dfs(a);
+        if(!flag) cout &lt;&lt; &quot;Shuiniao\n&quot;;
+    }
+    return 0;
+}</code></pre>
+<p>但是考完试的时候发现自己的这个效率写的太低下了，在考完试后尝试了许多优化的方法，其中运用<a href="https://oi-wiki.org/search/iterative/">迭代加深搜索</a>得到了 65pts, 但是我看他们得到了 75pts 目前正在探究之中。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int T;
+int n;
+set&lt;vector&lt;int&gt; &gt; mp;
+struct Step {
+    int i, j, k;
+};
+vector&lt;Step&gt; step;
+bool flag = false;
+int mdep = 1;
+
+void out() {
+    cout &lt;&lt; &quot;Huoyu\n&quot;;
+    cout &lt;&lt; step.size() &lt;&lt; &quot;\n&quot;;
+    for(auto i : step) {
+        cout &lt;&lt; i.i &lt;&lt; &quot; &quot; &lt;&lt; i.j &lt;&lt; &quot; &quot; &lt;&lt; i.k &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+void dfs(int it, vector&lt;int&gt; x) {
+    if(flag) return;
+    if(x.size() == 1) {
+        flag = true;
+        out();
+        return;
+    }
+    //mp.insert(x);
+    if(it &gt; mdep) return ;
+    vector &lt;int&gt; tmp = x;
+    int len = x.size();
+    for(int i = 0; i &lt; len; i++) 
+        for(int j = i + 1; j &lt; len; j++)
+            for(int k = j + 1; k &lt; len; k++) 
+                if((x[i] ^ x[j] ^ x[k]) == 0) {
+                    step.push_back(Step{i+1, j+1, k+1});
+                    int s = 0;
+                    for(int q = i; q &lt;= k; q++) s ^= x[q];
+                    x.insert(x.begin() + i, s);
+                    x.erase(x.begin() + i + 1, x.begin() + k + 2);
+                    dfs(it + 1, x);
+                    x = tmp;
+                    step.pop_back();
+                }
+}
+
+int main() {
+    cin &gt;&gt; T;
+    while(T--) {
+        cin &gt;&gt; n;
+        vector&lt;int&gt; a(n);
+
+        step.clear();
+        flag = false;
+        mdep = 1;
+        for(auto &amp;i : a) cin &gt;&gt; i;
+        while(mdep++ &lt;= n) dfs(1, a);
+        if(!flag) cout &lt;&lt; &quot;Shuiniao\n&quot;;
+    }
+    return 0;
+}
+</code></pre>
+<p>再后来看到讨论区里面的神犇发布了一个非常妙的方法（有可能是数据水，卡的数据），然后我试了一下就过了，目前正在请教他这个是怎么得出来的。</p>
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int T;
+int n;
+set&lt;vector&lt;int&gt; &gt; mp;
+struct Step {
+    int i, j, k;
+};
+vector&lt;Step&gt; step;
+bool flag = false;
+int mdep = 1;
+
+void out() {
+    cout &lt;&lt; &quot;Huoyu\n&quot;;
+    cout &lt;&lt; step.size() &lt;&lt; &quot;\n&quot;;
+    for(auto i : step) {
+        cout &lt;&lt; i.i &lt;&lt; &quot; &quot; &lt;&lt; i.j &lt;&lt; &quot; &quot; &lt;&lt; i.k &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+void dfs(int it, vector&lt;int&gt; x) {
+    if(flag) return;
+    if(x.size() == 1) {
+        flag = true;
+        out();
+        return;
+    }
+    //mp.insert(x);
+    if(it &gt; mdep) return ;
+    vector &lt;int&gt; tmp = x;
+    int len = x.size();
+    for(int i = 0; i &lt;= (n &gt;= 400 ? 1 : 2); i++)  //这里参考了一下洛谷讨论区里的思路 
+        for(int j = i + 1; j &lt; len; j++)
+            for(int k = j + 1; k &lt; len; k++) 
+                if((x[i] ^ x[j] ^ x[k]) == 0) {
+                    step.push_back(Step{i+1, j+1, k+1});
+                    int s = 0;
+                    for(int q = i; q &lt;= k; q++) s ^= x[q];
+                    x.insert(x.begin() + i, s);
+                    x.erase(x.begin() + i + 1, x.begin() + k + 2);
+                    dfs(it + 1, x);
+                    x = tmp;
+                    step.pop_back();
+                }
+}
+
+int main() {
+    cin &gt;&gt; T;
+    while(T--) {
+        cin &gt;&gt; n;
+        vector&lt;int&gt; a(n);
+
+        step.clear();
+        flag = false;
+        mdep = 1;
+        for(auto &amp;i : a) cin &gt;&gt; i;
+        while(mdep++ &lt;= n) dfs(1, a);
+        if(!flag) cout &lt;&lt; &quot;Shuiniao\n&quot;;
+    }
+    return 0;
+}
+</code></pre>
+<h1>T4 0pts</h1>
+<p>不会做，暴力不会打，没时间。</p>
+<p>代码是不可以总司令，没啥好看的</p>
+<h1>总结</h1>
+<p>考试是遇见了感觉自己会做的题目但是又没写出来，在考试快结束的时候一定要回顾再想一想</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/10/15/%e3%80%90lgr-164-div-2%e3%80%91%e6%b4%9b%e8%b0%b7-csp-s-2023-%e6%a8%a1%e6%8b%9f%e8%b5%9b-%e3%80%8ckdoi%e3%80%8dround-6-s-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>【LGR-163-Div.3】洛谷 CSP-J 2023 模拟赛 &#038;「KDOI」Round 6-J 赛后总结</title>
+		<link>https://ggapa.github.io/2023/10/14/%e3%80%90lgr-163-div-3%e3%80%91%e6%b4%9b%e8%b0%b7-csp-j-2023-%e6%a8%a1%e6%8b%9f%e8%b5%9b-%e3%80%8ckdoi%e3%80%8dround-6-j-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/</link>
+					<comments>https://ggapa.github.io/2023/10/14/%e3%80%90lgr-163-div-3%e3%80%91%e6%b4%9b%e8%b0%b7-csp-j-2023-%e6%a8%a1%e6%8b%9f%e8%b5%9b-%e3%80%8ckdoi%e3%80%8dround-6-j-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Sat, 14 Oct 2023 12:58:11 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[洛谷]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=672</guid>
+
+					<description><![CDATA[前言 还不错🤭 最近比较习惯 OI 赛制了 \ *比赛id:125612 T1 100pts 这道题中规中矩， [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>前言</h1>
+<p>还不错<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f92d.png" alt="🤭" class="wp-smiley" style="height: 1em; max-height: 1em;" /><br />
+最近比较习惯 OI 赛制了<br />
+<img decoding="async" src="https://ggapa.github.io/wp-content/uploads/2023/10/image-1697287145112.png" alt="file" />\<br />
+*<em>比赛id:<a href="https://www.luogu.com.cn/contest/125612#scoreboard">125612</a></em></p>
+<h1>T1 100pts</h1>
+<p>这道题中规中矩，但是有一些地方是比较容易错的，同机房好多神犇都在这道题上面出了错。</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn = 10;
+
+int n;
+int a[maxn], b[maxn], c[maxn];
+int now, au;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; n;
+    for(int i = 1; i &lt;= n; i++) {
+        cin &gt;&gt; a[i] &gt;&gt; b[i];
+        c[i] = 100 - (100 / a[i]) * b[i];
+        now += (100 / a[i]) * b[i];
+    }
+    cin &gt;&gt; au;
+    if(now &gt;= au) {
+        cout &lt;&lt; &quot;Already Au.\n&quot;;
+        return 0;
+    }
+    for(int i = 1; i &lt;= n; i++) {
+        if(now + c[i] &lt; au) {
+            cout &lt;&lt; &quot;NaN\n&quot;;
+            continue;
+        }
+        cout &lt;&lt; ceil((double)(au - now) / (100.0 / a[i])) &lt;&lt; &quot;\n&quot;; //就是这里的ceil和double容易挂
+    }
+    return 0;
+}</code></pre>
+<h1>T2 100pts</h1>
+<p>第二道题目一开始看到的时候又被吓到，还以为是什么线段树。<br />
+我就想着这不是普及组模拟赛吗怎么会考线段树。<br />
+后来开始通过数字的变化规律来发现性质，没有找到。<br />
+再后来通过每一个数字的位置变化来发现关系然后一下就找到了。<br />
+规律其实很简单，最终结果的数组通过图像上来看就是一个 V，从 1 开始每一次以此增加 2，只不过单复数的时候略有方向上的不同罢了。</p>
+<pre><code class="language-cpp"> 复制
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn = 2e6 + 5;
+
+int n;
+int a[maxn];
+int b[maxn];
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; n;
+    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i];
+    if(n % 2 == 0) {
+        for(int i = n / 2, it = 2; i &gt;= 0; i--, it += 2) {
+            b[i] = a[it] ^ 1;
+        }
+        for(int i = n / 2 + 1, it = 1; i &lt;= n; i++, it += 2) {
+            b[i] = a[it];
+        }
+    }
+    else {
+        for(int i = n / 2 + 1, it = 1; i &gt;= 0; i--, it += 2) {
+            b[i] = a[it] ^ 1;
+        }
+        for(int i = n / 2 + 2, it = 2; i &lt;= n; i++, it += 2) {
+            b[i] = a[it];
+        }
+    }
+    for(int i = 1; i &lt;= n; i++) cout &lt;&lt; b[i] &lt;&lt; &quot; \n&quot;[n == i];
+    return 0;
+}</code></pre>
+<h1>T3 40pts</h1>
+<p>这个考试大部分的时间都花费在这道题目上面了，本来想打特殊性质，结果特殊性质就没打对几个，但是却意外发现了略有瑕疵的“正解”，为什么说略有瑕疵呢？因为我自己手造样例没有问题，而且从逻辑层面来说也没有问题，但是等到数据一大这个程序就不知道为什么输出了一个错误的答案。最终的代码非常的长，但是实际上有用的比较短。</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn = 200000 + 50;
+#define int long long
+
+int T, n;
+int a[maxn];
+bool A, B, C;
+
+namespace AA {
+    void Main() {
+        if(n == 1) {
+            cout &lt;&lt; 0 &lt;&lt; &quot;\n&quot;;
+            return ;
+        }
+        cout &lt;&lt; abs(a[1] * (n - 2)) &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+namespace BB {
+    void Main() {
+        long long ans = 0;
+        for(int i = 1; i &lt;= n; i++) {
+            ans += abs(a[i]);
+        }
+        if(a[n] &lt; 0)  {
+            ans += a[n] * 2;
+        }
+        if(a[1] &gt; 0) {
+            ans -= a[1] * 2;
+        }
+        cout &lt;&lt; max(ans, 1ll * 0) &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+namespace CC {
+    void Main() {
+        bool can = false;
+        long long ansa = 0, ansb = 0;
+        for(int i = 1; i &lt;= n; i++) {
+            if(a[i] == 0) can = true;
+            if(!can &amp;&amp; i != 1) ansa += a[i];
+            else if(can) ansb += a[i];
+        }
+        if(a[1] &gt;= 0) ansa -= a[1];
+        cout &lt;&lt; max(max(ansa, 1ll * 0) + ansb, 1ll * 0)&lt;&lt; &quot;\n&quot;;
+    }
+}
+
+namespace n8 {
+    int vis[10];
+    long long ans = 0;
+    int calc() {
+        int sum = 0;
+        for(int i = 1; i &lt;= n; i++) {
+            if(vis[i] &lt; i) sum += a[i];
+            if(vis[i] &gt; i) sum -= a[i];
+        }
+        return sum;
+    }
+    bool can(int x) {
+        for(int i = 1; i &lt;= n; i++) {
+            if(vis[i] == x) return false;
+        }
+        return true;
+    }
+    void dfs(int x) {
+        if(x == n + 1) {
+            ans = max(ans, calc());
+            return ;
+        }
+        for(int i = 1; i &lt;= n; i++) {
+            if(!can(i)) continue;
+            vis[x] = i;
+            dfs(x + 1);
+            vis[x] = 0;
+        }
+    }
+    void Main() {
+        dfs(1);
+        cout &lt;&lt; max(ans, 1ll * 0) &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+namespace std {
+    void Main() {
+        bool can = false;
+        unsigned long long ansa = 0, ansb = 0, ansc = 0, ansd = 0;
+        for(int i = 1; i &lt;= n; i++) {
+            if(a[i] &lt;= 0) can = true;
+            if(!can &amp;&amp; a[i] &gt; 0) ansc += a[i];
+            if(can &amp;&amp; a[i] &gt; 0) ansa += a[i];
+        }
+        can = false;
+        for(int i = n; i &gt;= 1; i--) {
+            if(a[i] &gt;= 0) can = true;
+            if(!can &amp;&amp; a[i] &lt; 0) ansd -= a[i];
+            if(can &amp;&amp; a[i] &lt; 0) ansb -= a[i];
+        }
+        if(a[n] &lt;= 0) ansd  += 2 * a[n];
+        if(a[1] &gt;= 0) ansc -= 2 * a[1];
+        cout &lt;&lt; max({ansa + ansb + max(1ull * 0, ansc) + max(1ull * 0, ansd), 1ull * 0}) &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+signed main() {
+    //freopen(&quot;bbb.in&quot;, &quot;r&quot;, stdin);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; T;
+    while(T--) {
+        cin &gt;&gt; n;
+        A = B = C = true;
+        for(int i = 1; i &lt;= n; i++) {
+            cin &gt;&gt; a[i];
+        }
+        cin &gt;&gt; a[1];
+        for(int i = 2; i &lt;= n; i++) {
+            cin &gt;&gt; a[i];
+            if(a[i - 1] != a[i]) A = false;
+            if(a[i - 1] &gt; a[i]) B = false;
+            if(a[i] &lt; 0) C = false;
+        }
+
+        if(A) {
+            AA::Main();
+            continue;
+        }
+
+        if(C) {
+            CC::Main();
+            continue;
+        }
+
+        if(B) {
+            BB::Main();
+            continue;
+        }
+
+        if(n &lt;= 8) { //令人不解的是我这个暴力挂掉了我觉得我还是该多试一下的
+            n8::Main();
+            continue;
+        }
+
+        std::Main();
+        continue;
+    }
+    return 0;
+}</code></pre>
+<h1>T4 15pts</h1>
+<p>不可以总司令永远的神</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 1; i &lt;= n; i++) {
+        for(int j = 1; j &lt;= m; j++) {
+            cout &lt;&lt; 0 &lt;&lt; &quot; \n&quot;[j == m];
+        }
+    }
+}</code></pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/10/14/%e3%80%90lgr-163-div-3%e3%80%91%e6%b4%9b%e8%b0%b7-csp-j-2023-%e6%a8%a1%e6%8b%9f%e8%b5%9b-%e3%80%8ckdoi%e3%80%8dround-6-j-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>【LGR-154-Div.4】洛谷入门赛 #15 赛后总结</title>
+		<link>https://ggapa.github.io/2023/08/14/%e3%80%90lgr-154-div-4%e3%80%91%e6%b4%9b%e8%b0%b7%e5%85%a5%e9%97%a8%e8%b5%9b-15-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/</link>
+					<comments>https://ggapa.github.io/2023/08/14/%e3%80%90lgr-154-div-4%e3%80%91%e6%b4%9b%e8%b0%b7%e5%85%a5%e9%97%a8%e8%b5%9b-15-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Mon, 14 Aug 2023 04:26:32 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[总结]]></category>
+		<category><![CDATA[洛谷]]></category>
+		<guid isPermaLink="false">http://puhongyi.net:81/?p=174</guid>
+
+					<description><![CDATA[【LGR-154-Div.4】洛谷入门赛 #15 赛后总结 整体评价 以我的水平就只能做做入门赛了，其他的比赛 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>【LGR-154-Div.4】洛谷入门赛 #15 赛后总结</h1>
+<h2>整体评价</h2>
+<p>以我的水平就只能做做入门赛了，其他的比赛根本提不上劲。</p>
+<p>Debug速度太慢导致题目没有做完。</p>
+<p><img decoding="async" src="https://cdn.luogu.com.cn/upload/image_hosting/p4fvga00.png" alt="" /></p>
+<h2>T1 443 pts (500 pts)</h2>
+<p>考试的时候迟到了十分钟。<br />
+第一题还是很简单一个顺序结构就可解决问题</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+int a, b, c, d;
+int main() {
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
+    int sum = a + b + c + d;
+    if(sum &lt; 51) {
+        cout &lt;&lt; &quot;Rabbit wins&quot; &lt;&lt; endl;
+    }
+    else {
+        cout &lt;&lt; &quot;Rabbit lose&quot; &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+<h2>T2 562 pts (700 pts)</h2>
+<p>用枚举即可解决问题</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+int sx, sy, cx, cy, mx, my;
+int fx[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
+int fy[8] = {-2, -1, 1, 2, 2, 1, -1, -2};
+bool check(int x,int y) {
+    int sum = 0;
+    for(int i = 0; i &lt; 8; i++) {
+        int nx = fx[i] + x;
+        int ny = fy[i] + y;
+        if((nx == sx &amp;&amp; ny == sy) || (nx == cx &amp;&amp; ny == cy)) sum++;
+        if(sum == 2) {
+            return true;
+        }
+    }
+    return false;
+}
+int main() {    
+    cin &gt;&gt; sx &gt;&gt; sy &gt;&gt; cx &gt;&gt; cy &gt;&gt; mx &gt;&gt; my;
+    for(int i = 0; i &lt; 8; i++) {
+        int nx = fx[i] + mx;
+        int ny = fy[i] + my;
+        if(check(nx, ny)) {
+            cout &lt;&lt; &quot;Yes&quot;;
+            return 0;
+        }
+    }
+    cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;
+    return 0;
+}</code></pre>
+<h2>T3 772 pts (900pts)</h2>
+<p>一个找规律，加上一个STL map即可解决问题</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;map&gt;
+using namespace std;
+
+map&lt;int,int&gt; M;
+int n;
+
+int main() {
+    for(int i = 1; i &lt;= 6; i += 2) {
+        M[i] = i + 1;
+        M[i + 1] = i;
+    }
+    cin &gt;&gt; n;
+    int ans = 0;
+    for(int i = 1, op; i &lt;= n; i++) {
+        cin &gt;&gt; op;
+        if(i == n) {
+            ans += 21 - M[op];
+        }
+        else {
+            ans += 21 - M[op] - op;
+        }
+    }
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+}</code></pre>
+<h2>T4 681 pts (1100pts)</h2>
+<p>暴力加上一个存放Max的数组即可</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;limits.h&gt;
+using namespace std;
+const int maxn = 1e6 + 5;
+typedef long long ll;
+#define int long long
+int n, c;
+int a[maxn], Max[maxn];
+
+signed main() {
+    cin &gt;&gt; n &gt;&gt; c;
+    Max[0] = 0;
+    for(int i = 1; i &lt;= n; i++) {
+        cin &gt;&gt; a[i];
+        Max[i] = max(Max[i - 1], a[i]);
+    }
+    ll ansval = LLONG_MAX;
+    int ansindex;
+    for(int k = 0; k &lt;= n; k++) {
+        ll t = Max[k] + c * (n - k);
+        if(t &lt; ansval) {
+            ansval = t;
+            ansindex = k;
+        }
+    }
+    cout &lt;&lt; ansindex &lt;&lt; &quot; &quot; &lt;&lt; ansval &lt;&lt; endl;
+    return 0;
+}</code></pre>
+<h2>T5 852 pts (1300 pts)</h2>
+<p>Map 即可轻松解决</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;map&gt;
+using namespace std;
+
+int n, m;
+map &lt;int, int&gt; score;
+
+int main() {
+    cin &gt;&gt; n &gt;&gt; m;
+    int vacant = 0;
+    for(int i = 1, kkksc03; i &lt;= n; i++){
+        cin &gt;&gt; kkksc03;
+        score[kkksc03] = -1;
+    }
+    for(int i = 1, x, y; i &lt;= m; i++) {
+        cin &gt;&gt; x &gt;&gt; y;
+        score[x] = y;
+    }
+    int ans = 0;
+    for(auto i = score.begin(); i != score.end(); i++) {
+        if(i-&gt;second &lt; 60) ans++;
+        if(i-&gt;second == -1) vacant ++;
+    }
+    cout &lt;&lt; vacant &lt;&lt; &quot;\n&quot; &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+    return 0;
+}</code></pre>
+<h2>T6 713 pts (1300 pts)</h2>
+<p>就是这道题目把我卡住了，检查了很久，结果发现是数组开小了<br />
+看来如果一道题不是爆0应该先检查数据类型，数组是不是开小了，像这种一般你的思路是对的，只不过是实现挂了</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int maxn = 500 * 500 + 5; //就是这里的问题,之前写成500 + 5，没有考虑到地图是二维的QAQ
+int n, m, N, M;
+/*
+vector &lt;int&gt; mapH[maxn];//雄性  横向
+vector &lt;int&gt; mapS[maxn];//ts    纵向
+*/
+int xF[maxn], yF[maxn];//雌性
+int xM[maxn], yM[maxn];//xiong
+
+char map[505][505];
+
+int main(){
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; N &gt;&gt; M;
+    int cnt = 1;
+    int cnt2 = 1;
+    for(int i = 1; i &lt;= n; i++)
+        for(int j = 1; j &lt;= m; j++) {
+            cin &gt;&gt; map[i][j];
+            if(map[i][j] == &#039;F&#039;) {
+                xF[cnt] = i;
+                yF[cnt++] = j;
+            }
+            if(map[i][j] == &#039;M&#039;) {
+                xM[cnt2] = i;
+                yM[cnt2++] = j;
+            }
+        }
+    int sum = 0;
+    for(int i = 1; i &lt;= cnt; i++) {
+        int Run = 0;
+        int x, y;
+        x = xF[i];
+        y = yF[i];
+        while(map[x - 1][y] != &#039;M&#039; &amp;&amp; x - 1 &gt;= 1) 
+            x--;
+        if(x == 1) Run++;
+        x = xF[i];
+        y = yF[i];
+        while(map[x + 1][y] != &#039;M&#039; &amp;&amp; x + 1 &lt;= n ) 
+            x++;
+        if(x == n) Run++;
+        x = xF[i];
+        y = yF[i];
+        while(map[x][y - 1] != &#039;M&#039; &amp;&amp; y - 1 &gt;= 1) 
+            y--;
+        if(y == 1) Run++;
+        x = xF[i];
+        y = yF[i];
+        while(map[x][y + 1] != &#039;M&#039; &amp;&amp; y + 1 &lt;= m) 
+            y++;
+        if(y == m) Run++;
+        x = xF[i];
+        y = yF[i];
+        if(Run &gt;= 3) 
+            sum++;
+    }
+    for(int i = 1; i &lt;= cnt2; i++) {
+        int Run = 0;
+        int x, y;
+        x = xM[i];
+        y = yM[i];
+        while(map[x - 1][y] != &#039;F&#039; &amp;&amp; x - 1 &gt;= 1) 
+            x--;
+        if(x == 1) Run++;
+        x = xM[i];
+        y = yM[i];
+        while(map[x + 1][y] != &#039;F&#039; &amp;&amp; x + 1 &lt;= n) 
+            x++;
+        if(x == n) Run++;
+        x = xM[i];
+        y = yM[i];
+        while(map[x][y - 1] != &#039;F&#039; &amp;&amp; y - 1 &gt;= 1) 
+            y--;
+        if(y == 1) Run++;
+        x = xM[i];
+        y = yM[i];
+        while(map[x][y + 1] != &#039;F&#039; &amp;&amp; y + 1 &lt;= m) 
+            y++;
+        if(y == m) Run++;
+        x = xM[i];
+        y = yM[i];
+        if(Run &gt;= 3) 
+            sum++;
+    }
+    cout &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}</code></pre>
+<h2>T7 694 pts (1700 pts)</h2>
+<p>也是STL map 解决问题</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+using namespace std;
+
+map&lt;string, string&gt; name;
+
+int main() {
+    int n, m, l;
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; l;
+    for(int i = 1; i &lt;= n; i++) {
+        string Input;
+        cin &gt;&gt; Input;
+        name[Input] = Input;
+    }
+    for(int i = 1; i &lt;= m; i++) {
+        string Input;
+        cin &gt;&gt; Input;
+        name.erase(Input);
+    }
+    for(int i = 1; i &lt;= l; i++) {
+        string Input;   
+        cin &gt;&gt; Input;
+        name[Input] = Input;
+    }
+    vector &lt;string&gt; ls;
+    for(auto i = name.begin(); i != name.end(); i++) {
+        ls.push_back(i-&gt;second);
+    }
+    sort(ls.begin(), ls.end());
+    for(int i = 0; i &lt; ls.size(); i++){
+        cout &lt;&lt; ls[i] &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+<h1>T8 0 pts (2000 pts)</h1>
+<p>这道题在世界这么短的情况下做是没有意义的，于是我就跳到了T9</p>
+<h1>T9 750pts (1500pts)</h1>
+<p>这道题只看了第一个程序，爆int了</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main() {
+    int n, k;
+    cin &gt;&gt; n &gt;&gt; k;
+    if (k == n || k == 0) {
+        cout &lt;&lt; &quot;0 0&quot; &lt;&lt; endl;
+        return 0;
+    }
+    cout &lt;&lt; &quot;1 &quot;;
+    if (k * 3 &lt;= n)//就是这里爆掉了
+        cout &lt;&lt; 2 * k &lt;&lt; endl;
+    else
+        cout &lt;&lt; n - k &lt;&lt; endl;
+    return 0;
+}</code></pre>
+<h2>总结</h2>
+<ul>
+<li>debug能力有待提高</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/08/14/%e3%80%90lgr-154-div-4%e3%80%91%e6%b4%9b%e8%b0%b7%e5%85%a5%e9%97%a8%e8%b5%9b-15-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>LGR-149-Div.3】洛谷基础赛 #2 &#038; qw Round -1 赛后总结</title>
+		<link>https://ggapa.github.io/2023/08/14/lgr-149-div-3%e3%80%91%e6%b4%9b%e8%b0%b7%e5%9f%ba%e7%a1%80%e8%b5%9b-2-qw-round-1-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/</link>
+					<comments>https://ggapa.github.io/2023/08/14/lgr-149-div-3%e3%80%91%e6%b4%9b%e8%b0%b7%e5%9f%ba%e7%a1%80%e8%b5%9b-2-qw-round-1-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Mon, 14 Aug 2023 04:25:11 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[总结]]></category>
+		<category><![CDATA[洛谷]]></category>
+		<guid isPermaLink="false">http://puhongyi.net:81/?p=172</guid>
+
+					<description><![CDATA[【LGR-149-Div.3】洛谷基础赛 #2 &#38; qw Round -1 赛后总结 整体评价 说是普 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>【LGR-149-Div.3】洛谷基础赛 #2 &amp; qw Round -1 赛后总结</h1>
+<h2>整体评价</h2>
+<p>说是普及组难度但感觉比普及组简单一些，因为我普及组从来没有上过300</p>
+<p><img decoding="async" src="https://cdn.luogu.com.cn/upload/image_hosting/idck7jkh.png" alt="" /></p>
+<h2>T1 100 pts</h2>
+<p>签到题，没什么好说的</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    int a, b, c, d, e;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d &gt;&gt; e;
+    int sum = a + b + c + d + e;
+    if(sum &lt;= 99) cout &lt;&lt; &quot;Gray&quot; &lt;&lt; endl;
+    else if (sum &lt;= 119) cout &lt;&lt; &quot;Blue&quot; &lt;&lt; endl;
+    else if (sum &lt;= 169) cout &lt;&lt; &quot;Green&quot; &lt;&lt; endl;
+    else if (sum &lt;= 229) cout &lt;&lt; &quot;Orange&quot; &lt;&lt; endl;
+    else cout &lt;&lt; &quot;Red&quot; &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2>T2 100pts</h2>
+<p>找最左边最后边的就可以了</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+const int maxn = 1e5 + 5;
+int a[maxn];
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    int ans = 0;
+    int left, right;
+    left = right = 0;
+    for(int i = 1; i &lt;= n; i++) {
+        cin &gt;&gt; a[i];
+    }
+    for(int i = 1; i &lt;= n; i++) {
+        if(a[i] == 1) {
+            left = i;
+            break;
+        }
+    }
+    for(int i = n; i &gt;= 0 ;i --) {
+        if(a[i] == 1) {
+            right = i;
+            break;
+        }
+    }
+    if(left != 0 &amp;&amp; right != 0)cout &lt;&lt; right - left + 1 &lt;&lt; endl;
+    else cout &lt;&lt; 0 &lt;&lt; endl;
+    return 0;
+}</code></pre>
+<h2>T3 100pts</h2>
+<p>T3两个小时的时候才做出来，第一次做的时候情况没有考虑完整只得了40分，但是后面提交的时候因为STL的选择不对导致TLE，最后把STL由STL换成了queue才通过了这道题。</p>
+<p>这道题就是模拟题吧。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;        //用了好多STL尝试，最终还是决定用queue
+#include &lt;vector&gt;  //本来说STL过不了我就手打，最终还是过了
+#include &lt;algorithm&gt;
+#include &lt;unordered_set&gt;
+using namespace std;
+int n;
+queue &lt;string&gt; que;
+queue &lt;string&gt; playing;
+map &lt;string, string&gt; mp;
+map &lt;string, int&gt; number;
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; n;
+    while(n--) {
+        string op;
+        cin &gt;&gt; op;
+        if(op == &quot;start&quot;) {
+            while(!playing.empty()) {
+                que.push(playing.front());
+                mp[playing.front()] = &quot;-Watting&quot;;
+                playing.pop();
+            }
+            if(que.empty()){
+                cout &lt;&lt; &quot;Error&quot; &lt;&lt; endl;
+                continue;
+            }
+            for(int i = 1, success = 0; success &lt; 2 &amp;&amp; !que.empty(); i++) {
+                if(number[que.front()] &gt; 1 || mp[que.front()] == &quot;&quot;) {
+                    number[que.front()]--;
+                    que.pop();
+                    continue;    
+                }
+                mp[que.front()] = &quot;-Playing&quot;;
+                success++;
+                playing.push(que.front());
+                cout &lt;&lt; que.front() &lt;&lt; &quot; &quot;;
+                que.pop();
+            }
+            cout &lt;&lt; endl;
+        }
+        else if(op == &quot;arrive&quot;) {
+            string ar;
+            cin &gt;&gt; ar;
+            if(mp[ar] == &quot;-Watting&quot; || mp[ar] == &quot;-Playing&quot;) {
+                cout &lt;&lt; &quot;Error&quot; &lt;&lt; endl;
+                continue;
+            }
+            mp[ar] = &quot;-Watting&quot;;
+            number[ar]++;
+            que.push(ar);
+            cout &lt;&lt; &quot;OK&quot; &lt;&lt; endl;
+        }
+        else if(op == &quot;leave&quot;) {
+            string le;
+            cin &gt;&gt; le;
+            if(mp[le] == &quot;-Playing&quot; || mp[le] == &quot;&quot;) {
+                cout &lt;&lt; &quot;Error&quot; &lt;&lt; endl;
+                continue;
+            }
+            mp[le] = &quot;&quot;;
+            cout &lt;&lt; &quot;OK&quot; &lt;&lt; endl;
+        }
+    }
+    return 0;
+
+}</code></pre>
+<h1>T4 50pts</h1>
+<p>这道题两种特殊情况一共20pts, 加上了30分的暴力，按理来说暴力应该是能拿60pts，但是我的暴力写挂了，只拿了50</p>
+<p><del>话说两个小时我这个蒟蒻都写不出来，我就是个废柴</del></p>
+<p>正解应该是二分，但是我实在是没有看出来，看来二分还是不是很熟悉</p>
+<pre><code class="language-cpp">
+// U318099 pay
+// https://www.luogu.com.cn/problem/U318099?contestId=123900
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <limits.h>
+using namespace std;
+const int maxn = 1e6 + 10;
+#define int long long
+int n, m;
+int a[maxn];
+int b[maxn];
+long long f[maxn];
+int Max = -1;
+bool check() {
+    for(int i = 1; i <= n; i++) {
+        if(f[i] < a[i]) return false;
+    }
+    return true;
+}
+namespace LS {
+    void Main() {
+        for(int i = Max / m/*就是因为这里除以了一个m我才卡到50分*/; i <= INT_MAX; i++) {
+        for(int j = 1;j <= m; j++) {
+            for(int q = max((long long)1, b[j] - i + 1); q <= min(n, b[j] + i - 1); q++) {
+                 f[q] += max(i - abs(b[j] - q), (long long)0);
+            }
+        }
+        if(check()) {
+            cout << i << endl;
+            return;
+        }
+        for(int i = 1; i <= n; i++) f[i] = 0;
+        }
+    }
+}
+namespace N1 {
+    void Main() {
+        cout << a[1] << endl;
+    }
+}
+namespace M1 {
+    void Main() {
+        int ans = 0;
+        for(int i = 1; i <= n; i++) {
+            a[i] += abs(i - b[1]);
+            ans = max(ans, a[i]);
+        }
+        cout << ans << endl;
+    }
+}
+signed main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin >> n;
+    cin >> m;
+    for(int i = 1; i <= n; i++) {
+        cin >> a[i];
+        Max = max(Max, a[i]);
+    }
+    for(int i = 1; i <= m; i++) {
+        cin >> b[i];
+    }
+    if(n == 1) {
+        N1::Main();
+        return 0;
+    }   
+
+    if(m == 1) {
+        M1::Main();
+        return 0;
+    }
+
+    LS::Main();
+
+    return 0;
+}
+``</code></pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/08/14/lgr-149-div-3%e3%80%91%e6%b4%9b%e8%b0%b7%e5%9f%ba%e7%a1%80%e8%b5%9b-2-qw-round-1-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

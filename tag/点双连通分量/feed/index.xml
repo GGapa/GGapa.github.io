@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>点双连通分量 &#8211; GGapa&#039;s website</title>
+	<atom:link href="http://ggapa.net/tag/%E7%82%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/feed/?simply_static_page=1938" rel="self" type="application/rss+xml" />
+	<link>https://ggapa.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 03 Nov 2023 05:19:29 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
+
+<image>
+	<url>https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-32x32.png</url>
+	<title>点双连通分量 &#8211; GGapa&#039;s website</title>
+	<link>https://ggapa.github.io/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>浅谈双连通分量</title>
+		<link>https://ggapa.github.io/2023/11/03/%e6%b5%85%e8%b0%88%e5%8f%8c%e8%bf%9e%e9%80%9a%e5%88%86%e9%87%8f/</link>
+					<comments>https://ggapa.github.io/2023/11/03/%e6%b5%85%e8%b0%88%e5%8f%8c%e8%bf%9e%e9%80%9a%e5%88%86%e9%87%8f/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Fri, 03 Nov 2023 05:19:29 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[点双连通分量]]></category>
+		<category><![CDATA[边双连通分量]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=797</guid>
+
+					<description><![CDATA[前置知识 图论相关概念 割点和桥 强连通分量 点双连通分量 在一个无向图中，若删除图中的任意一个点，这个图还能 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>前置知识</h1>
+<ul>
+<li><a href="https://oi-wiki.org/graph/concept/">图论相关概念</a></li>
+<li><a href="https://oi-wiki.org/graph/cut/">割点和桥</a></li>
+<li><a href="https://oi-wiki.org/graph/scc/">强连通分量</a></li>
+</ul>
+<h1>点双连通分量</h1>
+<p>在一个无向图中，若删除图中的任意一个点，这个图还能连通，则称这个图为<strong>点双连通</strong></p>
+<p>例题：<a href="https://www.luogu.com.cn/problem/P8435">P8435 【模板】点双连通分量</a></p>
+<p>在书写代码的时候有需要注意的地方会在程序中标注。</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+const int maxn = 5e5 + 5;
+
+int n, m;
+vector&lt;int&gt; G[maxn], ans[maxn];
+int dfn[maxn], low[maxn], cnt;
+int top, stk[2000005];
+
+void dfs(int x, int fa) {
+    dfn[x] = low[x] = ++dfn[0];
+    stk[++top] = x;
+    int son = 0;
+    for(auto to : G[x]) {
+        if(!dfn[to]) {
+            if(to == fa) continue;
+            son++;
+            dfs(to, x);
+            low[x] = min(low[x], low[to]);                                  //注意dfn和low数组有没有搞混 
+            if(low[to] &gt;= dfn[x]) {                      
+                cnt++;
+                int tmp = 0;
+                while(stk[top + 1] != to) ans[cnt].push_back(stk[top--]);
+                ans[cnt].push_back(x);
+            }
+
+        }
+        else if(to != fa)low[x] = min(low[x],dfn[to]);
+    }
+    if(son == 0 &amp;&amp; fa == 0) ans[++cnt].push_back(x);                        //不要忘记判读顶点 
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+//  freopen(&quot;AKIOI.in&quot;, &quot;r&quot;, stdin);
+//  freopen(&quot;AKIOI.out&quot;, &quot;w&quot;, stdout);
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 1, u, v; i &lt;= m; i++) {
+        cin &gt;&gt; u &gt;&gt; v;
+        G[u].push_back(v);
+        G[v].push_back(u);
+    }
+    for(int i = 1; i &lt;= n; i++) {
+        if(dfn[i] != 0) continue;
+        top = 0;                    //不要忘记清空栈 
+        dfs(i, 0);
+    }
+    cout &lt;&lt; cnt &lt;&lt; &#039;\n&#039;;
+    for(int i = 1; i &lt;= cnt; i++) {
+        cout &lt;&lt; ans[i].size() &lt;&lt; &quot; &quot;;
+        for(auto j : ans[i]) cout &lt;&lt; j &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+
+}</code></pre>
+<h1>边双连通分量</h1>
+<p>在一个无向图中，若删除图中的任意一条边，这个图还能连通，则称这个图为<strong>点双连通</strong></p>
+<p>例题：<a href="https://www.luogu.com.cn/problem/P8436">P8436 【模板】边双连通分量</a></p>
+<p>在书写代码的时候有需要注意的地方会在程序中标注。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int maxn = 5e5 + 5;
+
+int n, m, cnt = 0;
+vector&lt;pair&lt;int, int&gt; &gt; G[maxn];
+vector&lt;int&gt; ans[maxn];
+int dfn[maxn], low[maxn];
+stack&lt;int&gt; stk;
+
+void tarjan(int x, int fa) {
+    low[x] = dfn[x] = ++dfn[0];
+        stk.push(x);
+    for(auto i : G[x]) {
+        int to = i.first, it = i.second;    
+        if (it == (fa ^ 1)) continue;           //利用位运算判断重边 
+        if(!dfn[to]) {
+            tarjan(to, it);
+            low[x] = min(low[x], low[to]);      //dfn和low不要搞错 
+        }
+        else low[x] = min(low[x], dfn[to]);
+    }
+    if(dfn[x] == low[x]) {
+        cnt++;
+        ans[cnt].push_back(x);
+        while(!stk.empty() &amp;&amp; stk.top() != x) {ans[cnt].push_back(stk.top()), stk.pop();}   //出栈的操作需要注意 
+        stk.pop();
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    // freopen(&quot;AKIOI.in&quot;, &quot;r&quot;, stdin);
+    // freopen(&quot;AKIOI.out&quot;, &quot;w&quot;, stdout);
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 1, u, v; i &lt;= m; i++) {
+        cin &gt;&gt; u &gt;&gt; v;
+        G[u].push_back(make_pair(v, i * 2));        //给每条边编号方便去重 
+        G[v].push_back(make_pair(u, i * 2 + 1));
+    }
+    for(int i = 1; i &lt;= n; i++) {
+        if(!dfn[i]) tarjan(i, 0);
+    }
+    cout &lt;&lt; cnt &lt;&lt; &quot;\n&quot;;
+    for(int i = 1; i &lt;= cnt; i++) {
+        cout &lt;&lt; ans[i].size() &lt;&lt; &quot; &quot;;
+        for(auto j : ans[i]) cout &lt;&lt; j &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; &quot;\n&quot;;
+    }
+
+    return 0;
+}</code></pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/11/03/%e6%b5%85%e8%b0%88%e5%8f%8c%e8%bf%9e%e9%80%9a%e5%88%86%e9%87%8f/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

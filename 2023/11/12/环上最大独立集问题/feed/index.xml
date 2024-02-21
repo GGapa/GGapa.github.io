@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	《环上最大独立集问题》的评论	</title>
+	<atom:link href="http://ggapa.net/2023/11/12/%E7%8E%AF%E4%B8%8A%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86%E9%97%AE%E9%A2%98/feed/?simply_static_page=2018" rel="self" type="application/rss+xml" />
+	<link>https://ggapa.github.io/2023/11/12/%e7%8e%af%e4%b8%8a%e6%9c%80%e5%a4%a7%e7%8b%ac%e7%ab%8b%e9%9b%86%e9%97%ae%e9%a2%98/</link>
+	<description></description>
+	<lastBuildDate>Sun, 12 Nov 2023 09:36:52 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
+</channel>
+</rss>

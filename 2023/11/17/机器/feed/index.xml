@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	《机器》的评论	</title>
+	<atom:link href="http://ggapa.net/2023/11/17/%E6%9C%BA%E5%99%A8/feed/?simply_static_page=2005" rel="self" type="application/rss+xml" />
+	<link>https://ggapa.github.io/2023/11/17/%e6%9c%ba%e5%99%a8/</link>
+	<description></description>
+	<lastBuildDate>Fri, 17 Nov 2023 12:45:33 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
+</channel>
+</rss>

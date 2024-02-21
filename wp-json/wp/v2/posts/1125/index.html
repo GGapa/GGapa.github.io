@@ -1,0 +1,22 @@
+{"id":1125,"date":"2024-02-19T09:16:48","date_gmt":"2024-02-19T01:16:48","guid":{"rendered":"https:\/\/ggapa.github.io\/?p=1125"},"modified":"2024-02-21T11:40:22","modified_gmt":"2024-02-21T03:40:22","slug":"%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0uva","status":"publish","type":"post","link":"https:\/\/ggapa.github.io\/2024\/02\/19\/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0uva\/","title":{"rendered":"做题笔记(UVA)"},"content":{"rendered":"<h3><a href="\"https:\/\/www.luogu.com.cn\/problem\/UVA12661\"">UVA 12661 Funny Car Racing\n<p>一个标准的最短路，但是在计算距离这一方面需要注意，当我们来当一个赛道上时，会有以下几种情况：\n
+<ul>\n<li>赛道正在开放，且在通过赛道之前赛道不会关闭，时间即为通过赛道的时间\n</li>
+<li>赛道正在开放，但是剩余时间不足以通过赛道，时间即为等待时间加上关闭时间加上通过时间。\n</li>
+<li>注意连边的时候，若开放时间小于所通过的时间，那么这条边就不用链接了。\n\n<p>总结：看到最短路的题目，认真分析新的距离，无需多虑，直接跑最短路就可以，但是对于2023年CSP的一道题目，就需要认真分析性质，然后作答。<br>\n最短路的贪心已经是证明过的了，无需再多虑。\n
+<h3><a href="\"https:\/\/www.luogu.com.cn\/problem\/UVA12716\"">UVA 12716 XOR GCD\n<p>数论题，我们需要知道：\n
+<ul>\n<li>$a \\oplus b = c $ 等价于 $a\\oplus c = b$。\n\n<p>那么我们就可以枚举 $a$ 和枚举 $c$，然后算出 $b$，接着验证是否有 $\\gcd(a, b) = c$, 因为 $c$ 时 $a$ 的约数，时间复杂度 $O(n\\log n)$，而计算 $\\gcd$ 的时间是 $O(\\log n)$，总体时间复杂度 $O(n(\\log n)^2)$。\n
+<p>时间复杂度过高，无法通过本题，考虑如何优化。\n
+<p>此时我们暴力打出 $a$、$b$、$c$ 之间的关系，我们可以发现出一个规律 $c = a - b$。\n
+<blockquote>\n<p>证明：易得 $a  - b\\le a\\oplus b$，且 $a\\oplus b \\ge \\gcd(a, b) = c$，考虑使用反证法，假设 $a  -b &gt; c $，可以得到 $c &lt; a - b \\le a\\oplus b$，与 $c = a\\oplus b$ 矛盾，故 $a - b = c$ 得证。\n\n
+<p>时间复杂度 $O(n \\log n)$。\n
+<p><strong>值得注意的是：$\\oplus$ 的运算优先级是低于 $=$ ，在进行判断的时候需要加 $()$。\n<hr>\n<p>但在考场上，我们就不能这么做，我们不需要管证明，我们直接打表看规律！！！\n
+<p>总结：\n
+<ul>\n<li>我们应当牢记：<strong>暴力出奇迹，打表出省一！ 谁告诉了我难题一定要推公式才能做呢？\n\n<ul>\n<li>打表应该是面对数学题\/构造题的第一反应。\n\n","protected":false},"excerpt":{"rendered":"<p>UVA 12661 Funny Car Racing 一个标准的最短路，但是在计算距离这一方面需要注意，当我们 [&hellip;]\n","protected":false},"author":1,"featured_media":0,"comment_status":"open","ping_status":"open","sticky":false,"template":"","format":"standard","meta":{"footnotes":""},"categories":[12],"tags":[],"_links":{"self":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/1125"}],"collection":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts"}],"about":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/types\/post"}],"author":[{"embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/users\/1"}],"replies":[{"embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/comments?post=1125"}],"version-history":[{"count":4,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/1125\/revisions"}],"predecessor-version":[{"id":1143,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/1125\/revisions\/1143"}],"wp:attachment":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/media?parent=1125"}],"wp:term":[{"taxonomy":"category","embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/categories?post=1125"},{"taxonomy":"post_tag","embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/tags?post=1125"}],"curies":[{"name":"wp","href":"https:\/\/api.w.org\/{rel}","templated":true}]}}
+</li>
+</ul></strong>
+</li>
+</ul></strong>
+</blockquote>
+</li>
+</ul></a></h3>
+</li>
+</ul></a></h3>

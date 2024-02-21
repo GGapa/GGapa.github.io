@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js toolbar-blur article-header-style-2 ">
+<head>
+	<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta property="og:title" content="数论相关知识 &#8211; GGapa&#039;s website">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://ggapa.github.io/2023/08/16/oi%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6">
+				<meta name="description" content="Update on 2023.08.19：修改了一处笔误 Update on 2023.11.03：增添内容 &hellip;">
+			<meta property="og:description" content="Update on 2023.08.19：修改了一处笔误 Update on 2023.11.03：增添内容 &hellip;">
+	
+				<meta name="keywords" content="数学">
+	
+	
+	<meta name="theme-color" content="#66baff">
+	<meta name="theme-color-rgb" content="102,186,255">
+	<meta name="theme-color-origin" content="#66baff">
+	<meta name="argon-enable-custom-theme-color" content="true">
+
+
+	<meta name="theme-card-radius" content="4">
+	<meta name="theme-card-radius-origin" content="4">
+
+	<meta name="theme-version" content="1.3.5">
+
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="https://ggapa.github.io/xmlrpc.php">
+			<title>数论相关知识 &#8211; GGapa&#039;s website</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="GGapa&#039;s website &raquo; 数论相关知识评论Feed" href="https://ggapa.github.io/2023/08/16/oi%e5%ad%a6%e4%b9%a0-%e6%95%b0%e5%ad%a6/feed/">
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/ggapa.github.io\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.3"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🫱🏻‍🫲🏿","🫱🏻​🫲🏿")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<link rel="stylesheet" id="argon_css_merged-css" href="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/argon_css_merged.css?ver=1.3.5" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/style.css?ver=1.3.5" type="text/css" media="all">
+<link rel="stylesheet" id="googlefont-css" href="//fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%7CNoto+Serif+SC%3A300%2C600&#038;display=swap&#038;ver=6.4.3" type="text/css" media="all">
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="https://ggapa.github.io/wp-includes/css/dist/block-library/style.min.css?ver=6.4.3" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+<style id="md-style-inline-css" type="text/css">.katex-container { margin: 25px !important; text-align: center; } .katex-container.katex-inline { display: inline-block !important; background: none !important; margin: 0 !important; padding: 0 !important; } pre .katex-container { font-size: 1.4em !important; } .katex-inline { background: none !important; margin: 0 3px; } .post pre code script, .language-mathjax ~ .copy-button { display: none !important; }</style>
+<link rel="stylesheet" id="katex-css" href="https://ggapa.github.io/wp-content/plugins/wp-githuber-md/assets/vendor/katex/katex.min.css?ver=0.12.0" type="text/css" media="all">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/argon_js_merged.js?ver=1.3.5" id="argon_js_merged-js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/js/argon.min.js?ver=1.3.5" id="argonjs-js"></script>
+<script type="text/javascript" src="https://ggapa.github.io/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://ggapa.github.io/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://ggapa.github.io/wp-json/">
+<link rel="alternate" type="application/json" href="https://ggapa.github.io/wp-json/wp/v2/posts/216">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://ggapa.github.io/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.4.3">
+<link rel="canonical" href="https://ggapa.github.io/2023/08/16/oi%e5%ad%a6%e4%b9%a0-%e6%95%b0%e5%ad%a6/">
+<link rel="shortlink" href="https://ggapa.github.io/?p=216">
+<link rel="alternate" type="application/json+oembed" href="https://ggapa.github.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fggapa.github.io%2F2023%2F08%2F16%2Foi%25e5%25ad%25a6%25e4%25b9%25a0-%25e6%2595%25b0%25e5%25ad%25a6%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://ggapa.github.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fggapa.github.io%2F2023%2F08%2F16%2Foi%25e5%25ad%25a6%25e4%25b9%25a0-%25e6%2595%25b0%25e5%25ad%25a6%2F#038;format=xml">
+<link rel="icon" href="https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-32x32.png" sizes="32x32">
+<link rel="icon" href="https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-180x180.png">
+<meta name="msapplication-TileImage" content="https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-270x270.png">
+		<script>document.documentElement.classList.remove("no-js");
+		var argonConfig = {
+			wp_path: "/",
+			language: "zh_CN",
+			dateFormat: "YMD",
+							zoomify: false,
+						pangu: "article|shuoshuo|comment",
+							lazyload: {
+					threshold: 800,
+					effect: "fadeIn"
+				},
+						fold_long_comments: false,
+			fold_long_shuoshuo: false,
+			disable_pjax: false,
+			pjax_animation_durtion: 600,
+			headroom: "true",
+			waterflow_columns: "1",
+			code_highlight: {
+				enable: true,
+				hide_linenumber: false,
+				transparent_linenumber: false,
+				break_line: false			}
+		}</script>
+	<script>
+		var darkmodeAutoSwitch = "false";
+		function setDarkmode(enable){
+			if (enable == true){
+				$("html").addClass("darkmode");
+			}else{
+				$("html").removeClass("darkmode");
+			}
+			$(window).trigger("scroll");
+		}
+		function toggleDarkmode(){
+			if ($("html").hasClass("darkmode")){
+				setDarkmode(false);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
+			}else{
+				setDarkmode(true);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
+			}
+		}
+		if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"){
+			setDarkmode(true);
+		}
+		function toggleDarkmodeByPrefersColorScheme(media){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			if (media.matches){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		function toggleDarkmodeByTime(){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			let hour = new Date().getHours();
+			if (hour < 7 || hour >= 22){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		if (darkmodeAutoSwitch == 'system'){
+			var darkmodeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
+			toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
+		}
+		if (darkmodeAutoSwitch == 'time'){
+			toggleDarkmodeByTime();
+		}
+		if (darkmodeAutoSwitch == 'alwayson'){
+			setDarkmode(true);
+		}
+
+		function toggleAmoledDarkMode(){
+			$("html").toggleClass("amoled-dark");
+			if ($("html").hasClass("amoled-dark")){
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "true");
+			}else{
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "false");
+			}
+		}
+		if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "true"){
+			$("html").addClass("amoled-dark");
+		}else if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "false"){
+			$("html").removeClass("amoled-dark");
+		}
+	</script>
+	<script>if (navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1){
+			$("html").addClass("using-safari");
+		}</script>
+
+			<script src="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/vendor/smoothscroll/smoothscroll1.js"></script>
+	</head>
+
+<style>#content::before {
+        transition: filter .3s ease, transform .3s ease !important;
+        filter: blur(0px);
+        transform: scale(1.02);
+    }
+    #content.scrolled::before {
+        filter: blur(8px);
+        transform: scale(1.02);
+    }</style>
+<style id="themecolor_css">:root{
+		--themecolor: #66baff;
+		--themecolor-R: 102;
+		--themecolor-G: 186;
+		--themecolor-B: 255;
+		--themecolor-H: 207;
+		--themecolor-S: 100;
+		--themecolor-L: 70;
+	}</style>
+<style id="theme_cardradius_css">:root{
+		--card-radius: 4px;
+	}</style>
+
+<body class="post-template-default single single-post postid-216 single-format-standard">
+<div id="toolbar">
+	<header class="header-global">
+		<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light bg-primary headroom--not-bottom headroom--not-top headroom--pinned">
+			<div class="container">
+				<button id="open_sidebar" class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle sidebar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-brand mr-0">
+															<a class="navbar-brand navbar-title" href="https://ggapa.github.io/">GGapa&#039;s website</a>
+				</div>
+				<div class="navbar-collapse collapse" id="navbar_global">
+					<div class="navbar-collapse-header">
+						<div class="row" style="display: none;">
+							<div class="col-6 collapse-brand"></div>
+							<div class="col-6 collapse-close">
+								<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+									<span></span>
+									<span></span>
+								</button>
+							</div>
+						</div>
+						<div class="input-group input-group-alternative">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-search"></i></span>
+							</div>
+							<input id="navbar_search_input_mobile" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+						</div>
+					</div>
+					<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+
+										<li class="nav-item">
+											<a href="https://ggapa.github.io/29-2/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text">归档</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="https://ggapa.github.io/%e5%8f%8b%e9%93%be/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text">友链</span>
+										  </a>
+</li>
+
+										<li class="nav-item">
+											<a href="https://ggapa.github.io/451-2/" class="nav-link" target="" title="">
+										  		<i class="ni ni-book-bookmark d-lg-none"></i>
+												<span class="nav-link-inner--text">留言板</span>
+										  </a>
+</li>
+</ul>					<ul class="navbar-nav align-items-lg-center ml-lg-auto">
+						<li id="navbar_search_container" class="nav-item" data-toggle="modal">
+							<div id="navbar_search_input_container">
+								<div class="input-group input-group-alternative">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-search"></i></span>
+									</div>
+									<input id="navbar_search_input" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="navbar_menu_mask" data-toggle="collapse" data-target="#navbar_global"></div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-toggler-searcg-icon"></span>
+				</button>
+			</div>
+		</nav>
+	</header>
+</div>
+<div class="modal fade" id="argon_search_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">搜索</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="argon_serach_form" method="get" action="http://ggapa.net:81">
+	<div class="form-group mb-3">
+		<div class="input-group input-group-alternative">
+			<div class="input-group-prepend">
+				<span class="input-group-text"><i class="fa fa-search"></i></span>
+			</div>
+			<input name="s" class="form-control" placeholder="搜索什么..." type="text" autocomplete="off">
+		</div>
+	</div>
+	<div class="text-center">
+		<button onclick="if($('#argon_serach_form input[name=\'s\']').val() != '') {document.getElementById('argon_serach_form').submit();}" type="button" class="btn btn-primary">搜索</button>
+	</div>
+</form>			</div>
+		</div>
+	</div>
+</div>
+<!--Banner-->
+<section id="banner" class="banner section section-lg section-shaped">
+	<div class="shape shape-style-1 shape-primary">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+		<div id="banner_container" class="banner-container container text-center">
+					<div class="banner-title text-white" data-interval="100">
+<span data-text="自能生羽翼 何必仰云梯" class="banner-title-inner">&nbsp;</span>
+			<span data-text="Life is coding I will debug it" class="banner-subtitle d-block">&nbsp;</span>
+</div>
+			</div>
+			<style>section.banner{
+				background-image: url(http://10.0.0.2:81/wp-content/uploads/2023/08/モーニングコーヒー-62299336-0.png) !important;
+			}</style>
+		</section>
+
+	<style>#banner, #banner .shape {
+				background: transparent !important;
+			}
+				#content:before {
+			content: '';
+			display: block;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -2;
+			background: url(https://ggapa.github.io/wp-content/uploads/2023/08/モーニングコーヒー-62299336-0.png);
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 1;
+			transition: opacity .5s ease;
+		}
+		html.darkmode #content:before{
+			filter: brightness(0.65);
+		}</style>
+
+
+<div id="float_action_buttons" class="float-action-buttons fabtns-unloaded">
+	<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="移至左侧" tooltip-move-to-right="移至右侧">
+		<span class="btn-inner--icon fabtn-show-on-right"><i class="fa fa-caret-left"></i></span>
+		<span class="btn-inner--icon fabtn-show-on-left"><i class="fa fa-caret-right"></i></span>
+	</button>
+	<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Back To Top" tooltip="回到顶部">
+		<span class="btn-inner--icon"><i class="fa fa-angle-up"></i></span>
+	</button>
+	<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" style="display: none;" aria-label="Comment" tooltip="评论">
+		<span class="btn-inner--icon"><i class="fa fa-comment-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" style="display: none;" aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式">
+		<span class="btn-inner--icon"><i class="fa fa-moon-o"></i><i class="fa fa-lightbulb-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Blog Settings Menu" tooltip="设置">
+		<span class="btn-inner--icon"><i class="fa fa-cog"></i></span>
+	</button>
+	<div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
+		<div id="close_blog_settings"><i class="fa fa-close"></i></div>
+		<div class="blog-setting-item mt-3">
+			<div style="transform: translateY(-4px);"><div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="切换到夜间模式" tooltip-switch-to-blackmode="切换到暗黑模式">
+<span>夜间模式</span><span>暗黑模式</span>
+</div></div>
+			<div style="flex: 1;"></div>
+			<label id="blog_setting_darkmode_switch" class="custom-toggle">
+				<span class="custom-toggle-slider rounded-circle"></span>
+			</label>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">字体</div>
+			<div>
+				<button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button><button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">阴影</div>
+			<div>
+				<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button><button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3 mb-3">
+			<div style="flex: 1;">滤镜</div>
+			<div id="blog_setting_filters" class="ml-3">
+				<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0" filter-name="off">关闭</button>
+				<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
+				<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
+				<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mb-3">
+			<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+			<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
+				<div id="blog_setting_card_radius"></div>
+			</div>
+		</div>
+					<div class="blog-setting-item mt-1 mb-3">
+				<div style="flex: 1;">主题色</div>
+				<div id="theme-color-picker" class="ml-3"></div>
+			</div>
+			</div>
+	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="阅读进度">
+		<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
+		<span id="fabtn_reading_progress_details">0%</span>
+	</button>
+</div>
+
+<div id="content" class="site-content">
+
+<div class="page-information-card-container"></div>
+
+<div id="sidebar_mask"></div>
+<aside id="leftbar" class="leftbar widget-area" role="complementary">
+				<div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
+			<div class="leftbar-banner card-body">
+				<span class="leftbar-banner-title text-white">GGapa&#039;s website</span>
+
+													<span class="leftbar-banner-subtitle text-white"><span class="hitokoto"></span></span>
+				
+			</div>
+
+			<ul id="leftbar_part1_menu" class="leftbar-menu">
+
+						<li class="leftbar-menu-item">
+							<a href="https://ggapa.github.io/29-2/" target="">归档</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="https://ggapa.github.io/%e5%8f%8b%e9%93%be/" target="">友链</a>
+</li>
+
+						<li class="leftbar-menu-item">
+							<a href="https://ggapa.github.io/451-2/" target="">留言板</a>
+</li>
+</ul>			<div class="card-body text-center leftbar-search-button">
+				<button id="leftbar_search_container" class="btn btn-secondary btn-lg active btn-sm btn-block border-0" role="button">
+					<i class="menu-item-icon fa fa-search mr-0"></i> 搜索					<input id="leftbar_search_input" type="text" placeholder="搜索什么..." class="form-control form-control-alternative" autocomplete="off">
+				</button>
+			</div>
+		</div>
+		<div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
+			<div id="leftbar_part2_inner" class="card-body">
+								<div class="nav-wrapper" style="padding-top: 5px;">
+	                <ul class="nav nav-pills nav-fill" role="tablist">
+													<li class="nav-item sidebar-tab-switcher">
+								<a class="active show" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>文章目录</a>
+							</li>
+												<li class="nav-item sidebar-tab-switcher">
+							<a class="" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
+						</li>
+													<li class="nav-item sidebar-tab-switcher">
+								<a class="" id="leftbar_tab_tools_btn" data-toggle="tab" href="#leftbar_tab_tools" role="tab" aria-controls="leftbar_tab_tools" no-pjax>功能</a>
+							</li>
+							                </ul>
+				</div>
+				<div>
+					<div class="tab-content" style="padding: 10px 10px 0 10px;">
+													<div class="tab-pane fade active show" id="leftbar_tab_catalog" role="tabpanel" aria-labelledby="leftbar_tab_catalog_btn">
+								<div id="leftbar_catalog"></div>
+								<script type="text/javascript">$(function () {
+										$(document).headIndex({
+											articleWrapSelector: '#post_content',
+											indexBoxSelector: '#leftbar_catalog',
+											subItemBoxClass: "index-subItem-box",
+											itemClass: "index-item",
+											linkClass: "index-link",
+											offset: 80,
+										});
+									})</script>
+															</div>
+												<div class="tab-pane fade text-center" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
+							<div id="leftbar_overview_author_image" style="background-image: url(https://ggapa.github.io/wp-content/uploads/2023/08/Untitled.png)" class="rounded-circle shadow-sm" alt="avatar"></div>
+							<h6 id="leftbar_overview_author_name">GGapa</h6>
+							<h6 id="leftbar_overview_author_description">在役OIer</h6>							<nav class="site-state">
+								<div class="site-state-item site-state-posts">
+									<a href="https://ggapa.github.io/29-2/">
+										<span class="site-state-item-count">73</span>
+										<span class="site-state-item-name">文章</span>
+									</a>
+								</div>
+								<div class="site-state-item site-state-categories">
+									<a data-toggle="modal" data-target="#blog_categories">
+										<span class="site-state-item-count">9</span>
+										<span class="site-state-item-name">分类</span>
+									</a>
+								</div>      
+								<div class="site-state-item site-state-tags">
+									<a data-toggle="modal" data-target="#blog_tags">
+										<span class="site-state-item-count">20</span>
+										<span class="site-state-item-name">标签</span>
+									</a>
+								</div>
+							</nav>
+														<div class="site-friend-links">
+											<div class="site-friend-links-title">
+<i class="fa fa-fw fa-link"></i> Links</div>
+											<ul class="site-friend-links-ul">
+
+											<li class="site-friend-links-item">
+												<a href="https://ggapa.github.io/2023/08/16/oi%e5%ad%a6%e4%b9%a0-%e6%95%b0%e5%ad%a6/" rel="noopener" target="_blank">数论相关知识</a>
+</li>
+
+											<li class="site-friend-links-item">
+												<a href="https://ggapa.github.io/2023/09/10/%e6%96%87%e4%bb%b6%e5%85%b1%e4%ba%ab/" rel="noopener" target="_blank">云盘</a>
+</li>
+</ul>
+</div>															<div id="leftbar_siteinfo_extra_tools">
+									<div id="block-13" class="widget widget_block card bg-white border-0">
+<div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img decoding="async" src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+</div>								</div>
+													</div>
+													<div class="tab-pane fade" id="leftbar_tab_tools" role="tabpanel" aria-labelledby="leftbar_tab_tools_btn">
+								<div id="block-15" class="widget widget_block card bg-white border-0">
+<div id="custom_html-2" class="widget_text widget widget_custom_html card bg-white border-0">
+<h6 class="font-weight-bold text-black">Year Progress</h6>
+<div class="textwidget custom-html-widget">
+<div class="progress-wrapper" style="padding:0;">
+<div class="progress-info">
+<div class="progress-label">
+			<span id="yearprogress_yearname">20--</span>
+		</div>
+<div id="yearprogress_text_container" class="progress-percentage">
+			<span id="yearprogress_progresstext">--%</span><br>
+			<span id="yearprogress_progresstext_full">--%</span>
+		</div>
+</div>
+<div class="progress">
+<div id="yearprogress_progressbar" class="progress-bar bg-primary" style="width: 0%;"></div>
+</div>
+</div>
+<p><script no-pjax>function yearprogress_refresh(){
+	let year = new Date().getFullYear();
+	$("#yearprogress_yearname").text(year);
+	let from = new Date(year, 0, 1, 0, 0, 0);
+	let to = new Date(year, 11, 31, 23, 59, 59);
+	let now = new Date();
+	let progress = ((now - from) / (to - from + 1) * 100).toFixed(7);
+	let progressshort = ((now - from) / (to - from + 1) * 100).toFixed(2);
+$("#yearprogress_progresstext").text(progressshort + "%");
+$("#yearprogress_progresstext_full").text(progress + "%");
+	$("#yearprogress_progressbar").css("width" , progress + "%");
+}
+	yearprogress_refresh();
+	if (typeof(yearProgressIntervalHasSet) == "undefined"){
+    var yearProgressIntervalHasSet = true;
+    setInterval(function(){yearprogress_refresh();},500);
+}</script></p>
+<style>#yearprogress_text_container {
+    width: 100%;
+    height: 22px;
+    overflow: hidden;
+    user-select: none;
+}
+#yearprogress_text_container > span {
+    transition:all .3s ease;
+}
+#yearprogress_text_container:hover > span {
+    transform: translateY(-25px);
+}</style>
+</div>
+<div id="block-10" class="widget widget_block card bg-white border-0"><div class="logged-out wp-block-loginout"><a href="https://ggapa.github.io/wp-login.php?redirect_to=https%3A%2F%2Fggapa.github.io%2F2023%2F08%2F16%2Foi%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2595%25B0%25E5%25AD%25A6%2F%3Fsimply_static_page%3D1715">登录</a></div></div>
+<div id="block-12" class="widget widget_block widget_text card bg-white border-0">
+<p></p>
+</div>							</div>
+											</div>
+				</div>
+			</div>
+		</div>
+
+<div class="modal fade" id="blog_categories" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">分类</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<a href="https://ggapa.github.io/category/oi/" class="badge badge-secondary tag">OI <span class="tag-num">30</span></a><a href="https://ggapa.github.io/category/uncategorized/" class="badge badge-secondary tag">Uncategorized <span class="tag-num">3</span></a><a href="https://ggapa.github.io/category/%e6%80%bb%e7%bb%93/" class="badge badge-secondary tag">总结 <span class="tag-num">22</span></a><a href="https://ggapa.github.io/category/%e6%b8%b8%e6%88%8f/" class="badge badge-secondary tag">游戏 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/category/%e6%b8%b8%e8%ae%b0/" class="badge badge-secondary tag">游记 <span class="tag-num">3</span></a><a href="https://ggapa.github.io/category/%e7%a7%91%e5%88%9b/" class="badge badge-secondary tag">科创 <span class="tag-num">2</span></a><a href="https://ggapa.github.io/category/%e7%ac%94%e8%ae%b0/" class="badge badge-secondary tag">笔记 <span class="tag-num">5</span></a><a href="https://ggapa.github.io/category/%e8%af%84%e4%bb%b7%e5%92%8c%e5%90%90%e6%a7%bd/" class="badge badge-secondary tag">评价和吐槽 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/category/%e9%b2%9c%e8%8a%b1/" class="badge badge-secondary tag">鲜花 <span class="tag-num">16</span></a>			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="blog_tags" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">标签</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<a href="https://ggapa.github.io/tag/cddc/" class="badge badge-secondary tag">CDDC <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/codeforces/" class="badge badge-secondary tag">CodeForces <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/lca/" class="badge badge-secondary tag">LCA <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/minecraft/" class="badge badge-secondary tag">Minecraft <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/sort/" class="badge badge-secondary tag">sort <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0/" class="badge badge-secondary tag">做题笔记 <span class="tag-num">2</span></a><a href="https://ggapa.github.io/tag/%e5%89%b2%e7%82%b9/" class="badge badge-secondary tag">割点 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92/" class="badge badge-secondary tag">动态规划 <span class="tag-num">2</span></a><a href="https://ggapa.github.io/tag/%e5%8c%96%e5%ad%a6/" class="badge badge-secondary tag">化学 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e5%90%90%e6%a7%bd/" class="badge badge-secondary tag">吐槽 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e6%88%90%e9%83%bd%e4%b8%9c%e8%be%b0/" class="badge badge-secondary tag">成都东辰 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e6%8f%90%e9%ab%98%e6%95%88%e7%8e%87/" class="badge badge-secondary tag">提高效率 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e6%95%b0%e5%ad%a6/" class="badge badge-secondary tag">数学 <span class="tag-num">4</span></a><a href="https://ggapa.github.io/tag/%e6%a0%a1%e8%80%83/" class="badge badge-secondary tag">校考 <span class="tag-num">2</span></a><a href="https://ggapa.github.io/tag/%e6%b4%9b%e8%b0%b7/" class="badge badge-secondary tag">洛谷 <span class="tag-num">6</span></a><a href="https://ggapa.github.io/tag/%e7%82%b9%e5%8f%8c%e8%bf%9e%e9%80%9a%e5%88%86%e9%87%8f/" class="badge badge-secondary tag">点双连通分量 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e7%89%a9%e7%90%86/" class="badge badge-secondary tag">物理 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e8%be%b9%e5%8f%8c%e8%bf%9e%e9%80%9a%e5%88%86%e9%87%8f/" class="badge badge-secondary tag">边双连通分量 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e9%94%99%e9%a2%98%e8%ae%b0%e5%bd%95/" class="badge badge-secondary tag">错题记录 <span class="tag-num">1</span></a><a href="https://ggapa.github.io/tag/%e9%a2%98%e8%a7%a3/" class="badge badge-secondary tag">题解 <span class="tag-num">2</span></a>			</div>
+		</div>
+	</div>
+</div>
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		<article class="post post-full card bg-white shadow-sm border-0" id="post-216">
+	<header class="post-header text-center">
+				<a class="post-title" href="https://ggapa.github.io/2023/08/16/oi%e5%ad%a6%e4%b9%a0-%e6%95%b0%e5%ad%a6/">数论相关知识</a>
+		<div class="post-meta">
+			<div class="post-meta-detail post-meta-detail-time">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<time title="发布于 2023-8-16 12:27:42 | 编辑于 2024-2-09 20:44:42">2023-8-16 12:27
+					</time>
+				</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-views">
+					<i class="fa fa-eye" aria-hidden="true"></i> 170</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-comments">
+					<i class="fa fa-comments-o" aria-hidden="true"></i> 5</div> <div class="post-meta-devide">|</div> <div class="post-meta-detail post-meta-detail-categories">
+				<i class="fa fa-bookmark-o" aria-hidden="true"></i> <a href="https://ggapa.github.io/category/oi/" target="_blank" class="post-meta-detail-catagory-link">OI</a><span class="post-meta-detail-catagory-space">,</span><a href="https://ggapa.github.io/category/%e7%a7%91%e5%88%9b/" target="_blank" class="post-meta-detail-catagory-link">科创</a>
+</div>			<div class="post-meta-detail post-meta-detail-words">
+		<i class="fa fa-file-word-o" aria-hidden="true"></i><span title="包含 105 行代码"> 3599 字</span>
+		</div>
+		<div class="post-meta-devide">|</div>
+		<div class="post-meta-detail post-meta-detail-words">
+			<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+			22 分钟
+		</div>
+			</div>
+			</header>
+
+	<div class="post-content" id="post_content">
+		<ul>
+<li>Update on 2023.08.19：修改了一处笔误</li>
+<li>Update on 2023.11.03：增添内容</li>
+<li>Update on 2023.12.15：因数部分</li>
+</ul>
+<p><strong>注：远古作品，写的很垃圾</strong></p>
+<h1>数论</h1>
+<h2>线性筛</h2>
+<pre><code class="language-cpp">bitset&lt;100000&gt; vis;
+vector&lt;int&gt; p;
+
+void init() {
+    p.push_back(-1);
+    for (int i = 2; i &lt;= 100000; i++) {
+        if (!vis[i]) p.push_back(i);
+        for (int j = 1; j &lt;= p.size() &amp;&amp; i * p[j] &lt;= 100000; j++) {
+            vis[i * p[j]] = 1;
+            if (i % p[j] == 0) break;
+        }
+    }
+}
+</code></pre>
+<p>通过给上面的代码添加一点小小的修改，我们就可以得到了一个既能筛质数，也能分解质因子的函数</p>
+<pre><code class="language-cpp">int n, T, p[maxn / 10], Min[maxn];      //Min中存的元素便是一个数最小的质因子
+void GetPrime() {
+    for (int i = 2; i &lt;= maxn; i++) {
+        if (!vis[i]) {
+            p[++p[0]] = i;
+            Min[i] = i;
+        }
+        for (int j = 1; j &lt;= p[0] &amp;&amp; 1ll * i * p[j] &lt; maxn; j++) {
+            vis[i * p[j]] = 1;
+            Min[i * p[j]] = p[j];
+            if (i % p[j] == 0)
+                break;
+        }
+    }
+}</code></pre>
+<p>给定一个数然后求出它所有的质因子。</p>
+<pre><code class="language-cpp">cin &gt;&gt; x;
+while(x &gt; 1)  x /= Min[x];</code></pre>
+<p>这么做一定是可行的，利用了<code>算术基本定理</code>。</p>
+<p>他的更多扩展用法：</p>
+<p>$pri_i$： 编号为 $i$ 的质数。</p>
+<p>$mi_i$ ：$i$ 的最小质因子。</p>
+<p>$phi_i$： $\varphi(i)$ 的值（欧拉函数）。</p>
+<p>$mu_i$：$\mu(i)$ 的值（莫比乌斯函数）。</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn = 20000000 + 5;
+
+int pri[maxn], phi[maxn], mi[maxn], mu[maxn];
+bitset&lt;maxn&gt; vis;
+
+void init(){
+    mu[1] = 1;
+    for(int i = 2; i &lt;= maxn - 5; i++) {
+        if(!vis[i]) pri[++pri[0]] = i, mi[i] = i, phi[i] = i - 1, mu[i] = -1;
+        for(int j = 1; j &lt;= pri[0] &amp;&amp; i * pri[j] &lt;= maxn - 5; j++) {
+            int tt = i * pri[j];
+            vis[tt] = 1;
+            mi[tt] = pri[j];
+            if(i % pri[j] == 0) {
+                phi[tt]  = phi[i] * pri[j];
+                break;
+            }
+            else phi[tt] = phi[i] * phi[pri[j]];
+            mu[tt] = -mu[i];
+        }
+    }
+}
+
+int main() {
+    freopen(&quot;a.out&quot;, &quot;w&quot;, stdout);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    init();
+    printf(&quot;%d\n&quot;, mu[6]);
+
+    return 0;   
+} 
+</code></pre>
+<p>当然，筛法还能有更多的应用，他还能在因子上下功夫。</p>
+<h2>唯一分解定理</h2>
+<p>$$n = \prod_{i=1}^{m} p_{i}^{k_i}$$</p>
+<h3>唯一分解定理与 LCM、GCD 之间的关系</h3>
+<p>设有两个数：$a = \prod_{i=1}^{m_a} pa_{i}^{ka_i}$ 、$b = \prod_{i=1}^{m_b} pb_{i}^{kb_i}$，则有：</p>
+<p>它们的 $\gcd$ 为二者 $k$ 取 $\min$ ，而 $lcm$ 为二者的 $k$ 取 $\max$</p>
+<h2>因子</h2>
+<h3>因子和</h3>
+<p>由算数基本定理可得，一个数 $n$ 一定可以被以下的式子表示出来：</p>
+<p>$$n = \prod_{i=1}^{m} p_{i}^{k_i}$$</p>
+<p>后文中默认 $p$ 从小到大排序并编号<br>
+其中 $p$ 是质数，$k$ 是一个非负整数，$m$ 表示该数最少可以被几个素数表示，试求：</p>
+<p>$$\sum_{d|n}^{}d $$ </p>
+<p>通过一系列的推到可以得出</p>
+<p>$$\sum_{d|n}^{}d = \prod_{i=1}^{m}  \sum_{j=0}^{k_i} p_i^j$$</p>
+<p>推到过程如下：</p>
+<p>对于每一个质数 $p_i$ 他的不同次方可以构成一个集合，笔者拿 $360$ 来举例：</p>
+<p>已知 :</p>
+<p>$$360 = 2^3\cdot3^2 \cdot5^1$$</p>
+<p>$360$ 被分解成了三个质数，那么其所有的因数都能通过这三个质数不同次幂的乘积表示。例如 $2^1\cdot3^0 \cdot5^0$，$2^1\cdot3^0 \cdot5^1$，$2^2\cdot3^1 \cdot5^0$ ，等等。像这样的数，都是 $360$ 的因数。</p>
+<p>其因数和等于：</p>
+<p>$$2^0 \cdot 3^0 \cdot 5^0 + 2^0 \cdot 3^0 \cdot 5^1 + 2^0 \cdot 3^1 \cdot 5^0 + 2^0 \cdot 3^1 \cdot 5^1 + 2^0 \cdot 3^2 \cdot 5^0+ \cdots + 2^3 \cdot 3^2 \cdot 5^1$$</p>
+<p>化简可得：</p>
+<p>$$(1 + 2^1 + 2^2 + 2^3)\cdot(1+3^1+3^2) \cdot (1+5^1) = \prod_{i=1}^{3} \sum_{j=0}^{k_i}  {p_i}^j $$</p>
+<p>推导完毕。</p>
+<h3>代码实现</h3>
+<p><strong>问题描述</strong></p>
+<p>给定一个数 $n$ 求  $[1,n]$ 中所有数的因子和。</p>
+<p><strong>分析与解答</strong></p>
+<p>为了在 $O(n)$ 的时间复杂度内解决问题，上述题目可以通过线性筛来解决；</p>
+<p>我们定义 $f_i$，代表 $i$ 的因子和。</p>
+<p>定义 $g_i$ 代表：</p>
+<p>$$\sum_{j=0}^{k_1}  {p_1}^j$$</p>
+<p>我们该如何处理这两个数组？</p>
+<p>对于每次循环得到的 $i$，若 $i$ 是质数（情况一），$f_i = i + 1$ ，$g_i = i + 1$。不做过多赘述。</p>
+<p>否则，我们已经知道了 $i$ 的唯一分解式，有两种情况需要我们考虑：</p>
+<p>定义 $t = i\times prime_j$</p>
+<ul>
+<li>若 $i$ 的唯一分解式中不含 $prime_j$ 时，也就是 $i$ 模 $prime_j$ 不为 $0$ 时（情况二）。</li>
+</ul>
+<p>则 $g_t = prime_j+1$， $f_t = f_i \times g_t$。</p>
+<p>举一个例子：</p>
+<p>若此时 $i$ 的唯一分解式为 $3^2\cdot5^1$，$prime_j=2$，满足情况二。此时 $t$ 的唯一分解式为 $3^3\cdot4^1$， $g_i = 1+3^1+3^2$，$f_i = (1+3^1+3^2)\times(1+5^1)$。</p>
+<p>经过推导可知：</p>
+<p>$$g_t = 1 + 2 = 1 + prime_j$$</p>
+<p>$$ f_t = (1+2^1)\times(1+3^1+3^2)\times(1+5^1) = g_t\times f_i$$</p>
+<ul>
+<li>若 $i$ 的唯一分解式中包含 $prime_j$ 时，也就是 $i$ 模 $prime_j$ 为 $0$ 时（情况三）。</li>
+</ul>
+<p>则 $g_t = g_i \times prime_j + 1$， $f_t = \frac{f_i \times g_t}{g_i}$</p>
+<p>举一个例子：</p>
+<p>若此时 $i$ 的唯一分解式为 $2^2\cdot3^1$，$prime_j=2$，满足情况三。此时 $t$ 的唯一分解式为 $2^3\cdot3^1$， $g_i = 1+2^1+2^2$，$f_i = (1+2^1+2^2)\times(1+3^1)$。</p>
+<p>经过推导可知：</p>
+<p>$$g_t = 1+2^1+2^2+2^3=(1+2^1+2^2)\times2+1=g_i\cdot prime_j+1$$</p>
+<p>$$f_t= (1+2^1+2^2+2^3)\times(1+3^1) = \frac{(1+2^1+2^2)\times(1+3^1)}{(1+2^1+2^2)}\times (1+2^1+2^2+2^3) =\frac{f_i }{g_i}\times g_t$$</p>
+<h4>参考代码</h4>
+<pre><code class="language-cpp">void sol() {
+    for(int i = 2; i &lt;= n; i++) {
+        if(!vis[i]) p[++p[0]] = i, f[i] = g[i] = 1 + i;//情况一
+        for(int j = 1, t; (t = i * p[j]) &lt;= n &amp;&amp; j &lt;= p[0]; j++) {
+            vis[t] = 1;
+            if(i % p[j]) g[t]  = p[j] + 1, f[t] = f[i] * g[t]; //情况二
+            else {  //情况三
+                g[t] = g[i] * p[j] + 1;
+                f[t] = f[i] / g[i]  * g[t];
+                break;
+            }
+        }
+    }
+}</code></pre>
+<h2>不定方程</h2>
+<h3>定义</h3>
+<p>形如 $ax + by = c$，其中 $a, b, c$ 是已知数的方程被称为二元一次不定方程。</p>
+<h3>求解</h3>
+<p><strong>定理</strong>：方程 $ax + by = c$ 有解当且仅当 $gcd(a, b) | c$<br>
+先考虑如何求 $ax + by = gcd(a, b)$</p>
+<p>$$ax + by = gcd(a, b)$$</p>
+<p>$$= gcd(b, a \bmod {b}) $$</p>
+<p>$$=bx′ + (a \bmod {b})y′$$</p>
+<p>$$=bx′ + (a − ⌊ \frac{a}{b}⌋ × b)y′$$</p>
+<p>$$=y′ + b(x′ − ⌊\frac{a}{b}⌋y′)$$</p>
+<p>其中 $x′$ 和 $y′$ 是不定方程 $bx + (a \bmod {b})y = gcd(b, a \bmod {b})$的解。</p>
+<p>如果求出了 $x′$ 和 $y′$，就可以根据对应系数相等算出 $x = y′$，$y = x′ − ⌊ \frac{a}{b}⌋y′$。</p>
+<h2>同余</h2>
+<p>对两个整数 $a, b$，如果它们除以 $d$ 的余数相同，则称它们 模 $d$ 同余，记作:</p>
+<p>$$a \equiv b \enspace(\bmod{d})$$</p>
+<h2>威尔逊定理</h2>
+<p>正整数 $p$ 是质数的充要条件为 $(p − 1)! ≡ −1 (\bmod p)$。</p>
+<h2>欧拉函数</h2>
+<h3>定义</h3>
+<p>定义欧拉函数 $\varphi(n)$ 表示小于 $n$ 的数中与 $n$ 互质的数的个数；特别的，$\varphi(1) = 1$。</p>
+<h3>性质</h3>
+<p>积性：如果 $gcd(a, b) = 1$，则 $\varphi(a × b) = \varphi(a) × \varphi(b)$。</p>
+<p>欧拉反演：$\sum_{d|n}  \varphi(d) = n。$</p>
+<p>性质3：对任意实数$p，\varphi(p^k) = p^k − p^{k−1}$。</p>
+<h3>计算</h3>
+<p><strong>单个欧拉函数</strong>：设 $n$ 的唯一分解式是：</p>
+<p>$$n = p_1^{k_1} p_2^{k_2} \cdots p_s^{k^s}$$</p>
+<p>由性质3可得</p>
+<p>$$\varphi (n) =  {\textstyle \prod_{i=1}^{s}\varphi(p_i^{k_i})} $$</p>
+<p><strong>线性欧拉函数</strong>：在线性筛的同时可以筛出欧拉函数，设 $p$ 是 $i$ 的最小质因子，分三种情况讨论：</p>
+<ol>
+<li>
+<p>$i$ 为质数：$\varphi (i) = i − 1$</p>
+</li>
+<li>
+<p>$p$ 是 $\frac{i}{p}$ 的质因子：$\varphi (i) = \varphi(\frac{i}{p}) × p$。</p>
+</li>
+<li>
+<p>$p$ 和 $\frac{i}{p}$ 互质：$\varphi(i) = \varphi(\frac{i}{p})\varphi(p)$。</p>
+</li>
+</ol>
+<span class="argon-hidden-text argon-hidden-text-blur" title="你知道的太多了！">我真的受不了了！！！一个晚上就只写了这么点。数论真™毒瘤QAQ$\enspace\enspace\enspace\enspace$--20230815</span>
+<h2>逆元</h2>
+<h3>定义</h3>
+<p>在模 $p$ 同余下，对每个 $x$，能找到一个整数 $x^{−1} ∈ [1, p)$，使任何数除以 $x$ 等价于乘 $x^{−1}$。这样的 $x^{−1}$ 称为 $x$ 在模 $p$ 同余下的逆元。</p>
+<p>显然，逆元 $x$ 应满足 $xx^{−1} ≡ 1 (\bmod p)$。</p>
+<p>以容易理解的角度来讲：对于任意整数 $x(\bmod{p})$ 的逆元表示为：</p>
+<p>$$x^{-1}(\bmod n)$$</p>
+<p><strong>逆元存在性定理</strong>：$x$ 在模 $p$ 同余下存在逆元当且仅当 $gcd(x, p) = 1$</p>
+<p>可通过反证法进行证明，若需详细步骤请自行查阅资料。</p>
+<h3>性质</h3>
+<p><strong>定理</strong>：模 $p$ 同余下，一个整数 $x$ 的逆元若存在，则唯一。<br>
+<strong>证明</strong>：考虑反证法；假设 $x$ 有两个不同的逆元 $i_1，i_2$，满足 $xi_1 \equiv 1 \pmod{p} $，$xi_2 \equiv 1 \pmod{p} $。根据同<br>
+余的传递性，$xi_1 \equiv xi_2 \pmod{p} $在同余号两侧左乘 $i_1$，得到：$(i_1x)i_1 ≡ (i_1x)i_2\pmod p ⇐⇒ 1i_1 ≡ 1i_2 \pmod p$</p>
+<p><strong>定理</strong>：在模质数 $p$ 同余下，$[1, p − 1]$ 内所有整数的逆元互不相同。<br>
+<strong>证明</strong>：反证，假设 $x$, $y$ 的逆元均为 $i$，则 $x_i ≡ y_i \pmod p$。两侧同乘 $i^{−1}$ 立得 $x ≡ y \pmod p$，矛盾。</p>
+<p><strong>定理</strong>：一个数的逆元的逆元等于它自身。<br>
+<strong>证明</strong>：由模意义下乘法交换律和结合律立得。</p>
+<h3>通过扩展欧几里得(exgcd)  计算逆元</h3>
+<p>对任意给定的 $x$ 和 $p$，显然 $x × x^{−1} ≡ 1 \pmod p$ 可以利用这个式子计算 x^{−1}。</p>
+<p>上式等价于 $xx^{−1} = kp + 1 ⇐⇒ xx^{−1} + pk = 1$。</p>
+<p>其中 $x$ 和 $p$ 是已知量，所以上式是一个不定方程，$x^{−1}$ 和 $k$是变量。用 $exgcd$ 求解可以得到 $x^{−1}$。</p>
+<p>根据不定方程有解的条件，$gcd(x, p) | 1 ⇐⇒ gcd(x, p) = 1$。这和逆元存在性定理也是相适应的。</p>
+<h3>欧拉定理</h3>
+<p><strong>欧拉定理 (Euler Theorem)</strong>：对任意正整数 $a$, $m$ 且 $gcd(a, m) = 1$，一定有：$a^{\varphi (m)} ≡ 1 \pmod m$</p>
+<p>证明自行查阅资料</p>
+<h3>费马小定理</h3>
+<p><strong>费马小定理（Fermat’s Little Theorem）</strong>：对任意整数 $a$ 和质数 $p$，$a^{p−1} ≡ 1 \pmod p$。</p>
+<p>证明请自行查阅资料</p>
+<h4>通过费马小定理求逆元</h4>
+<p>根据费马小定理，$a^{p−1} ≡ 1\pmod p$。</p>
+<p>两侧同乘 $a^{−1}$，得到 $a^{−1} ≡ a^{p−2} \pmod p$。</p>
+<p>这就得到了逆元的第二种求法：快速幂求出 $a^{p−2}\pmod p$即可。</p>
+<p>设 $inv_i$ 表示 $i$ 的逆元，有递推式：</p>
+<p>$ inv_{i} ≡ − ⌊\frac{p}{i} ⌋ × inv _{p \mod i} \pmod p $</p>
+<p>边界为 $inv_1 = 1$。</p>
+<h2>中国剩余定理</h2>
+<h3>中国剩余定理问题</h3>
+<p>我们给定 $N$ 个线性同余方程组：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle mathsize="1.44em"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>x</mi><mo>≡</mo><msub><mi>a</mi><mn>1</mn></msub><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><msub><mi>m</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mi>x</mi><mo>≡</mo><msub><mi>a</mi><mn>2</mn></msub><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><msub><mi>m</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mo>…</mo></mtd></mtr><mtr><mtd><mi>x</mi><mo>≡</mo><msub><mi>a</mi><mi>n</mi></msub><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><msub><mi>m</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mstyle></mrow></math></p>
+<p>其中保证 $m_1, m_2, \dots ,m_n$ 两两互质。求 $x$ 的通解</p>
+<h3>定理</h3>
+<p><strong>中国剩余定理 (Chinese Remainder Theoremm, CRT)</strong>：上页方程组有解，且按如下方式构造：</p>
+<p>记 $M = \prod m_i，M_i = m{\div m_i} $，$t_i$ 是 $M_i$ 在模 $m_i$ 群下的逆元。</p>
+<p>则该方程的唯一通解是：</p>
+<p>$$x \equiv \sum_{i=1}^{n} a_it_iM_i \pmod{M} $$</p>
+<p>举例来说：对于以下线性同余方程组：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle mathsize="1.44em"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>x</mi><mo>≡</mo><mn>1</mn><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><mn>5</mn><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mi>x</mi><mo>≡</mo><mn>2</mn><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><mn>5</mn><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mi>x</mi><mo>≡</mo><mn>3</mn><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><mn>7</mn><mo stretchy="false">)</mo></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mstyle></mrow></math></p>
+<p>$$M = 3\cdot 5\cdot 7=105$$</p>
+<p>$$M_1=M/3=105/3=35$$</p>
+<p>$$M_2=105/5=21$$</p>
+<p>$$M_3=105/7=15$$</p>
+<p>接下来为了确定 $t_i$ 我们需要解以下同余方程：</p>
+<p>$$M_it_i \equiv 1 \pmod{m_i}$$</p>
+<p>所以说我们可以得到：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle mathsize="1.44em"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>35</mn><msub><mi>t</mi><mn>1</mn></msub><mo>≡</mo><mn>1</mn><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><mn>3</mn><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mn>21</mn><msub><mi>t</mi><mn>2</mn></msub><mo>≡</mo><mn>1</mn><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><mn>5</mn><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mn>15</mn><msub><mi>t</mi><mn>3</mn></msub><mo>≡</mo><mn>1</mn><mspace width="0.444em"></mspace><mo stretchy="false">(</mo><mi>mod</mi><mspace width="0.333em"></mspace><mn>7</mn><mo stretchy="false">)</mo></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mstyle></mrow></math></p>
+<p>我们可以解得：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle mathsize="1.44em"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><msub><mi>t</mi><mn>1</mn></msub><mo>=</mo><mn>2</mn></mtd></mtr><mtr><mtd><msub><mi>t</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn></mtd></mtr><mtr><mtd><msub><mi>t</mi><mn>3</mn></msub><mo>=</mo><mn>1</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mstyle></mrow></math></p>
+<p>最后我们通过上面的那个式子可以算出：</p>
+<p>$$x \equiv 1\cdot 2\cdot 35+2\cdot 1\cdot 21+3\cdot 1\cdot 15 \equiv157\equiv52  \pmod{105}$$</p>
+<p>故 $x = 52$</p>
+<h1>组合数学</h1>
+<h2>排列组合常用公式</h2>
+<p>从m个东西中</p>
+<p>排列数(在乎顺序)：$A^m_n=\frac{n!}{(n-m)!} $</p>
+<p>组合数（不在乎顺序）：$C^m_n = \frac{ {\textstyle \prod_{n-m+1}^{n}}}{m!}$</p>
+<p>简化公式的推理如下:</p>
+<p>$$C^m_n=\frac{n!}{m!(n-m)!} $$</p>
+<p>$$= \frac{ {\textstyle \prod_{1}^{n}} }{{\textstyle \prod_{1}^{m} } {\textstyle \prod_{1}^{n-m} }}$$</p>
+<p>$$= \frac{ {\textstyle \prod_{1}^{n-m}}{\textstyle \prod_{n-m+1}^{n}} }{{\textstyle \prod_{1}^{m} } {\textstyle \prod_{1}^{n-m} }}$$</p>
+<p>$$= \frac{ {\textstyle \prod_{n-m+1}^{n}} }{{\textstyle \prod_{1}^{m}  }}$$</p>
+<p>$$= \frac{ {\textstyle \prod_{n-m+1}^{n}}}{m!}$$</p>
+<p>隔板法：$C^{m-1}_{n+m-1}$</p>
+<p>错位排列公式：$D_n=(n-1)*(D_{n-1}+D_{n-2})$</p>
+<p>一个数列的全排列的个数是数列的数的个数的阶乘除以每个数出现的次数的阶乘</p>
+<p>*<em>以上公式的详细证明请自行搜索（或者有空了我在写）</em></p>
+<h2>运用费马小定理求解组合数</h2>
+<p>求解 $C^m_n \mod p $ ($p$ 为质数) 的值</p>
+<p>已知：</p>
+<p>$$C^m_n=\frac{n!}{m!(n-m)!} $$</p>
+<p>可以转化为 $n!$ 乘上 $m!(n-m)!$ 的逆元</p>
+<p>由前文费马小定理可知一个数 $a \mod p$ 的逆元就是 ${a!}^{p-2}$</p>
+<p>用代码实现非常的轻松：</p>
+<pre><code class="language-cpp">typedef long long ll;
+const int mod = p; //p是质数
+
+int fac[maxn], inv[maxn]; // fac[i]，inv[i] 分别代表 i! 和 i 的逆元
+
+ll QuiclPow(ll x, ll y) { //快速幂
+    ll ans = 1;
+    while(y != 0) {
+        if(y &amp; 1) ans = ans * x % mod;
+        x = x * x % mod;
+        y &gt;&gt;= 1;
+    }
+    return ans;
+}
+
+void init() {
+    fac[0] = 1;
+    //inv[0] = 1;
+    for(int i = 1; i &lt;= maxn - 5; i++) {
+        fac[i] = fac[i - 1] * i % mod; //计算阶乘
+        inv[i] = QuiclPow(fac[i], mod - 2); //费马小定理求解逆元
+    }
+}</code></pre>
+<p>知道了逆元之后我们也知道了阶乘，就可以愉快的求出组合数了awa</p>
+<pre><code class="language-cpp">C = fac[n] * inv[m] % mod * inv[n - m] % mod;</code></pre>
+<h1>线性代数</h1>
+<h2>矩阵</h2>
+<p>通俗易懂的说，矩阵在 OI 中就是一个二维数组。</p>
+<h3>矩阵乘法</h3>
+<p>对于一个矩阵 $A$：</p>
+<p><code class="katex-inline">\begin{bmatrix} a_{11} &  a_{12} &  a_{13}\\ a_{21}  &  a_{22} &  a_{23}\end{bmatrix}</code></p>
+<p>一个矩阵 $B$：</p>
+<p><code class="katex-inline">\begin{bmatrix} b_{11} &  b_{12}\\ b_{21}  &  b_{22}\\ b_{31}  & b_{32}\end{bmatrix}</code></p>
+<p>矩阵 $C$ 为 $A、B$ 的乘积，记为 $C = A \times B$ 。</p>
+<p>$A$ 的行数列数分别为 $n、m$ ，$B$ 的行数列数分别为 $x、y$。</p>
+<p>当且仅当 $m=x$ 的时候两个矩阵才能相乘，矩阵乘法不满足乘法交换律，但满足乘法结合律。因为若交换两个矩阵，原先的限制条件变为 $n=y$ 不一定成立。</p>
+<p>新矩阵的表示方法如下：</p>
+<p><code class="katex-inline">\sum_{i=1}^{n} \sum_{j=1}^{y}c_{ij}=\sum_{k_1}^{m或x} a_{ik} \times a_{k_j}</code></p>
+<p>通俗易懂的来说：</p>
+<p><code class="katex-inline">\begin{bmatrix} a_{11}\times b_{11} +  a_{12}\times b_{21} + a_{13}\times b_{31}& \cdots \\  \cdots & a_{21}\times b_{12} +  a_{22}\times b_{22} + a_{23}\times b_{32}\end{bmatrix}</code></p>
+<h3>矩阵加速递推</h3>
+<p>众所周知，斐波那契数列的递推式如下：</p>
+<p><code class="katex-inline">F_n = \left\{\begin{aligned} 1 \space (n \le 2) \\ F_{n-1}+F_{n-2} \space (n\ge 3) \end{aligned}\right.</code></p>
+<p>当 $n \le 1 \times 10^9$ 时，通过 $O(n)$ 的方法还是可以勉强计算出 $F_n$ 的值的，但当 $n \le 1 \times 10^{18}$ 时呢？很显然这辈子我们都见不到这个问题的答案了。</p>
+<p>为了优化这个递推式，我们就可以用到矩阵快速幂，也就是矩阵加速递推的方式来解答。</p>
+<p>矩阵乘计算线性递推式时，需要一个数列矩阵和一个参数矩阵。数列矩阵中的一个值就代表着一个项，参数矩阵就是用来转移数列矩阵的矩阵，这样当我们在计算下一个函数值的时候只需要将数列矩阵乘上参数矩阵，通过斐波那契的例子来帮助我们理解这个问题。</p>
+<p>数列矩阵如下：</p>
+<p><code class="katex-inline">\begin{bmatrix}F_n &F_{n-1}\end{bmatrix}</code></p>
+<p>已知 $F<em>{n+1} = F</em>{n} + F_{n-1}$。<br>
+所以参数矩阵为 </p>
+<p><code class="katex-inline">\begin{bmatrix} 1 & 1\\ 1 & 0\end{bmatrix}</code></p>
+<p>意味着新的数列矩阵为：</p>
+<p><code class="katex-inline">\begin{bmatrix} F_n+F_{n-1}& F_n\\\end{bmatrix}</code></p>
+<p>就是：</p>
+<p><code class="katex-inline">\begin{bmatrix} F_{n+1}& F_n\\\end{bmatrix}</code></p>
+<p>循环往复，直到得出结果为止，可通过快速幂实现。</p>
+	</div>
+
+	
+	
+	<div class="additional-content-after-post">禁止转载！</div>
+			<div class="post-tags">
+			<i class="fa fa-tags" aria-hidden="true"></i>
+			<a href="https://ggapa.github.io/tag/%e6%95%b0%e5%ad%a6/" target="_blank" class="tag badge badge-secondary post-meta-detail-tag">数学</a>		</div>
+	</article>
+<div id="share_container">
+	<div id="share" data-initialized="true">
+						<a class="no-pjax icon-wechat" tooltip="分享到微信">
+				<button class="btn btn-icon btn-success">
+					<span class="btn-inner--icon"><i class="fa fa-weixin"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-douban" tooltip="分享到豆瓣">
+				<button class="btn btn-icon btn-primary" style="background: #209261;border: none;">
+					<span aria-hidden="true">豆</span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-qq" tooltip="分享到 QQ">
+				<button class="btn btn-icon btn-primary" style="background: #2196f3;border: none;">
+					<span class="btn-inner--icon"><i class="fa fa-qq"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-qzone" tooltip="分享到 QQ 空间">
+				<button class="btn btn-icon btn-primary" style="background: #ffc107;border: none;">
+					<span class="btn-inner--icon"><i class="fa fa-star"></i></span>
+				</button>
+			</a>
+			<a target="_blank" class="no-pjax icon-weibo" tooltip="分享到微博">
+				<button class="btn btn-icon btn-warning">
+					<span class="btn-inner--icon"><i class="fa fa-weibo"></i></span>
+				</button>
+			</a>
+				<a target="_blank" class="no-pjax icon-facebook" tooltip="分享到 Facebook">
+			<button class="btn btn-icon btn-primary" style="background: #283593;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-facebook"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-twitter" tooltip="分享到 Twitter">
+			<button class="btn btn-icon btn-primary" style="background: #03a9f4;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=ggapa.net%3A81&text=%E6%95%B0%E8%AE%BA%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" tooltip="分享到 Telegram">
+			<button class="btn btn-icon btn-primary" style="background: #42a5f5;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
+			</button>
+		</a>
+				<a target="_blank" class="no-pjax icon-copy-link" id="share_copy_link" tooltip="复制链接">
+			<button class="btn btn-icon btn-default">
+				<span class="btn-inner--icon"><i class="fa fa-link"></i></span>
+			</button>
+		</a>
+	</div>
+	<button id="share_show" class="btn btn-icon btn-primary" tooltip="分享">
+		<span class="btn-inner--icon"><i class="fa fa-share"></i></span>
+	</button>
+</div>
+<script type="text/javascript">socialShare("#share", {
+	    title : '数论相关知识',
+	    description : 'Update on 2023.08.19：修改了一处笔误 Update on 2023.11.03：…',
+	    wechatQrcodeTitle : "分享到微信",
+	    wechatQrcodeHelper : '微信扫描二维码',
+	    source : 'https://ggapa.github.io/2023/08/16/oi%e5%ad%a6%e4%b9%a0-%e6%95%b0%e5%ad%a6/'
+	});
+	$("#share_show")[0].onclick = function(){
+		$("#share_container").addClass("opened");
+	};
+	$("#share_copy_link")[0].onclick = function(){
+		let input = document.createElement('input');
+		document.body.appendChild(input);
+		input.setAttribute("value", window.location.href);
+		input.setAttribute("readonly", "readonly");
+		input.setAttribute("style", "opacity: 0;mouse-events:none;");
+		input.select();
+		if (document.execCommand('copy')){
+			iziToast.show({
+				title: '链接已复制',
+				message: "链接已复制到剪贴板",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#2dce89',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-check',
+				timeout: 5000
+			});
+		}else{
+			iziToast.show({
+				title: '复制失败',
+				message: "请手动复制链接",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#f5365c',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-close',
+				timeout: 5000
+			});
+		}
+		document.body.removeChild(input);
+	};</script>
+<div id="comments" class="comments-area card shadow-sm">
+	<div class="card-body">
+					<h2 class="comments-title">
+				<i class="fa fa-comments"></i>
+				评论			</h2>
+			<ol class="comment-list">
+					<li class="comment-item" id="comment-4" data-id="4" data-use-markdown="true">
+		<div class="comment-item-left-wrapper">
+			<div class="comment-item-avatar">
+				<img alt="" src="http://1.gravatar.com/avatar/16ec04609aa81168c4ec16cdae76ff9f?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/16ec04609aa81168c4ec16cdae76ff9f?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" decoding="async">			</div>
+					</div>
+		<div class="comment-item-inner" id="comment-inner-4">
+			<div class="comment-item-title">
+				<div class="comment-name">
+					<div class="comment-author">你猜猜我是谁</div>
+																														<div class="comment-useragent">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 88 88" style="transform: scale(.9) translateY(-1px);"><path style="fill:#00adef;" d="m0,12.402,35.687-4.8602,0.0156,34.423-35.67,0.20313zm35.67,33.529,0.0277,34.453-35.67-4.9041-0.002-29.78zm4.3261-39.025,47.318-6.906,0,41.527-47.318,0.37565zm47.329,39.349-0.0111,41.34-47.318-6.6784-0.0663-34.739z"></path>
+</svg> Windows <svg id="aa18aec7-1a6d-485f-bae9-692f083c3c03" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 256.02 256.05"><defs><lineargradient id="bdabf876-4b2a-401b-ae2e-987cb08dd27d" x1="63.33" y1="995.95" x2="241.62" y2="995.95" gradienttransform="translate(-4.63 -818.92)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#0c59a4"></stop><stop offset="1" stop-color="#114a8b"></stop></lineargradient><radialgradient id="fe174677-dad1-4826-a441-99ddd979d00c" cx="161.83" cy="1032.72" r="95.38" gradienttransform="translate(-4.63 -802.63) scale(1 0.95)" gradientunits="userSpaceOnUse"><stop offset="0.72" stop-opacity="0"></stop><stop offset="0.95" stop-opacity="0.53"></stop><stop offset="1"></stop></radialgradient><lineargradient id="b101dfb4-29c0-4fe4-8cae-e04038fc9a8c" x1="157.41" y1="918.66" x2="46.02" y2="1039.99" gradienttransform="translate(-4.63 -818.92)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#1b9de2"></stop><stop offset="0.16" stop-color="#1595df"></stop><stop offset="0.67" stop-color="#0680d7"></stop><stop offset="1" stop-color="#0078d4"></stop></lineargradient><radialgradient id="fe97b05f-3188-4793-8e1b-46ec3f337d64" cx="-1454.1" cy="1697.79" r="143.24" gradienttransform="matrix(0.15, -0.99, 0.8, 0.12, -1069.54, -1444.29)" gradientunits="userSpaceOnUse"><stop offset="0.76" stop-opacity="0"></stop><stop offset="0.95" stop-opacity="0.5"></stop><stop offset="1"></stop></radialgradient><radialgradient id="b5860bc6-66c5-4872-a544-cd5083b094a5" cx="-338.41" cy="-298.47" r="202.43" gradienttransform="matrix(-0.04, 1, -2.13, -0.08, -623.44, 361.91)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#35c1f1"></stop><stop offset="0.11" stop-color="#34c1ed"></stop><stop offset="0.23" stop-color="#2fc2df"></stop><stop offset="0.31" stop-color="#2bc3d2"></stop><stop offset="0.67" stop-color="#36c752"></stop></radialgradient><radialgradient id="a5f0bf22-9f30-4c72-a92f-cd6ab2e6001d" cx="174.77" cy="-738.47" r="97.34" gradienttransform="matrix(0.28, 0.96, -0.78, 0.23, -384.89, 79.47)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#66eb6e"></stop><stop offset="1" stop-color="#66eb6e" stop-opacity="0"></stop></radialgradient></defs><path d="M231.05,190.54a92,92,0,0,1-10.54,4.71,101.85,101.85,0,0,1-35.9,6.46c-47.32,0-88.54-32.55-88.54-74.32a31.47,31.47,0,0,1,16.43-27.31c-42.8,1.8-53.8,46.4-53.8,72.53,0,73.88,68.09,81.37,82.76,81.37,7.91,0,19.84-2.3,27-4.56l1.31-.44a128.39,128.39,0,0,0,66.6-52.8,4,4,0,0,0-5.32-5.64Z" transform="translate(0.02 0)" style="fill:url(#bdabf876-4b2a-401b-ae2e-987cb08dd27d)"></path><path d="M231.05,190.54a92,92,0,0,1-10.54,4.71,101.85,101.85,0,0,1-35.9,6.46c-47.32,0-88.54-32.55-88.54-74.32a31.47,31.47,0,0,1,16.43-27.31c-42.8,1.8-53.8,46.4-53.8,72.53,0,73.88,68.09,81.37,82.76,81.37,7.91,0,19.84-2.3,27-4.56l1.31-.44a128.39,128.39,0,0,0,66.6-52.8,4,4,0,0,0-5.32-5.64Z" transform="translate(0.02 0)" style="opacity:0.3499999940395355;isolation:isolate;fill:url(#fe174677-dad1-4826-a441-99ddd979d00c)"></path><path d="M105.71,241.42A79.24,79.24,0,0,1,83,220.08a80.72,80.72,0,0,1,17.61-112.79,81.62,81.62,0,0,1,11.92-7.21c3.12-1.47,8.45-4.13,15.54-4a32.32,32.32,0,0,1,25.69,13,31.89,31.89,0,0,1,6.36,18.66c0-.21,24.46-79.6-80-79.6-43.9,0-80,41.66-80,78.21a130.17,130.17,0,0,0,12.11,56,128,128,0,0,0,156.38,67.11,75.53,75.53,0,0,1-62.78-8Z" transform="translate(0.02 0)" style="fill:url(#b101dfb4-29c0-4fe4-8cae-e04038fc9a8c)"></path><path d="M105.71,241.42A79.24,79.24,0,0,1,83,220.08a80.72,80.72,0,0,1,17.61-112.79,81.62,81.62,0,0,1,11.92-7.21c3.12-1.47,8.45-4.13,15.54-4a32.32,32.32,0,0,1,25.69,13,31.89,31.89,0,0,1,6.36,18.66c0-.21,24.46-79.6-80-79.6-43.9,0-80,41.66-80,78.21a130.17,130.17,0,0,0,12.11,56,128,128,0,0,0,156.38,67.11,75.53,75.53,0,0,1-62.78-8Z" transform="translate(0.02 0)" style="opacity:0.4099999964237213;isolation:isolate;fill:url(#fe97b05f-3188-4793-8e1b-46ec3f337d64)"></path><path d="M152.31,148.86c-.81,1-3.3,2.5-3.3,5.66,0,2.61,1.7,5.12,4.72,7.23,14.38,10,41.49,8.68,41.56,8.68a59.6,59.6,0,0,0,30.27-8.35A61.36,61.36,0,0,0,256,109.2c.26-22.41-8-37.31-11.34-43.91C223.46,23.84,177.72,0,128,0A128,128,0,0,0,0,126.2c.48-36.54,36.8-66.05,80-66.05,3.5,0,23.46.34,42,10.07,16.34,8.58,24.9,18.94,30.85,29.21,6.18,10.67,7.28,24.15,7.28,29.52S157.37,142.28,152.31,148.86Z" transform="translate(0.02 0)" style="fill:url(#b5860bc6-66c5-4872-a544-cd5083b094a5)"></path><path d="M152.31,148.86c-.81,1-3.3,2.5-3.3,5.66,0,2.61,1.7,5.12,4.72,7.23,14.38,10,41.49,8.68,41.56,8.68a59.6,59.6,0,0,0,30.27-8.35A61.36,61.36,0,0,0,256,109.2c.26-22.41-8-37.31-11.34-43.91C223.46,23.84,177.72,0,128,0A128,128,0,0,0,0,126.2c.48-36.54,36.8-66.05,80-66.05,3.5,0,23.46.34,42,10.07,16.34,8.58,24.9,18.94,30.85,29.21,6.18,10.67,7.28,24.15,7.28,29.52S157.37,142.28,152.31,148.86Z" transform="translate(0.02 0)" style="fill:url(#a5f0bf22-9f30-4c72-a92f-cd6ab2e6001d)"></path></svg> Edge 115.0.1901.203</div>				</div>
+				<div class="comment-info">
+										<div class="comment-time">
+						<span class="human-time" data-time="1692261879">6月前</span>
+						<div class="comment-time-details">2023-8-17 16:44:39</div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-item-text">
+				<p>点赞</p>
+			</div>
+			<div class="comment-item-source" style="display: none;" aria-hidden="true">点赞</div>
+
+			<div class="comment-operations">
+												<button class="comment-reply btn btn-sm btn-outline-primary" data-id="4" type="button">回复</button>
+			</div>
+		</div>
+	</li>
+	<li class="comment-divider">
+	<li>
+</li>
+<!-- #comment-## -->
+	<li class="comment-item" id="comment-5" data-id="5" data-use-markdown="true">
+		<div class="comment-item-left-wrapper">
+			<div class="comment-item-avatar">
+				<img alt="" src="http://1.gravatar.com/avatar/16ec04609aa81168c4ec16cdae76ff9f?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/16ec04609aa81168c4ec16cdae76ff9f?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" decoding="async">			</div>
+					</div>
+		<div class="comment-item-inner" id="comment-inner-5">
+			<div class="comment-item-title">
+				<div class="comment-name">
+					<div class="comment-author">你猜猜我是谁</div>
+																														<div class="comment-useragent">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 88 88" style="transform: scale(.9) translateY(-1px);"><path style="fill:#00adef;" d="m0,12.402,35.687-4.8602,0.0156,34.423-35.67,0.20313zm35.67,33.529,0.0277,34.453-35.67-4.9041-0.002-29.78zm4.3261-39.025,47.318-6.906,0,41.527-47.318,0.37565zm47.329,39.349-0.0111,41.34-47.318-6.6784-0.0663-34.739z"></path>
+</svg> Windows <svg id="aa18aec7-1a6d-485f-bae9-692f083c3c03" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 256.02 256.05"><defs><lineargradient id="bdabf876-4b2a-401b-ae2e-987cb08dd27d" x1="63.33" y1="995.95" x2="241.62" y2="995.95" gradienttransform="translate(-4.63 -818.92)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#0c59a4"></stop><stop offset="1" stop-color="#114a8b"></stop></lineargradient><radialgradient id="fe174677-dad1-4826-a441-99ddd979d00c" cx="161.83" cy="1032.72" r="95.38" gradienttransform="translate(-4.63 -802.63) scale(1 0.95)" gradientunits="userSpaceOnUse"><stop offset="0.72" stop-opacity="0"></stop><stop offset="0.95" stop-opacity="0.53"></stop><stop offset="1"></stop></radialgradient><lineargradient id="b101dfb4-29c0-4fe4-8cae-e04038fc9a8c" x1="157.41" y1="918.66" x2="46.02" y2="1039.99" gradienttransform="translate(-4.63 -818.92)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#1b9de2"></stop><stop offset="0.16" stop-color="#1595df"></stop><stop offset="0.67" stop-color="#0680d7"></stop><stop offset="1" stop-color="#0078d4"></stop></lineargradient><radialgradient id="fe97b05f-3188-4793-8e1b-46ec3f337d64" cx="-1454.1" cy="1697.79" r="143.24" gradienttransform="matrix(0.15, -0.99, 0.8, 0.12, -1069.54, -1444.29)" gradientunits="userSpaceOnUse"><stop offset="0.76" stop-opacity="0"></stop><stop offset="0.95" stop-opacity="0.5"></stop><stop offset="1"></stop></radialgradient><radialgradient id="b5860bc6-66c5-4872-a544-cd5083b094a5" cx="-338.41" cy="-298.47" r="202.43" gradienttransform="matrix(-0.04, 1, -2.13, -0.08, -623.44, 361.91)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#35c1f1"></stop><stop offset="0.11" stop-color="#34c1ed"></stop><stop offset="0.23" stop-color="#2fc2df"></stop><stop offset="0.31" stop-color="#2bc3d2"></stop><stop offset="0.67" stop-color="#36c752"></stop></radialgradient><radialgradient id="a5f0bf22-9f30-4c72-a92f-cd6ab2e6001d" cx="174.77" cy="-738.47" r="97.34" gradienttransform="matrix(0.28, 0.96, -0.78, 0.23, -384.89, 79.47)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#66eb6e"></stop><stop offset="1" stop-color="#66eb6e" stop-opacity="0"></stop></radialgradient></defs><path d="M231.05,190.54a92,92,0,0,1-10.54,4.71,101.85,101.85,0,0,1-35.9,6.46c-47.32,0-88.54-32.55-88.54-74.32a31.47,31.47,0,0,1,16.43-27.31c-42.8,1.8-53.8,46.4-53.8,72.53,0,73.88,68.09,81.37,82.76,81.37,7.91,0,19.84-2.3,27-4.56l1.31-.44a128.39,128.39,0,0,0,66.6-52.8,4,4,0,0,0-5.32-5.64Z" transform="translate(0.02 0)" style="fill:url(#bdabf876-4b2a-401b-ae2e-987cb08dd27d)"></path><path d="M231.05,190.54a92,92,0,0,1-10.54,4.71,101.85,101.85,0,0,1-35.9,6.46c-47.32,0-88.54-32.55-88.54-74.32a31.47,31.47,0,0,1,16.43-27.31c-42.8,1.8-53.8,46.4-53.8,72.53,0,73.88,68.09,81.37,82.76,81.37,7.91,0,19.84-2.3,27-4.56l1.31-.44a128.39,128.39,0,0,0,66.6-52.8,4,4,0,0,0-5.32-5.64Z" transform="translate(0.02 0)" style="opacity:0.3499999940395355;isolation:isolate;fill:url(#fe174677-dad1-4826-a441-99ddd979d00c)"></path><path d="M105.71,241.42A79.24,79.24,0,0,1,83,220.08a80.72,80.72,0,0,1,17.61-112.79,81.62,81.62,0,0,1,11.92-7.21c3.12-1.47,8.45-4.13,15.54-4a32.32,32.32,0,0,1,25.69,13,31.89,31.89,0,0,1,6.36,18.66c0-.21,24.46-79.6-80-79.6-43.9,0-80,41.66-80,78.21a130.17,130.17,0,0,0,12.11,56,128,128,0,0,0,156.38,67.11,75.53,75.53,0,0,1-62.78-8Z" transform="translate(0.02 0)" style="fill:url(#b101dfb4-29c0-4fe4-8cae-e04038fc9a8c)"></path><path d="M105.71,241.42A79.24,79.24,0,0,1,83,220.08a80.72,80.72,0,0,1,17.61-112.79,81.62,81.62,0,0,1,11.92-7.21c3.12-1.47,8.45-4.13,15.54-4a32.32,32.32,0,0,1,25.69,13,31.89,31.89,0,0,1,6.36,18.66c0-.21,24.46-79.6-80-79.6-43.9,0-80,41.66-80,78.21a130.17,130.17,0,0,0,12.11,56,128,128,0,0,0,156.38,67.11,75.53,75.53,0,0,1-62.78-8Z" transform="translate(0.02 0)" style="opacity:0.4099999964237213;isolation:isolate;fill:url(#fe97b05f-3188-4793-8e1b-46ec3f337d64)"></path><path d="M152.31,148.86c-.81,1-3.3,2.5-3.3,5.66,0,2.61,1.7,5.12,4.72,7.23,14.38,10,41.49,8.68,41.56,8.68a59.6,59.6,0,0,0,30.27-8.35A61.36,61.36,0,0,0,256,109.2c.26-22.41-8-37.31-11.34-43.91C223.46,23.84,177.72,0,128,0A128,128,0,0,0,0,126.2c.48-36.54,36.8-66.05,80-66.05,3.5,0,23.46.34,42,10.07,16.34,8.58,24.9,18.94,30.85,29.21,6.18,10.67,7.28,24.15,7.28,29.52S157.37,142.28,152.31,148.86Z" transform="translate(0.02 0)" style="fill:url(#b5860bc6-66c5-4872-a544-cd5083b094a5)"></path><path d="M152.31,148.86c-.81,1-3.3,2.5-3.3,5.66,0,2.61,1.7,5.12,4.72,7.23,14.38,10,41.49,8.68,41.56,8.68a59.6,59.6,0,0,0,30.27-8.35A61.36,61.36,0,0,0,256,109.2c.26-22.41-8-37.31-11.34-43.91C223.46,23.84,177.72,0,128,0A128,128,0,0,0,0,126.2c.48-36.54,36.8-66.05,80-66.05,3.5,0,23.46.34,42,10.07,16.34,8.58,24.9,18.94,30.85,29.21,6.18,10.67,7.28,24.15,7.28,29.52S157.37,142.28,152.31,148.86Z" transform="translate(0.02 0)" style="fill:url(#a5f0bf22-9f30-4c72-a92f-cd6ab2e6001d)"></path></svg> Edge 115.0.1901.203</div>				</div>
+				<div class="comment-info">
+										<div class="comment-time">
+						<span class="human-time" data-time="1692261908">6月前</span>
+						<div class="comment-time-details">2023-8-17 16:45:08</div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-item-text">
+				<p>怎么IP都上去了，气气气</p>
+			</div>
+			<div class="comment-item-source" style="display: none;" aria-hidden="true">怎么IP都上去了，气气气</div>
+
+			<div class="comment-operations">
+												<button class="comment-reply btn btn-sm btn-outline-primary" data-id="5" type="button">回复</button>
+			</div>
+		</div>
+	</li>
+	<li class="comment-divider">
+	<li>
+<ul class="children">
+	<li class="comment-item" id="comment-6" data-id="6" data-use-markdown="false">
+		<div class="comment-item-left-wrapper">
+			<div class="comment-item-avatar">
+				<img alt="" src="http://2.gravatar.com/avatar/8fddae2886a7ada75966bcef0b110a55?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/8fddae2886a7ada75966bcef0b110a55?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" decoding="async">			</div>
+					</div>
+		<div class="comment-item-inner" id="comment-inner-6">
+			<div class="comment-item-title">
+				<div class="comment-name">
+					<div class="comment-author"><a target="_blank" href="http://10.0.0.2:81/" class="url" rel="ugc external nofollow">GGapa</a></div>
+					<span class="badge badge-primary badge-admin">博主</span>					<div class="comment-parent-info" data-parent-id="5">
+<i class="fa fa-reply" aria-hidden="true"></i> 你猜猜我是谁</div>																				<div class="comment-useragent">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 88 88" style="transform: scale(.9) translateY(-1px);"><path style="fill:#00adef;" d="m0,12.402,35.687-4.8602,0.0156,34.423-35.67,0.20313zm35.67,33.529,0.0277,34.453-35.67-4.9041-0.002-29.78zm4.3261-39.025,47.318-6.906,0,41.527-47.318,0.37565zm47.329,39.349-0.0111,41.34-47.318-6.6784-0.0663-34.739z"></path>
+</svg> Windows <svg id="a6e1ba9b-be51-4044-90ec-60a20b2245fb" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 52.36 52.36"><defs><clippath id="fabb6727-68e3-4dd9-9a76-6979fae57f3f" transform="translate(2.18 2.18)"><circle cx="24" cy="24" r="24" style="fill:none"></circle></clippath><lineargradient id="e4eac09d-c1d6-4471-9c77-684844c2292d" x1="2493.34" y1="-1369.02" x2="2545.84" y2="-1338.35" gradienttransform="matrix(0.27, 0, 0, -0.27, -674.18, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#a52714" stop-opacity="0.6"></stop><stop offset="0.66" stop-color="#a52714" stop-opacity="0"></stop></lineargradient><lineargradient id="af7b1a24-88a6-4858-89c9-11b63ac37cf8" x1="2574.87" y1="-1458.49" x2="2516.54" y2="-1424.33" gradienttransform="matrix(0.27, 0, 0, -0.27, -674.18, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#055524" stop-opacity="0.4"></stop><stop offset="0.33" stop-color="#055524" stop-opacity="0"></stop></lineargradient><clippath id="f9af7cc4-0c0b-4e42-a0e8-48956619ecf8" transform="translate(2.18 2.18)"><polygon points="0 48 22.85 48 33.45 37.4 33.45 29.45 14.55 29.45 0 4.5 0 48" style="fill:none"></polygon></clippath><lineargradient id="a12530e7-37c0-42e0-b52b-8c0998fc3cd4" x1="2585.86" y1="-1343.8" x2="2600.54" y2="-1408.13" gradienttransform="matrix(0.27, 0, 0, -0.27, -674.18, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#ea6100" stop-opacity="0.3"></stop><stop offset="0.66" stop-color="#ea6100" stop-opacity="0"></stop></lineargradient><clippath id="a719bad8-5e06-463d-8214-3a288be013e5" transform="translate(2.18 2.18)"><polygon points="24 13.09 33.45 29.45 22.85 48 48 48 48 13.09 24 13.09" style="fill:none"></polygon></clippath><radialgradient id="bdda3c9a-58b1-485e-978c-8235775c263c" cx="3132.18" cy="-1349.95" r="84.08" gradienttransform="matrix(0.27, 0, 0, -0.27, -831.27, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#3e2723" stop-opacity="0.2"></stop><stop offset="1" stop-color="#3e2723" stop-opacity="0"></stop></radialgradient><clippath id="f2f490b3-e317-4789-89b5-61c9c4ee4cc3" transform="translate(2.18 2.18)"><polygon points="3.81 0 3.81 11 14.55 29.45 24 13.09 48 13.09 48 0 3.81 0" style="fill:none"></polygon></clippath><radialgradient id="ea33284c-0fb8-4e7f-ae76-336ef2238d29" cx="3061.87" cy="-1342.52" r="78.04" xlink:href="#bdda3c9a-58b1-485e-978c-8235775c263c"></radialgradient><radialgradient id="b34460d9-cf2e-4728-9685-20afb38f4188" cx="3135.84" cy="-1390.14" r="87.87" gradienttransform="matrix(0.27, 0, 0, -0.27, -831.27, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#263238" stop-opacity="0.2"></stop><stop offset="1" stop-color="#263238" stop-opacity="0"></stop></radialgradient><radialgradient id="b6a15be6-3a6e-4f9a-a92a-dfdc462bf5ab" cx="2498.29" cy="-1326.01" r="176.75" gradienttransform="matrix(0.27, 0, 0, -0.27, -672, -352.91)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0.1"></stop><stop offset="1" stop-color="#fff" stop-opacity="0"></stop></radialgradient></defs><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M3.81,0V29.45H14.55L24,13.09H48V0Z" transform="translate(2.18 2.18)" style="fill:#db4437"></path><path d="M3.81,0V29.45H14.55L24,13.09H48V0Z" transform="translate(2.18 2.18)" style="fill:url(#e4eac09d-c1d6-4471-9c77-684844c2292d)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M14.81,29.36,4,10.73,3.79,11,14.57,29.49Z" transform="translate(2.18 2.18)" style="fill:#3e2723;fill-opacity:0.15000000596046448"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M0,48H22.85l10.6-10.6V29.45H14.55L0,4.49Z" transform="translate(2.18 2.18)" style="fill:#0f9d58"></path><path d="M0,48H22.85l10.6-10.6V29.45H14.55L0,4.49Z" transform="translate(2.18 2.18)" style="fill:url(#af7b1a24-88a6-4858-89c9-11b63ac37cf8)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M33.23,29.82,33,29.69,22.53,48h.32L33.24,29.83Z" transform="translate(2.18 2.18)" style="fill:#263238;fill-opacity:0.15000000596046448"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><g style="clip-path:url(#f9af7cc4-0c0b-4e42-a0e8-48956619ecf8)"><path d="M24,13.09l9.45,16.36L22.85,48H48V13.09Z" transform="translate(2.18 2.18)" style="fill:#ffcd40"></path><path d="M24,13.09l9.45,16.36L22.85,48H48V13.09Z" transform="translate(2.18 2.18)" style="fill:url(#a12530e7-37c0-42e0-b52b-8c0998fc3cd4)"></path></g></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M24,13.09l9.45,16.36L22.85,48H48V13.09Z" transform="translate(2.18 2.18)" style="fill:#ffcd40"></path><path d="M24,13.09l9.45,16.36L22.85,48H48V13.09Z" transform="translate(2.18 2.18)" style="fill:url(#a12530e7-37c0-42e0-b52b-8c0998fc3cd4)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><g style="clip-path:url(#a719bad8-5e06-463d-8214-3a288be013e5)"><path d="M3.81,0V29.45H14.55L24,13.09H48V0Z" transform="translate(2.18 2.18)" style="fill:#db4437"></path><path d="M3.81,0V29.45H14.55L24,13.09H48V0Z" transform="translate(2.18 2.18)" style="fill:url(#e4eac09d-c1d6-4471-9c77-684844c2292d)"></path></g></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M24,13.09V18.8l21.38-5.71Z" transform="translate(2.18 2.18)" style="fill:url(#bdda3c9a-58b1-485e-978c-8235775c263c)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><g style="clip-path:url(#f2f490b3-e317-4789-89b5-61c9c4ee4cc3)"><path d="M0,48H22.85l10.6-10.6V29.45H14.55L0,4.49Z" transform="translate(2.18 2.18)" style="fill:#0f9d58"></path><path d="M0,48H22.85l10.6-10.6V29.45H14.55L0,4.49Z" transform="translate(2.18 2.18)" style="fill:url(#af7b1a24-88a6-4858-89c9-11b63ac37cf8)"></path></g></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M3.81,11,19.42,26.64l-4.87,2.81Z" transform="translate(2.18 2.18)" style="fill:url(#ea33284c-0fb8-4e7f-ae76-336ef2238d29)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M22.86,48l5.72-21.33,4.87,2.81Z" transform="translate(2.18 2.18)" style="fill:url(#b34460d9-cf2e-4728-9685-20afb38f4188)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><circle cx="26.18" cy="26.18" r="10.91" style="fill:#f1f1f1"></circle><circle cx="26.18" cy="26.18" r="8.73" style="fill:#4285f4"></circle></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M24,12.82A10.91,10.91,0,0,0,13.09,23.73V24A10.92,10.92,0,0,1,24,13.09H48v-.27Z" transform="translate(2.18 2.18)" style="fill:#3e2723;fill-opacity:0.20000000298023224"></path><path d="M33.44,29.45a10.89,10.89,0,0,1-18.88,0h0L0,4.49v.28l14.55,25h0a10.9,10.9,0,0,0,18.88,0h0v-.28Z" transform="translate(2.18 2.18)" style="fill:#fff;fill-opacity:0.10000000149011612"></path><path d="M24.27,13.09h-.13a10.9,10.9,0,0,1,0,21.8h.13a10.91,10.91,0,1,0,0-21.82Z" transform="translate(2.18 2.18)" style="fill:#3e2723;opacity:0.10000000149011612;isolation:isolate"></path><path d="M33.55,29.82a10.89,10.89,0,0,0,1-8.74,10.76,10.76,0,0,1-1.06,8.37h0L22.85,48h.31L33.55,29.83Z" transform="translate(2.18 2.18)" style="fill:#fff;fill-opacity:0.20000000298023224"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M24,.27A24,24,0,0,1,48,24.14V24A24,24,0,0,0,0,24v.14A24,24,0,0,1,24,.27Z" transform="translate(2.18 2.18)" style="fill:#fff;fill-opacity:0.20000000298023224"></path><path d="M24,47.73A24,24,0,0,0,48,23.86V24A24,24,0,0,1,0,24v-.14A24,24,0,0,0,24,47.73Z" transform="translate(2.18 2.18)" style="fill:#3e2723;fill-opacity:0.15000000596046448"></path></g><circle cx="26.18" cy="26.18" r="24" style="fill:url(#b6a15be6-3a6e-4f9a-a92a-dfdc462bf5ab)"></circle><path d="M-2.18-2.18H50.18V50.18H-2.18Z" transform="translate(2.18 2.18)" style="fill:none"></path></svg> Chrome 116.0.0.0</div>				</div>
+				<div class="comment-info">
+										<div class="comment-time">
+						<span class="human-time" data-time="1692453525">6月前</span>
+						<div class="comment-time-details">2023-8-19 21:58:45</div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-item-text">
+				<p>你是 $WXC$ 吗？</p>
+			</div>
+			<div class="comment-item-source" style="display: none;" aria-hidden="true">你是 $WXC$ 吗？</div>
+
+			<div class="comment-operations">
+												<button class="comment-reply btn btn-sm btn-outline-primary" data-id="6" type="button">回复</button>
+			</div>
+		</div>
+	</li>
+	<li class="comment-divider">
+	<li>
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+	<li class="comment-item" id="comment-7" data-id="7" data-use-markdown="true">
+		<div class="comment-item-left-wrapper">
+			<div class="comment-item-avatar">
+				<img alt="" src="http://2.gravatar.com/avatar/8fddae2886a7ada75966bcef0b110a55?s=40&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/8fddae2886a7ada75966bcef0b110a55?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy" decoding="async">			</div>
+					</div>
+		<div class="comment-item-inner" id="comment-inner-7">
+			<div class="comment-item-title">
+				<div class="comment-name">
+					<div class="comment-author"><a target="_blank" href="http://10.0.0.2:81/" class="url" rel="ugc external nofollow">GGapa</a></div>
+					<span class="badge badge-primary badge-admin">博主</span>																									<div class="comment-useragent">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 88 88" style="transform: scale(.9) translateY(-1px);"><path style="fill:#00adef;" d="m0,12.402,35.687-4.8602,0.0156,34.423-35.67,0.20313zm35.67,33.529,0.0277,34.453-35.67-4.9041-0.002-29.78zm4.3261-39.025,47.318-6.906,0,41.527-47.318,0.37565zm47.329,39.349-0.0111,41.34-47.318-6.6784-0.0663-34.739z"></path>
+</svg> Windows <svg id="a6e1ba9b-be51-4044-90ec-60a20b2245fb" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 52.36 52.36"><defs><clippath id="fabb6727-68e3-4dd9-9a76-6979fae57f3f" transform="translate(2.18 2.18)"><circle cx="24" cy="24" r="24" style="fill:none"></circle></clippath><lineargradient id="e4eac09d-c1d6-4471-9c77-684844c2292d" x1="2493.34" y1="-1369.02" x2="2545.84" y2="-1338.35" gradienttransform="matrix(0.27, 0, 0, -0.27, -674.18, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#a52714" stop-opacity="0.6"></stop><stop offset="0.66" stop-color="#a52714" stop-opacity="0"></stop></lineargradient><lineargradient id="af7b1a24-88a6-4858-89c9-11b63ac37cf8" x1="2574.87" y1="-1458.49" x2="2516.54" y2="-1424.33" gradienttransform="matrix(0.27, 0, 0, -0.27, -674.18, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#055524" stop-opacity="0.4"></stop><stop offset="0.33" stop-color="#055524" stop-opacity="0"></stop></lineargradient><clippath id="f9af7cc4-0c0b-4e42-a0e8-48956619ecf8" transform="translate(2.18 2.18)"><polygon points="0 48 22.85 48 33.45 37.4 33.45 29.45 14.55 29.45 0 4.5 0 48" style="fill:none"></polygon></clippath><lineargradient id="a12530e7-37c0-42e0-b52b-8c0998fc3cd4" x1="2585.86" y1="-1343.8" x2="2600.54" y2="-1408.13" gradienttransform="matrix(0.27, 0, 0, -0.27, -674.18, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#ea6100" stop-opacity="0.3"></stop><stop offset="0.66" stop-color="#ea6100" stop-opacity="0"></stop></lineargradient><clippath id="a719bad8-5e06-463d-8214-3a288be013e5" transform="translate(2.18 2.18)"><polygon points="24 13.09 33.45 29.45 22.85 48 48 48 48 13.09 24 13.09" style="fill:none"></polygon></clippath><radialgradient id="bdda3c9a-58b1-485e-978c-8235775c263c" cx="3132.18" cy="-1349.95" r="84.08" gradienttransform="matrix(0.27, 0, 0, -0.27, -831.27, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#3e2723" stop-opacity="0.2"></stop><stop offset="1" stop-color="#3e2723" stop-opacity="0"></stop></radialgradient><clippath id="f2f490b3-e317-4789-89b5-61c9c4ee4cc3" transform="translate(2.18 2.18)"><polygon points="3.81 0 3.81 11 14.55 29.45 24 13.09 48 13.09 48 0 3.81 0" style="fill:none"></polygon></clippath><radialgradient id="ea33284c-0fb8-4e7f-ae76-336ef2238d29" cx="3061.87" cy="-1342.52" r="78.04" xlink:href="#bdda3c9a-58b1-485e-978c-8235775c263c"></radialgradient><radialgradient id="b34460d9-cf2e-4728-9685-20afb38f4188" cx="3135.84" cy="-1390.14" r="87.87" gradienttransform="matrix(0.27, 0, 0, -0.27, -831.27, -355.09)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#263238" stop-opacity="0.2"></stop><stop offset="1" stop-color="#263238" stop-opacity="0"></stop></radialgradient><radialgradient id="b6a15be6-3a6e-4f9a-a92a-dfdc462bf5ab" cx="2498.29" cy="-1326.01" r="176.75" gradienttransform="matrix(0.27, 0, 0, -0.27, -672, -352.91)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0.1"></stop><stop offset="1" stop-color="#fff" stop-opacity="0"></stop></radialgradient></defs><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M3.81,0V29.45H14.55L24,13.09H48V0Z" transform="translate(2.18 2.18)" style="fill:#db4437"></path><path d="M3.81,0V29.45H14.55L24,13.09H48V0Z" transform="translate(2.18 2.18)" style="fill:url(#e4eac09d-c1d6-4471-9c77-684844c2292d)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M14.81,29.36,4,10.73,3.79,11,14.57,29.49Z" transform="translate(2.18 2.18)" style="fill:#3e2723;fill-opacity:0.15000000596046448"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M0,48H22.85l10.6-10.6V29.45H14.55L0,4.49Z" transform="translate(2.18 2.18)" style="fill:#0f9d58"></path><path d="M0,48H22.85l10.6-10.6V29.45H14.55L0,4.49Z" transform="translate(2.18 2.18)" style="fill:url(#af7b1a24-88a6-4858-89c9-11b63ac37cf8)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M33.23,29.82,33,29.69,22.53,48h.32L33.24,29.83Z" transform="translate(2.18 2.18)" style="fill:#263238;fill-opacity:0.15000000596046448"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><g style="clip-path:url(#f9af7cc4-0c0b-4e42-a0e8-48956619ecf8)"><path d="M24,13.09l9.45,16.36L22.85,48H48V13.09Z" transform="translate(2.18 2.18)" style="fill:#ffcd40"></path><path d="M24,13.09l9.45,16.36L22.85,48H48V13.09Z" transform="translate(2.18 2.18)" style="fill:url(#a12530e7-37c0-42e0-b52b-8c0998fc3cd4)"></path></g></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M24,13.09l9.45,16.36L22.85,48H48V13.09Z" transform="translate(2.18 2.18)" style="fill:#ffcd40"></path><path d="M24,13.09l9.45,16.36L22.85,48H48V13.09Z" transform="translate(2.18 2.18)" style="fill:url(#a12530e7-37c0-42e0-b52b-8c0998fc3cd4)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><g style="clip-path:url(#a719bad8-5e06-463d-8214-3a288be013e5)"><path d="M3.81,0V29.45H14.55L24,13.09H48V0Z" transform="translate(2.18 2.18)" style="fill:#db4437"></path><path d="M3.81,0V29.45H14.55L24,13.09H48V0Z" transform="translate(2.18 2.18)" style="fill:url(#e4eac09d-c1d6-4471-9c77-684844c2292d)"></path></g></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M24,13.09V18.8l21.38-5.71Z" transform="translate(2.18 2.18)" style="fill:url(#bdda3c9a-58b1-485e-978c-8235775c263c)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><g style="clip-path:url(#f2f490b3-e317-4789-89b5-61c9c4ee4cc3)"><path d="M0,48H22.85l10.6-10.6V29.45H14.55L0,4.49Z" transform="translate(2.18 2.18)" style="fill:#0f9d58"></path><path d="M0,48H22.85l10.6-10.6V29.45H14.55L0,4.49Z" transform="translate(2.18 2.18)" style="fill:url(#af7b1a24-88a6-4858-89c9-11b63ac37cf8)"></path></g></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M3.81,11,19.42,26.64l-4.87,2.81Z" transform="translate(2.18 2.18)" style="fill:url(#ea33284c-0fb8-4e7f-ae76-336ef2238d29)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M22.86,48l5.72-21.33,4.87,2.81Z" transform="translate(2.18 2.18)" style="fill:url(#b34460d9-cf2e-4728-9685-20afb38f4188)"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><circle cx="26.18" cy="26.18" r="10.91" style="fill:#f1f1f1"></circle><circle cx="26.18" cy="26.18" r="8.73" style="fill:#4285f4"></circle></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M24,12.82A10.91,10.91,0,0,0,13.09,23.73V24A10.92,10.92,0,0,1,24,13.09H48v-.27Z" transform="translate(2.18 2.18)" style="fill:#3e2723;fill-opacity:0.20000000298023224"></path><path d="M33.44,29.45a10.89,10.89,0,0,1-18.88,0h0L0,4.49v.28l14.55,25h0a10.9,10.9,0,0,0,18.88,0h0v-.28Z" transform="translate(2.18 2.18)" style="fill:#fff;fill-opacity:0.10000000149011612"></path><path d="M24.27,13.09h-.13a10.9,10.9,0,0,1,0,21.8h.13a10.91,10.91,0,1,0,0-21.82Z" transform="translate(2.18 2.18)" style="fill:#3e2723;opacity:0.10000000149011612;isolation:isolate"></path><path d="M33.55,29.82a10.89,10.89,0,0,0,1-8.74,10.76,10.76,0,0,1-1.06,8.37h0L22.85,48h.31L33.55,29.83Z" transform="translate(2.18 2.18)" style="fill:#fff;fill-opacity:0.20000000298023224"></path></g><g style="clip-path:url(#fabb6727-68e3-4dd9-9a76-6979fae57f3f)"><path d="M24,.27A24,24,0,0,1,48,24.14V24A24,24,0,0,0,0,24v.14A24,24,0,0,1,24,.27Z" transform="translate(2.18 2.18)" style="fill:#fff;fill-opacity:0.20000000298023224"></path><path d="M24,47.73A24,24,0,0,0,48,23.86V24A24,24,0,0,1,0,24v-.14A24,24,0,0,0,24,47.73Z" transform="translate(2.18 2.18)" style="fill:#3e2723;fill-opacity:0.15000000596046448"></path></g><circle cx="26.18" cy="26.18" r="24" style="fill:url(#b6a15be6-3a6e-4f9a-a92a-dfdc462bf5ab)"></circle><path d="M-2.18-2.18H50.18V50.18H-2.18Z" transform="translate(2.18 2.18)" style="fill:none"></path></svg> Chrome 116.0.0.0</div>				</div>
+				<div class="comment-info">
+										<div class="comment-time">
+						<span class="human-time" data-time="1692453582">6月前</span>
+						<div class="comment-time-details">2023-8-19 21:59:42</div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-item-text">
+				<p>本文章尚未完成！数论太难了，我搞懂一部分再写一部分QAQ⌇●﹏●⌇</p>
+			</div>
+			<div class="comment-item-source" style="display: none;" aria-hidden="true">本文章尚未完成！数论太难了，我搞懂一部分再写一部分QAQ⌇●﹏●⌇</div>
+
+			<div class="comment-operations">
+												<button class="comment-reply btn btn-sm btn-outline-primary" data-id="7" type="button">回复</button>
+			</div>
+		</div>
+	</li>
+	<li class="comment-divider">
+	<li>
+<ul class="children">
+	<li class="comment-item" id="comment-8" data-id="8" data-use-markdown="true">
+		<div class="comment-item-left-wrapper">
+			<div class="comment-item-avatar">
+				<img alt="" src="http://1.gravatar.com/avatar/16ec04609aa81168c4ec16cdae76ff9f?s=40&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/16ec04609aa81168c4ec16cdae76ff9f?s=80&#038;d=mm&#038;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy" decoding="async">			</div>
+					</div>
+		<div class="comment-item-inner" id="comment-inner-8">
+			<div class="comment-item-title">
+				<div class="comment-name">
+					<div class="comment-author">你猜猜我是谁</div>
+										<div class="comment-parent-info" data-parent-id="7">
+<i class="fa fa-reply" aria-hidden="true"></i> GGapa</div>																				<div class="comment-useragent">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 88 88" style="transform: scale(.9) translateY(-1px);"><path style="fill:#00adef;" d="m0,12.402,35.687-4.8602,0.0156,34.423-35.67,0.20313zm35.67,33.529,0.0277,34.453-35.67-4.9041-0.002-29.78zm4.3261-39.025,47.318-6.906,0,41.527-47.318,0.37565zm47.329,39.349-0.0111,41.34-47.318-6.6784-0.0663-34.739z"></path>
+</svg> Windows <svg id="aa18aec7-1a6d-485f-bae9-692f083c3c03" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 256.02 256.05"><defs><lineargradient id="bdabf876-4b2a-401b-ae2e-987cb08dd27d" x1="63.33" y1="995.95" x2="241.62" y2="995.95" gradienttransform="translate(-4.63 -818.92)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#0c59a4"></stop><stop offset="1" stop-color="#114a8b"></stop></lineargradient><radialgradient id="fe174677-dad1-4826-a441-99ddd979d00c" cx="161.83" cy="1032.72" r="95.38" gradienttransform="translate(-4.63 -802.63) scale(1 0.95)" gradientunits="userSpaceOnUse"><stop offset="0.72" stop-opacity="0"></stop><stop offset="0.95" stop-opacity="0.53"></stop><stop offset="1"></stop></radialgradient><lineargradient id="b101dfb4-29c0-4fe4-8cae-e04038fc9a8c" x1="157.41" y1="918.66" x2="46.02" y2="1039.99" gradienttransform="translate(-4.63 -818.92)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#1b9de2"></stop><stop offset="0.16" stop-color="#1595df"></stop><stop offset="0.67" stop-color="#0680d7"></stop><stop offset="1" stop-color="#0078d4"></stop></lineargradient><radialgradient id="fe97b05f-3188-4793-8e1b-46ec3f337d64" cx="-1454.1" cy="1697.79" r="143.24" gradienttransform="matrix(0.15, -0.99, 0.8, 0.12, -1069.54, -1444.29)" gradientunits="userSpaceOnUse"><stop offset="0.76" stop-opacity="0"></stop><stop offset="0.95" stop-opacity="0.5"></stop><stop offset="1"></stop></radialgradient><radialgradient id="b5860bc6-66c5-4872-a544-cd5083b094a5" cx="-338.41" cy="-298.47" r="202.43" gradienttransform="matrix(-0.04, 1, -2.13, -0.08, -623.44, 361.91)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#35c1f1"></stop><stop offset="0.11" stop-color="#34c1ed"></stop><stop offset="0.23" stop-color="#2fc2df"></stop><stop offset="0.31" stop-color="#2bc3d2"></stop><stop offset="0.67" stop-color="#36c752"></stop></radialgradient><radialgradient id="a5f0bf22-9f30-4c72-a92f-cd6ab2e6001d" cx="174.77" cy="-738.47" r="97.34" gradienttransform="matrix(0.28, 0.96, -0.78, 0.23, -384.89, 79.47)" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#66eb6e"></stop><stop offset="1" stop-color="#66eb6e" stop-opacity="0"></stop></radialgradient></defs><path d="M231.05,190.54a92,92,0,0,1-10.54,4.71,101.85,101.85,0,0,1-35.9,6.46c-47.32,0-88.54-32.55-88.54-74.32a31.47,31.47,0,0,1,16.43-27.31c-42.8,1.8-53.8,46.4-53.8,72.53,0,73.88,68.09,81.37,82.76,81.37,7.91,0,19.84-2.3,27-4.56l1.31-.44a128.39,128.39,0,0,0,66.6-52.8,4,4,0,0,0-5.32-5.64Z" transform="translate(0.02 0)" style="fill:url(#bdabf876-4b2a-401b-ae2e-987cb08dd27d)"></path><path d="M231.05,190.54a92,92,0,0,1-10.54,4.71,101.85,101.85,0,0,1-35.9,6.46c-47.32,0-88.54-32.55-88.54-74.32a31.47,31.47,0,0,1,16.43-27.31c-42.8,1.8-53.8,46.4-53.8,72.53,0,73.88,68.09,81.37,82.76,81.37,7.91,0,19.84-2.3,27-4.56l1.31-.44a128.39,128.39,0,0,0,66.6-52.8,4,4,0,0,0-5.32-5.64Z" transform="translate(0.02 0)" style="opacity:0.3499999940395355;isolation:isolate;fill:url(#fe174677-dad1-4826-a441-99ddd979d00c)"></path><path d="M105.71,241.42A79.24,79.24,0,0,1,83,220.08a80.72,80.72,0,0,1,17.61-112.79,81.62,81.62,0,0,1,11.92-7.21c3.12-1.47,8.45-4.13,15.54-4a32.32,32.32,0,0,1,25.69,13,31.89,31.89,0,0,1,6.36,18.66c0-.21,24.46-79.6-80-79.6-43.9,0-80,41.66-80,78.21a130.17,130.17,0,0,0,12.11,56,128,128,0,0,0,156.38,67.11,75.53,75.53,0,0,1-62.78-8Z" transform="translate(0.02 0)" style="fill:url(#b101dfb4-29c0-4fe4-8cae-e04038fc9a8c)"></path><path d="M105.71,241.42A79.24,79.24,0,0,1,83,220.08a80.72,80.72,0,0,1,17.61-112.79,81.62,81.62,0,0,1,11.92-7.21c3.12-1.47,8.45-4.13,15.54-4a32.32,32.32,0,0,1,25.69,13,31.89,31.89,0,0,1,6.36,18.66c0-.21,24.46-79.6-80-79.6-43.9,0-80,41.66-80,78.21a130.17,130.17,0,0,0,12.11,56,128,128,0,0,0,156.38,67.11,75.53,75.53,0,0,1-62.78-8Z" transform="translate(0.02 0)" style="opacity:0.4099999964237213;isolation:isolate;fill:url(#fe97b05f-3188-4793-8e1b-46ec3f337d64)"></path><path d="M152.31,148.86c-.81,1-3.3,2.5-3.3,5.66,0,2.61,1.7,5.12,4.72,7.23,14.38,10,41.49,8.68,41.56,8.68a59.6,59.6,0,0,0,30.27-8.35A61.36,61.36,0,0,0,256,109.2c.26-22.41-8-37.31-11.34-43.91C223.46,23.84,177.72,0,128,0A128,128,0,0,0,0,126.2c.48-36.54,36.8-66.05,80-66.05,3.5,0,23.46.34,42,10.07,16.34,8.58,24.9,18.94,30.85,29.21,6.18,10.67,7.28,24.15,7.28,29.52S157.37,142.28,152.31,148.86Z" transform="translate(0.02 0)" style="fill:url(#b5860bc6-66c5-4872-a544-cd5083b094a5)"></path><path d="M152.31,148.86c-.81,1-3.3,2.5-3.3,5.66,0,2.61,1.7,5.12,4.72,7.23,14.38,10,41.49,8.68,41.56,8.68a59.6,59.6,0,0,0,30.27-8.35A61.36,61.36,0,0,0,256,109.2c.26-22.41-8-37.31-11.34-43.91C223.46,23.84,177.72,0,128,0A128,128,0,0,0,0,126.2c.48-36.54,36.8-66.05,80-66.05,3.5,0,23.46.34,42,10.07,16.34,8.58,24.9,18.94,30.85,29.21,6.18,10.67,7.28,24.15,7.28,29.52S157.37,142.28,152.31,148.86Z" transform="translate(0.02 0)" style="fill:url(#a5f0bf22-9f30-4c72-a92f-cd6ab2e6001d)"></path></svg> Edge 116.0.1938.54</div>				</div>
+				<div class="comment-info">
+										<div class="comment-time">
+						<span class="human-time" data-time="1692767445">6月前</span>
+						<div class="comment-time-details">2023-8-23 13:10:45</div>
+					</div>
+				</div>
+			</div>
+			<div class="comment-item-text">
+				<p>加油</p>
+			</div>
+			<div class="comment-item-source" style="display: none;" aria-hidden="true">加油</div>
+
+			<div class="comment-operations">
+												<button class="comment-reply btn btn-sm btn-outline-primary" data-id="8" type="button">回复</button>
+			</div>
+		</div>
+	</li>
+	<li class="comment-divider">
+	<li>
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+			</ol>
+						</div>
+</div>
+
+
+<div id="post_comment" class="card shadow-sm  no-need-name-email enable-qq-avatar">
+	<div class="card-body">
+		<h2 class="post-comment-title">
+			<i class="fa fa-commenting"></i>
+			<span class="hide-on-comment-editing">发送评论</span>
+			<span class="hide-on-comment-not-editing">编辑评论</span>
+		</h2>
+		<div id="post_comment_reply_info" class="post-comment-reply" style="display: none;">
+			<span>正在回复 <b><span id="post_comment_reply_name"></span></b> 的评论 :</span>
+			<div id="post_comment_reply_preview" class="post-comment-reply-preview"></div>
+			<button id="post_comment_reply_cancel" class="btn btn-outline-primary btn-sm">取消回复</button>
+		</div>
+		<form>
+			<div class="row">
+				<div class="col-md-12">
+					<textarea id="post_comment_content" class="form-control form-control-alternative" placeholder="评论内容" name="comment" style="height: 80px;"></textarea>
+				</div>
+				<div class="col-md-12" style="height: 0;overflow: hidden;">
+					<pre id="post_comment_content_hidden" class=""></pre>
+				</div>
+			</div>
+						<div class="row hide-on-comment-editing" style="margin-bottom: -10px;">
+				<div class="col-md-4">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+							</div>
+							<input id="post_comment_name" class="form-control" placeholder="昵称" type="text" name="author" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+							</div>
+							<input id="post_comment_email" class="form-control" placeholder="邮箱 / QQ 号" type="email" name="email" value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4 post-comment-captcha-container" captcha="28 / 4 = ">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-key"></i></span>
+							</div>
+							<input id="post_comment_captcha" class="form-control" placeholder="验证码" type="text">
+							<style>.post-comment-captcha-container:before{
+									content: attr(captcha);
+								}</style>
+													</div>
+					</div>
+				</div>
+			</div>
+			<div class="row hide-on-comment-editing" id="post_comment_extra_input" style="display: none">
+				<div class="col-md-12" style="margin-bottom: -10px;">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4 post-comment-link-container">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fa fa-link"></i></span>
+							</div>
+							<input id="post_comment_link" class="form-control" placeholder="网站" type="text" name="url" value="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row hide-on-comment-editing " style="margin-top: 10px;">
+				<div class="col-md-12">
+					<button id="post_comment_toggle_extra_input" type="button" class="btn btn-icon btn-outline-primary btn-sm" tooltip-show-extra-field="展开附加字段" tooltip-hide-extra-field="折叠附加字段">
+						<span class="btn-inner--icon"><i class="fa fa-angle-down"></i></span>
+					</button>
+				</div>
+</div>
+			<div class="row" style="margin-top: 5px; margin-bottom: 10px;">
+				<div class="col-md-12">
+											<div class="custom-control custom-checkbox comment-post-checkbox comment-post-use-markdown">
+							<input class="custom-control-input" id="comment_post_use_markdown" type="checkbox" checked>
+							<label class="custom-control-label" for="comment_post_use_markdown">Markdown</label>
+						</div>
+																				<button id="post_comment_send" class="btn btn-icon btn-primary comment-btn pull-right mr-0" type="button">
+						<span class="btn-inner--icon hide-on-comment-editing"><i class="fa fa-send"></i></span>
+						<span class="btn-inner--icon hide-on-comment-not-editing"><i class="fa fa-pencil"></i></span>
+						<span class="btn-inner--text hide-on-comment-editing" style="margin-right: 0;">发送</span>
+						<span class="btn-inner--text hide-on-comment-not-editing" style="margin-right: 0;">编辑</span>
+					</button>
+					<button id="post_comment_edit_cancel" class="btn btn-icon btn-danger comment-btn pull-right hide-on-comment-not-editing" type="button" style="margin-right: 8px;">
+						<span class="btn-inner--icon"><i class="fa fa-close"></i></span>
+						<span class="btn-inner--text">取消</span>
+					</button>
+											<button id="comment_emotion_btn" class="btn btn-icon btn-primary pull-right" type="button" title="表情">
+							<i class="fa fa-smile-o" aria-hidden="true"></i>
+						</button>
+						<div id="emotion_keyboard" class="emotion-keyboard card shadow-sm bg-white">
+	<div class="emotion-keyboard-content">
+		<div class="emotion-group" index="0">
+<div class="emotion-item" text="|´・ω・)ノ" title="">|´・ω・)ノ</div>
+<div class="emotion-item" text="ヾ(≧∇≦*)ゝ" title="">ヾ(≧∇≦*)ゝ</div>
+<div class="emotion-item" text="(☆ω☆)" title="">(☆ω☆)</div>
+<div class="emotion-item" text="（╯‵□′）╯︵┴─┴" title="">（╯‵□′）╯︵┴─┴</div>
+<div class="emotion-item" text="￣﹃￣" title="">￣﹃￣</div>
+<div class="emotion-item" text="(/ω＼)" title="">(/ω＼)</div>
+<div class="emotion-item" text="∠( ᐛ 」∠)＿" title="">∠( ᐛ 」∠)＿</div>
+<div class="emotion-item" text="(๑•̀ㅁ•́ฅ)" title="">(๑•̀ㅁ•́ฅ)</div>
+<div class="emotion-item" text="→_→" title="">→_→</div>
+<div class="emotion-item" text="୧(๑•̀⌄•́๑)૭" title="">୧(๑•̀⌄•́๑)૭</div>
+<div class="emotion-item" text="٩(ˊᗜˋ*)و" title="">٩(ˊᗜˋ*)و</div>
+<div class="emotion-item" text="(ノ°ο°)ノ" title="">(ノ°ο°)ノ</div>
+<div class="emotion-item" text="(´இ皿இ｀)" title="">(´இ皿இ｀)</div>
+<div class="emotion-item" text="⌇●﹏●⌇" title="">⌇●﹏●⌇</div>
+<div class="emotion-item" text="(ฅ´ω`ฅ)" title="">(ฅ´ω`ฅ)</div>
+<div class="emotion-item" text="(╯°A°)╯︵○○○" title="">(╯°A°)╯︵○○○</div>
+<div class="emotion-item" text="φ(￣∇￣o)" title="">φ(￣∇￣o)</div>
+<div class="emotion-item" text="ヾ(´･ ･｀｡)ノ&quot;" title="">ヾ(´･ ･｀｡)ノ&quot;</div>
+<div class="emotion-item" text="( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃" title="">( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃</div>
+<div class="emotion-item" text="(ó﹏ò｡)" title="">(ó﹏ò｡)</div>
+<div class="emotion-item" text="Σ(っ °Д °;)っ" title="">Σ(っ °Д °;)っ</div>
+<div class="emotion-item" text="( ,,´･ω･)ﾉ&quot;(´っω･｀｡)" title="">( ,,´･ω･)ﾉ&quot;(´っω･｀｡)</div>
+<div class="emotion-item" text="╮(╯▽╰)╭" title="">╮(╯▽╰)╭</div>
+<div class="emotion-item" text="o(*////▽////*)q" title="">o(*////▽////*)q</div>
+<div class="emotion-item" text="＞﹏＜" title="">＞﹏＜</div>
+<div class="emotion-item" text="( ๑´•ω•) &quot;(ㆆᴗㆆ)" title="">( ๑´•ω•) &quot;(ㆆᴗㆆ)</div>
+</div>
+<div class="emotion-group d-none" index="1">
+<div class="emotion-item" text="😂" title="">😂</div>
+<div class="emotion-item" text="😀" title="">😀</div>
+<div class="emotion-item" text="😅" title="">😅</div>
+<div class="emotion-item" text="😊" title="">😊</div>
+<div class="emotion-item" text="🙂" title="">🙂</div>
+<div class="emotion-item" text="🙃" title="">🙃</div>
+<div class="emotion-item" text="😌" title="">😌</div>
+<div class="emotion-item" text="😍" title="">😍</div>
+<div class="emotion-item" text="😘" title="">😘</div>
+<div class="emotion-item" text="😜" title="">😜</div>
+<div class="emotion-item" text="😝" title="">😝</div>
+<div class="emotion-item" text="😏" title="">😏</div>
+<div class="emotion-item" text="😒" title="">😒</div>
+<div class="emotion-item" text="🙄" title="">🙄</div>
+<div class="emotion-item" text="😳" title="">😳</div>
+<div class="emotion-item" text="😡" title="">😡</div>
+<div class="emotion-item" text="😔" title="">😔</div>
+<div class="emotion-item" text="😫" title="">😫</div>
+<div class="emotion-item" text="😱" title="">😱</div>
+<div class="emotion-item" text="😭" title="">😭</div>
+<div class="emotion-item" text="💩" title="">💩</div>
+<div class="emotion-item" text="👻" title="">👻</div>
+<div class="emotion-item" text="🙌" title="">🙌</div>
+<div class="emotion-item" text="🖕" title="">🖕</div>
+<div class="emotion-item" text="👍" title="">👍</div>
+<div class="emotion-item" text="👫" title="">👫</div>
+<div class="emotion-item" text="👬" title="">👬</div>
+<div class="emotion-item" text="👭" title="">👭</div>
+<div class="emotion-item" text="🌚" title="">🌚</div>
+<div class="emotion-item" text="🌝" title="">🌝</div>
+<div class="emotion-item" text="🙈" title="">🙈</div>
+<div class="emotion-item" text="💊" title="">💊</div>
+<div class="emotion-item" text="😶" title="">😶</div>
+<div class="emotion-item" text="🙏" title="">🙏</div>
+<div class="emotion-item" text="🍦" title="">🍦</div>
+<div class="emotion-item" text="🍉" title="">🍉</div>
+<div class="emotion-item" text="😣" title="">😣</div>
+</div>
+<div class="emotion-group d-none" index="2">
+<div class="emotion-item emotion-item-sticker" code="dinosaur-shy" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/1.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-daze" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/2.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-sweat" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/3.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-proud" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/4.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-powerless" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/5.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-pouting" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/6.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-eating" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/7.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-ok" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/8.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-doubt" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/9.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-depressed" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/10.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-close-eyes" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/11.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-sleeping" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/12.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-puzzled" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/13.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-agree" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/14.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-crazy" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/15.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="dinosaur-angry" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/dinosaur/16.jpg"></div>
+</div>
+<div class="emotion-group d-none" index="3">
+<div class="emotion-item emotion-item-sticker" code="flower-flower" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/1.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-grass" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/2.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-leaf" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/3.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-star" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/4.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-sun" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/5.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-moon" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/6.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-water" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/7.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-heihei" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/8.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-lemon" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/9.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-birthday" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/10.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-sea" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/11.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-vegetable" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/12.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-tile" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/13.jpg"></div>
+<div class="emotion-item emotion-item-sticker" code="flower-utf" title=""><img class="lazyload" src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZW1vdGlvbi1sb2FkaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9Ii04IC04IDQwIDQwIiBzdHJva2U9IiM4ODgiIG9wYWNpdHk9Ii41IiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNC44MjggMTQuODI4YTQgNCAwIDAxLTUuNjU2IDBNOSAxMGguMDFNMTUgMTBoLjAxTTIxIDEyYTkgOSAwIDExLTE4IDAgOSA5IDAgMDExOCAweiIvPgo8L3N2Zz4=" data-original="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/stickers/flower/14.jpg"></div>
+<div class="emotion-group-description">Source: github.com/k4yt3x/flowerhd</div>
+</div>	</div>
+	<div class="emotion-keyboard-bar">
+		<div class="emotion-group-name active" index="0">颜文字</div>
+<div class="emotion-group-name" index="1">Emoji</div>
+<div class="emotion-group-name" index="2">小恐龙</div>
+<div class="emotion-group-name" index="3">花!</div>	</div>
+</div>									</div>
+			</div>
+			<input id="post_comment_captcha_seed" value="" style="display: none;">
+			<input id="post_comment_post_id" value="216" style="display: none;">
+		</form>
+	</div>
+</div>
+<div id="comment_edit_history" class="modal fade" tabindex="-1" role="dialog" aria-modal="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" style="font-size: 20px;"></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body" style="word-break: break-word;"></div>
+		</div>
+	</div>
+</div>
+<div id="comment_pin_comfirm_dialog" class="modal fade" tabindex="-1" role="dialog" aria-modal="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" style="font-size: 20px;"></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body" style="word-break: break-word;"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary btn-dismiss" data-dismiss="modal"></button>
+				<button type="button" class="btn btn-primary btn-comfirm"></button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="post-navigation card shadow-sm">
+<div class="post-navigation-item post-navigation-pre">
+<span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="https://ggapa.github.io/2023/08/15/%e3%80%90lgr-151-div-2%e3%80%91%e6%b4%9b%e8%b0%b7-8-%e6%9c%88%e6%9c%88%e8%b5%9b-ii-ysoi2023-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/" rel="prev">【LGR-151-Div.2】洛谷 8 月月赛 II &#038; YsOI2023 赛后总结</a>
+</div>
+<div class="post-navigation-item post-navigation-next">
+<span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="https://ggapa.github.io/2023/08/16/%e8%80%b3%e5%90%ac%e4%b8%ba%e8%99%9a%ef%bc%8c%e7%9c%bc%e8%a7%81%e4%b9%9f%e8%99%9a/" rel="next">耳听为虚，眼见也虚</a>
+</div>
+</div>
+<div class="related-posts card shadow-sm">
+                    <h2 class="post-comment-title" style="margin-top: 1.2rem;margin-left: 1.5rem;margin-right: 1.5rem;">
+                    <i class="fa fa-book"></i>
+			        <span>推荐文章</span>
+		            </h2>
+		            <div style="overflow-x: auto;padding: 1.5rem;padding-top: 0.8rem;padding-bottom: 0.8rem;}">
+<a class="related-post-card" href="https://ggapa.github.io/2023/11/11/p8948-ysoi2022-noip-%e5%92%8c%e7%9c%81%e9%80%89-%e9%a2%98%e8%a7%a3/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">P8948 [YsOI2022] NOIp 和省选 题解</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a><a class="related-post-card" href="https://ggapa.github.io/2023/10/19/csp-%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e3%80%81%e6%98%93%e9%94%99%e7%82%b9%e4%bb%a5%e5%8f%8a%e4%b8%80%e4%ba%9b%e6%96%b9%e6%b3%95/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">OI 注意事项、易错点以及一些方法</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a><a class="related-post-card" href="https://ggapa.github.io/2023/11/15/noip2023-%e6%a8%a1%e6%8b%9f%e8%b5%9b2023-11-14/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">NOIP2023 模拟赛(2023.11.14)</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a><a class="related-post-card" href="https://ggapa.github.io/2024/02/03/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0cesc/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">做题笔记(CSES)</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a><a class="related-post-card" href="https://ggapa.github.io/2023/08/14/%e9%94%99%e9%a2%98%e7%ae%a1%e7%90%86%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1%e5%bc%80%e5%8f%91%e6%8a%a5%e5%91%8a/"><div class="related-post-card-container has-thumbnail">
+							<div class="related-post-title clamp" clamp-line="3">错题管理系统设计开发报告</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div>
+<img class="related-post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="http://ggapa.net:81/wp-content/uploads/2023/08/image-1691985758548.png"></a><a class="related-post-card" href="https://ggapa.github.io/2023/09/03/daily-oi-round-1-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">Daily OI Round 1 赛后总结</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a><a class="related-post-card" href="https://ggapa.github.io/2023/10/28/%e6%b5%85%e8%b0%88%e5%9f%ba%e6%9c%ac%e4%b8%8d%e7%ad%89%e5%bc%8f%e9%97%ae%e9%a2%98/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">浅谈基本不等式问题</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a><a class="related-post-card" href="https://ggapa.github.io/2023/10/03/usaco17jan-hoof-paper-scissor-g-%e7%9a%84%e4%b8%a4%e7%a7%8d%e8%a7%a3%e6%b3%95%e4%bb%a5%e5%8f%8a%e5%9c%a8%e6%92%b0%e5%86%99c%e4%bb%a3%e7%a0%81%e6%97%b6%e7%9a%84%e6%b3%a8%e6%84%8f%e4%ba%8b/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">[USACO17JAN] Hoof, Paper, Scissor G 的两种解法以及在撰写C++代码时的注意事项</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a><a class="related-post-card" href="https://ggapa.github.io/2023/08/19/%e3%80%90lgr-155-div-3%e3%80%91%e6%b4%9b%e8%b0%b7%e5%9f%ba%e7%a1%80%e8%b5%9b-3-%e3%80%8cnnoi%e3%80%8dround-2-%e8%b5%9b%e5%90%8e%e6%80%bb%e7%bb%93/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">【LGR-155-Div.3】洛谷基础赛 #3 &#038;「NnOI」Round 2 赛后总结</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a><a class="related-post-card" href="https://ggapa.github.io/2023/11/04/%e5%87%bd%e6%95%b0%e6%80%a7%e8%b4%a8%e7%9a%84%e7%bb%bc%e5%90%88%e9%97%ae%e9%a2%98/"><div class="related-post-card-container">
+							<div class="related-post-title clamp" clamp-line="3">函数性质的综合问题</div>
+							<i class="related-post-arrow fa fa-chevron-right" aria-hidden="true"></i>
+							</div></a>
+</div>
+</div>
+					<footer id="footer" class="site-footer card shadow-sm border-0">
+						<div>已运行 <span id="blog_running_days" class="odometer"></span> days , <span id="blog_running_hours" class="odometer"></span> h , <span id="blog_running_mins" class="odometer"></span> m , <span id="blog_running_secs" class="odometer"></span> s</div>
+<script no-pjax>var blog_running_days=document.getElementById("blog_running_days");
+var blog_running_hours=document.getElementById("blog_running_hours");
+var blog_running_mins=document.getElementById("blog_running_mins");
+var blog_running_secs=document.getElementById("blog_running_secs");
+function refresh_blog_running_time(){
+    var time = new Date() - new Date(2023,7,14,00,00,00);
+    var d=parseInt(time/24/60/60/1000);
+    var h=parseInt(time%(24*60*60*1000)/60/60/1000);
+    var m=parseInt(time%(60*60*1000)/60/1000);
+    var s=parseInt(time%(60*1000)/1000);
+    blog_running_days.innerHTML=d;
+    blog_running_hours.innerHTML=h;
+    blog_running_mins.innerHTML=m;
+    blog_running_secs.innerHTML=s;
+}
+refresh_blog_running_time();
+if (typeof(bottomTimeIntervalHasSet) == "undefined"){
+    var bottomTimeIntervalHasSet = true;
+    setInterval(function(){refresh_blog_running_time();},500);
+}</script>
+
+						<div>Theme <a href="https://github.com/solstice23/argon-theme" target="_blank"><strong>Argon</strong></a>
+</div>
+					</footer>
+				</main>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/argontheme.js?v1.3.5"></script>
+									<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+			<script src="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+			<script src="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+			<script>document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body,{
+						delimiters: [
+							{left: "$$", right: "$$", display: true},
+							{left: "$", right: "$", display: false},
+							{left: "\\(", right: "\\)", display: false}
+						]
+					});
+				});</script>
+		
+					<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/vendor/highlight/styles/vs2015.css">
+		
+	</div>
+</aside>
+</div>
+<script type="text/javascript" src="https://ggapa.github.io/wp-content/plugins/wp-githuber-md/assets/vendor/katex/katex.min.js?ver=0.12.0" id="katex-js"></script>
+  <script id="module-katex"> (function($) { $(function() { if (typeof katex !== "undefined") { if ($(".language-katex").length > 0) { $(".language-katex").parent("pre").attr("style", "text-align: center; background: none;"); $(".language-katex").addClass("katex-container").removeClass("language-katex"); $(".katex-container").each(function() { var katexText = $(this).text(); var el = $(this).get(0); if ($(this).parent("code").length == 0) { try { katex.render(katexText, el) } catch (err) { $(this).html("<span class='err'>" + err) } } }); } if ($(".katex-inline").length > 0) { $(".katex-inline").each(function() { var katexText = $(this).text(); var el = $(this).get(0); if ($(this).parent("code").length == 0) { try { katex.render(katexText, el) } catch (err) { $(this).html("<span class='err'>" + err) } } }); } } }); })(jQuery); </script>  <script id="module-mathjax">(function($) { $(function() { if (typeof MathJax !== "undefined") { var c = $(".language-mathjax").length; if (c > 0) { $(".language-mathjax").each(function(i) { var content = $(this).html(); if ($(this).hasClass("mathjax-inline")) { $(this).html("$ " + content + " $"); } else { $(this).html("$$" + "\n" + content + "\n" + "$$"); } if (i + 1 === c) { MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none", extensions: [ "tex2jax.js", "TeX/mediawiki-texvc.js", "TeX/noUndefined.js", "TeX/autoload-all.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js" ], jax: [ "input/TeX", "output/SVG" ], elements: document.getElementsByClassName("language-mathjax"), tex2jax: { skipTags: [ "script", "noscript", "style", "textarea" ], inlineMath: [ ['$', '$'] ], displayMath: [ ['$$', '$$'] ], processClass: "language-mathjax" } }); MathJax.Hub.Queue(["Typeset", MathJax.Hub]); $(".language-mathjax").attr("style", "background: transparent; border: 0;"); $(".language-mathjax").closest("pre").attr("style", "background: transparent; border: 0;"); } }); } else { console.log("[wp-githuber-md] MathJax code blocks not found."); } } else { console.log("[wp-githuber-md] MathJax is not loadded."); } }); })(jQuery);</script> </body>
+
+<script>const banner = document.querySelector('#banner');
+    const content = document.querySelector('#content');
+      
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > banner.offsetHeight / 3) {
+            content.classList.add('scrolled');
+        } else {
+            content.classList.remove('scrolled');
+        }
+    });</script>
+
+
+</html>

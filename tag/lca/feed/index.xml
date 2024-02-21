@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>LCA &#8211; GGapa&#039;s website</title>
+	<atom:link href="http://ggapa.net/tag/lca/feed/?simply_static_page=1899" rel="self" type="application/rss+xml" />
+	<link>https://ggapa.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 09 Nov 2023 15:45:50 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
+
+<image>
+	<url>https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-32x32.png</url>
+	<title>LCA &#8211; GGapa&#039;s website</title>
+	<link>https://ggapa.github.io/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>LCA 问题的不同解法</title>
+		<link>https://ggapa.github.io/2023/11/09/lca-%e9%97%ae%e9%a2%98%e7%9a%84%e4%b8%8d%e5%90%8c%e8%a7%a3%e6%b3%95/</link>
+					<comments>https://ggapa.github.io/2023/11/09/lca-%e9%97%ae%e9%a2%98%e7%9a%84%e4%b8%8d%e5%90%8c%e8%a7%a3%e6%b3%95/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Thu, 09 Nov 2023 13:07:45 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[LCA]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=837</guid>
+
+					<description><![CDATA[0 序 为了强化笔者对LCA的理解，故作此文。 1 DFS序求LCA 1.1 算法介绍 考虑树上的两个节点 $ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>0 序</h1>
+<p>为了强化笔者对LCA的理解，故作此文。</p>
+<h1>1 DFS序求LCA</h1>
+<h2>1.1 算法介绍</h2>
+<p>考虑树上的两个节点 $u$, $v$ 和其祖先 $d$，我们之所以使用欧拉序求解 LCA 是因为在欧拉序中 $d$ 一定在 $u,v$ 之间出现。但对于 DFS 序来说，$d$ 一定在 $u,v$ 之前出现。</p>
+<p>令 $u$ 的 DFN 小于 $v$，且 $u\ne v$ 。</p>
+<p>当 $u，v$ 没有祖先关系时。在 DFN 中最先出现的是 $d$ ，其次是 $u$，最后是 $v$ 。设 $v'$ 是 $d$ 的儿子。根据 DFS 的特性可知，$v'$ 在 $u\sim v$ 的 DFN 序之间。</p>
+<p>这意味着我们只需要求出 $u \sim v$ 的 DFS 序之间深度最小的一个节点，那么他的父亲便是我们苦苦寻找的 LCA。</p>
+<p>如何保证这个方法的正确性？在 $u\sim v$ 的 DFS 序之间，$d$ 一定不会存在，而 $d$ 的儿子一定存在。</p>
+<p>当 $u, v$ 存在祖先关系，这更容易判断了，根据定义， $u$ 一定是 $v$ 的祖先。查询的序列由 $[dfn_u,dfn_v]$ 变成 $[dfn_u+1,dfn_v]$ 。为什么要 &quot;$+1$&quot;？根据上一种情况可知，此时的祖先是 $u$ ，但此时深度最小的节点一定是 $u$，如果在这时取它的父亲，很明显不是我们要找的正确答案。</p>
+<p>很显然，当$u，v$ 没有祖先关系时， $u$ 一定不等于 $d'$ ，所以刚刚提出的结论适用 $u$ 的 DFN 小于 $v$，且 $u\ne v$ 所有的情况。</p>
+<p>若 $u=v$ 时，它们的 LCA 一定是 $u$ ，这是唯一一种需要特判的情况。</p>
+<p>综上所述，若 $u\ne v$ ，$u,v$ 的 LCA 是 $[dfn_u,dfn_v]$ 中深度最小的点的父亲，若 $u=v$ 时，$u,v$ 的 LCA 是 $u$。</p>
+<h2>1.2算法实现</h2>
+<p>可以通过 ST 表来查询 $[dfn_u,dfn_v]$ 中深度最小的点。时间复杂度 $O(nlogn)$ 。</p>
+<p>以下是模板题目 <a href="https://www.luogu.com.cn/problem/P3379">P3379 </a> 的代码：</p>
+<pre><code class="language-cpp">// P3379 【模板】最近公共祖先（LCA）
+// https://www.luogu.com.cn/problem/P3379
+// 2023-11-09 21:40
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+const int maxn = 500000 + 5;
+
+int n, m, s;
+vector&lt;int&gt; G[maxn];
+int dfn[maxn], mi[20][maxn];
+
+int get(int x, int y) {
+    return dfn[x] &lt; dfn[y] ? x : y;
+}
+
+void dfs(int x, int f) {
+    dfn[x] = ++dfn[0]; mi[0][dfn[x]] = f;
+    for(auto to : G[x]) if(to != f) dfs(to, x);
+}
+
+int lca(int x, int y) {
+    if(x == y) return x;
+    if((x = dfn[x]) &gt; (y = dfn[y])) swap(x, y);
+    int d = log2(y - x++);
+    return get(mi[d][x], mi[d][y - (1 &lt;&lt; d) + 1]);
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    // freopen(&quot;AKIOI.in&quot;, &quot;r&quot;, stdin);
+    // freopen(&quot;AKIOI.out&quot;, &quot;w&quot;, stdout);
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;
+    for(int i = 1, u, v; i &lt; n; i++)  {
+        cin &gt;&gt; u &gt;&gt; v;
+        G[u].push_back(v); G[v].push_back(u);
+    }
+    dfs(s, 0);
+    for(int i = 1; i &lt;= log2(n); i++) for(int j = 1; j + (1 &lt;&lt; i) - 1 &lt;= n; j++) 
+        mi[i][j] = get(mi[i - 1][j], mi[i - 1][j + (1 &lt;&lt; i - 1)]);
+    while(m--) {
+        int x, y;
+        cin &gt;&gt; x &gt;&gt; y;
+        cout &lt;&lt; lca(x, y) &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}
+
+/*
+编程语言
+C++14 (GCC 9)
+代码长度
+1.25KB
+用时
+1.64s
+内存
+77.61MB
+GGapa
+
+所属题目
+P3379 【模板】最近公共祖先（LCA）
+评测状态
+Accepted
+评测分数
+100
+提交时间
+2023-11-09 22:02:41
+*/</code></pre>
+<h1>2 树链剖分 LCA</h1>
+<h2>2.1 算法介绍</h2>
+<p>对于一个父节点的所有儿子来说，在它们之间子树大小最大的便是<strong>重儿子</strong>($hson$)，其余的儿子是<strong>轻儿子</strong>。我们可以对一棵树上所有的非叶子节点进行操作，求出他们的重儿子。从一个节点 $u$ 出发，每次递归到下一个重儿子直到叶子节点未知，可得一个递归函数 $f(x)=f(hson_x)$ 。在递归的过程中访问到的节点可以连成一条链，这条链便是重链。每条重链的出发点被称为 $top$ 。</p>
+<p>考虑树上的两个节点 $u$, $v$ 和其祖先 $d$，</p>
+<ol>
+<li>若 $top_u = top_v$ 这说明 $u,v$ 在一条重链上，$u,v$ 一定存在祖先关系，此时 $u,v$ 中深度较小的节点便是他们的 LCA。</li>
+<li>否则，需要把深度较大的节点跳到这条重链的顶端。并重复执行操作1。</li>
+</ol>
+<p>为什么不能同时将 $u, v$  上跳？令 $u$ 的深度大于 $v$ 因为有时深度较大的节点的 $top$ 便是 $v$ 所在的重链，每跳一次都会使它离开当前的重链。这时 $v$ 往上跳就不能达成条件，效率低下。</p>
+<p>时间复杂度 $O(n\log n)$</p>
+<h2>2.2 算法实现</h2>
+<p>需要进行两次递归，第一次递归求出每个非叶子节点的重儿子；第二次循环求出 $top$，也就是重链。</p>
+<p>以下是模板题目 <a href="https://www.luogu.com.cn/problem/P3379">P3379 </a> 的代码：</p>
+<pre><code class="language-cpp">// P3379 【模板】最近公共祖先（LCA）
+// https://www.luogu.com.cn/problem/P3379
+// 2023-11-09 20:41
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int maxn = 500000 + 5;
+
+int n, m, s; 
+vector&lt;int&gt; G[maxn];
+int si[maxn], top[maxn], hson[maxn], fa[maxn], dep[maxn];
+
+void dfs1(int x, int f) {
+    si[x] = 1; dep[x] = dep[f] + 1; fa[x] = f;
+    for(auto to : G[x]) {
+        if(to == f) continue;
+        dfs1(to, x);
+        si[x] += si[to];
+        if(si[to] &gt; si[hson[x]]) hson[x] = to;
+    }
+}
+
+void dfs2(int x, int tp) {
+    top[x] = tp;
+    if(!hson[x]) return ;
+    dfs2(hson[x], tp);
+    for(auto to : G[x]) {
+        if(to == fa[x] || to == hson[x]) continue;
+         dfs2(to, to);       
+    }
+}
+
+int lca(int x, int y) {
+    while(top[x] != top[y]) {
+        if(dep[top[x]] &lt; dep[top[y]]) swap(x, y);   
+        x = fa[top[x]];
+    }
+    return (dep[x] &lt; dep[y] ? x : y);
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    // freopen(&quot;AKIOI.in&quot;, &quot;r&quot;, stdin);
+    // freopen(&quot;AKIOI.out&quot;, &quot;w&quot;, stdout);
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;
+    for(int i = 1, u, v; i &lt; n; i++) {
+        cin &gt;&gt; u &gt;&gt; v;
+        G[u].push_back(v);
+        G[v].push_back(u);
+    }
+    dfs1(s, 0);
+    dfs2(s, s);
+    while(m--) {
+        int x, y;
+        cin &gt;&gt; x &gt;&gt; y;
+        cout &lt;&lt; lca(x, y) &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}
+
+/*
+编程语言
+C++14 (GCC 9)
+代码长度
+1.37KB
+用时
+1.86s
+内存
+55.85MB
+GGapa
+
+所属题目
+P3379 【模板】最近公共祖先（LCA）
+评测状态
+Accepted
+评测分数
+100
+提交时间
+2023-11-09 21:04:30
+*/</code></pre>
+<h1>3 倍增 LCA</h1>
+<h2>3.1 算法介绍</h2>
+<p>相对于暴力算法，倍增 LCA 减少了向上跳的次数，如何减少？每次从大到小尝试跳 $2^i$ 个节点，直到到达目的地。</p>
+<p>为了方便跳，需要记录每一个节点 $2^i$ 级的祖先。</p>
+<p>考虑树上的两个节点 $u$, $v$，需要先使 $dep_u=dep_v$</p>
+<p>接着，两个节点同时往上跳，直到$fa<em>{vi}=fa</em>{ui}$为止，此时 $fa<em>u$ 便是 $u,v$ 的 LCA。有一点需要注意，要跳到 $fa</em>{ui}=fa_{vi}$ 而不是 $u=v$ 是为了防止跳过了，找到的是他们的公共祖先，而不是 LCA。</p>
+<p>时间复杂度$O(n\log n)$</p>
+<h2>3.2 算法实现</h2>
+<p>以下是模板题目 <a href="https://www.luogu.com.cn/problem/P3379">P3379 </a> 的代码：</p>
+<pre><code class="language-cpp">// P3379 【模板】最近公共祖先（LCA）
+// https://www.luogu.com.cn/problem/P3379
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int maxn = 500000 + 5;
+const int maxk = 21; // log2(maxn) + 1
+
+int fa[maxk][maxn];
+int depth[maxn];
+vector&lt;int&gt; vec[maxn];
+
+void dfs(int x, int f)
+{
+    fa[0][x] = f;
+    depth[x] = depth[f] + 1;
+    for (int i = 1; i &lt; maxk; i++)
+    {
+        fa[i][x] = fa[i - 1][fa[i - 1][x]];
+    }
+    for (auto to : vec[x])
+    {
+        if (to == f)
+            continue;
+        dfs(to, x);
+    }
+}
+
+int LCA(int x, int y)
+{
+    if (depth[x] &lt; depth[y])
+        swap(x, y);
+    for (int i = maxk - 1; i &gt;= 0; i--)
+    {
+        if (depth[fa[i][x]] &gt;= depth[y])
+            x = fa[i][x];
+    }
+    if (x == y)
+        return x;
+    for (int i = maxk - 1; i &gt;= 0; i--)
+    {
+        if (fa[i][x] != fa[i][y])
+        {
+            x = fa[i][x];
+            y = fa[i][y];
+        }
+    }
+    return fa[0][x];
+}
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n, m, s;
+    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;s);
+    for (int i = 1, x, y; i &lt; n; i++)
+    {
+        scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
+        vec[x].push_back(y);
+        vec[y].push_back(x);
+    }
+    dfs(s, 0);
+    for (int i = 0; i &lt; m; i++)
+    {
+        int a, b;
+        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+        cout &lt;&lt; LCA(a, b) &lt;&lt; endl;
+    }
+    return 0;
+}
+/*
+编程语言
+C++14 (GCC 9) O2
+代码长度
+1.43KB
+用时
+5.53s
+内存
+90.44MB
+GGapa
+
+所属题目
+P3379 【模板】最近公共祖先（LCA）
+评测状态
+Accepted
+评测分数
+100
+提交时间
+2023-07-31 15:39:45
+*/</code></pre>
+<p>倍增的常数很大，所以说花了接近 5s。</p>
+<h1>4 各种 LCA 算法的对比</h1>
+<ul>
+<li>
+<p>预处理时间复杂度均相同，常数倍增最大。</p>
+</li>
+<li>
+<p>单次查询复杂度：DFS 序 $&lt;$ 树链剖分 $=$ 倍增</p>
+</li>
+<li>
+<p>单次查询常数大小：树链剖分 $&lt;$ DFS 序 $&lt;$ 倍增</p>
+</li>
+<li>
+<p>个人认为 DFS 序代码难易程度较低。</p>
+</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/11/09/lca-%e9%97%ae%e9%a2%98%e7%9a%84%e4%b8%8d%e5%90%8c%e8%a7%a3%e6%b3%95/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

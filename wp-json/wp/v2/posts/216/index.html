@@ -1,0 +1,182 @@
+{"id":216,"date":"2023-08-16T12:27:42","date_gmt":"2023-08-16T04:27:42","guid":{"rendered":"https:\/\/ggapa.github.io\/?p=216"},"modified":"2024-02-09T20:44:42","modified_gmt":"2024-02-09T12:44:42","slug":"oi%e5%ad%a6%e4%b9%a0-%e6%95%b0%e5%ad%a6","status":"publish","type":"post","link":"https:\/\/ggapa.github.io\/2023\/08\/16\/oi%e5%ad%a6%e4%b9%a0-%e6%95%b0%e5%ad%a6\/","title":{"rendered":"数论相关知识"},"content":{"rendered":"<ul>\n<li>Update on 2023.08.19：修改了一处笔误\n</li>
+<li>Update on 2023.11.03：增添内容\n</li>
+<li>Update on 2023.12.15：因数部分\n\n<p><strong>注：远古作品，写的很垃圾\n<h1>数论\n<h2>线性筛\n<pre><code class='\"language-cpp\"'>bitset&lt;100000&gt; vis;\nvector&lt;int&gt; p;\n\nvoid init() {\n    p.push_back(-1);\n    for (int i = 2; i &lt;= 100000; i++) {\n        if (!vis[i]) p.push_back(i);\n        for (int j = 1; j &lt;= p.size() &amp;&amp; i * p[j] &lt;= 100000; j++) {\n            vis[i * p[j]] = 1;\n            if (i % p[j] == 0) break;\n        }\n    }\n}\n\n<p>通过给上面的代码添加一点小小的修改，我们就可以得到了一个既能筛质数，也能分解质因子的函数\n
+<pre><code class='\"language-cpp\"'>int n, T, p[maxn \/ 10], Min[maxn];      \/\/Min中存的元素便是一个数最小的质因子\nvoid GetPrime() {\n    for (int i = 2; i &lt;= maxn; i++) {\n        if (!vis[i]) {\n            p[++p[0]] = i;\n            Min[i] = i;\n        }\n        for (int j = 1; j &lt;= p[0] &amp;&amp; 1ll * i * p[j] &lt; maxn; j++) {\n            vis[i * p[j]] = 1;\n            Min[i * p[j]] = p[j];\n            if (i % p[j] == 0)\n                break;\n        }\n    }\n}\n<p>给定一个数然后求出它所有的质因子。\n
+<pre><code class='\"language-cpp\"'>cin &gt;&gt; x;\nwhile(x &gt; 1)  x \/= Min[x];\n<p>这么做一定是可行的，利用了<code>算术基本定理。\n<p>他的更多扩展用法：\n
+<p>$pri_i$： 编号为 $i$ 的质数。\n
+<p>$mi_i$ ：$i$ 的最小质因子。\n
+<p>$phi_i$： $\\varphi(i)$ 的值（欧拉函数）。\n
+<p>$mu_i$：$\\mu(i)$ 的值（莫比乌斯函数）。\n
+<pre><code class='\"language-cpp\"'>#include &lt;bits\/stdc++.h&gt;\nusing namespace std;\nconst int maxn = 20000000 + 5;\n\nint pri[maxn], phi[maxn], mi[maxn], mu[maxn];\nbitset&lt;maxn&gt; vis;\n\nvoid init(){\n    mu[1] = 1;\n    for(int i = 2; i &lt;= maxn - 5; i++) {\n        if(!vis[i]) pri[++pri[0]] = i, mi[i] = i, phi[i] = i - 1, mu[i] = -1;\n        for(int j = 1; j &lt;= pri[0] &amp;&amp; i * pri[j] &lt;= maxn - 5; j++) {\n            int tt = i * pri[j];\n            vis[tt] = 1;\n            mi[tt] = pri[j];\n            if(i % pri[j] == 0) {\n                phi[tt]  = phi[i] * pri[j];\n                break;\n            }\n            else phi[tt] = phi[i] * phi[pri[j]];\n            mu[tt] = -mu[i];\n        }\n    }\n}\n\nint main() {\n    freopen(&quot;a.out&quot;, &quot;w&quot;, stdout);\n    ios::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n    init();\n    printf(&quot;%d\\n&quot;, mu[6]);\n\n    return 0;   \n} \n\n<p>当然，筛法还能有更多的应用，他还能在因子上下功夫。\n
+<h2>唯一分解定理\n</h2>
+<p>$$n = \\prod_{i=1}^{m} p_{i}^{k_i}$$\n
+<h3>唯一分解定理与 LCM、GCD 之间的关系\n</h3>
+<p>设有两个数：$a = \\prod_{i=1}^{m_a} pa_{i}^{ka_i}$ 、$b = \\prod_{i=1}^{m_b} pb_{i}^{kb_i}$，则有：\n
+<p>它们的 $\\gcd$ 为二者 $k$ 取 $\\min$ ，而 $lcm$ 为二者的 $k$ 取 $\\max$\n
+<h2>因子\n<h3>因子和\n</h3>
+</h2>
+<p>由算数基本定理可得，一个数 $n$ 一定可以被以下的式子表示出来：\n
+<p>$$n = \\prod_{i=1}^{m} p_{i}^{k_i}$$\n
+<p>后文中默认 $p$ 从小到大排序并编号<br>\n其中 $p$ 是质数，$k$ 是一个非负整数，$m$ 表示该数最少可以被几个素数表示，试求：\n
+<p>$$\\sum_{d|n}^{}d $$ \n
+<p>通过一系列的推到可以得出\n
+<p>$$\\sum_{d|n}^{}d = \\prod_{i=1}^{m}  \\sum_{j=0}^{k_i} p_i^j$$\n
+<p>推到过程如下：\n
+<p>对于每一个质数 $p_i$ 他的不同次方可以构成一个集合，笔者拿 $360$ 来举例：\n
+<p>已知 :\n
+<p>$$360 = 2^3\\cdot3^2 \\cdot5^1$$\n
+<p>$360$ 被分解成了三个质数，那么其所有的因数都能通过这三个质数不同次幂的乘积表示。例如 $2^1\\cdot3^0 \\cdot5^0$，$2^1\\cdot3^0 \\cdot5^1$，$2^2\\cdot3^1 \\cdot5^0$ ，等等。像这样的数，都是 $360$ 的因数。\n
+<p>其因数和等于：\n
+<p>$$2^0 \\cdot 3^0 \\cdot 5^0 + 2^0 \\cdot 3^0 \\cdot 5^1 + 2^0 \\cdot 3^1 \\cdot 5^0 + 2^0 \\cdot 3^1 \\cdot 5^1 + 2^0 \\cdot 3^2 \\cdot 5^0+ \\cdots + 2^3 \\cdot 3^2 \\cdot 5^1$$\n
+<p>化简可得：\n
+<p>$$(1 + 2^1 + 2^2 + 2^3)\\cdot(1+3^1+3^2) \\cdot (1+5^1) = \\prod_{i=1}^{3} \\sum_{j=0}^{k_i}  {p_i}^j $$\n
+<p>推导完毕。\n
+<h3>代码实现\n</h3>
+<p><strong>问题描述\n<p>给定一个数 $n$ 求  $[1,n]$ 中所有数的因子和。\n
+<p><strong>分析与解答\n<p>为了在 $O(n)$ 的时间复杂度内解决问题，上述题目可以通过线性筛来解决；\n
+<p>我们定义 $f_i$，代表 $i$ 的因子和。\n
+<p>定义 $g_i$ 代表：\n
+<p>$$\\sum_{j=0}^{k_1}  {p_1}^j$$\n
+<p>我们该如何处理这两个数组？\n
+<p>对于每次循环得到的 $i$，若 $i$ 是质数（情况一），$f_i = i + 1$ ，$g_i = i + 1$。不做过多赘述。\n
+<p>否则，我们已经知道了 $i$ 的唯一分解式，有两种情况需要我们考虑：\n
+<p>定义 $t = i\\times prime_j$\n
+<ul>\n<li>若 $i$ 的唯一分解式中不含 $prime_j$ 时，也就是 $i$ 模 $prime_j$ 不为 $0$ 时（情况二）。\n\n<p>则 $g_t = prime_j+1$， $f_t = f_i \\times g_t$。\n
+<p>举一个例子：\n
+<p>若此时 $i$ 的唯一分解式为 $3^2\\cdot5^1$，$prime_j=2$，满足情况二。此时 $t$ 的唯一分解式为 $3^3\\cdot4^1$， $g_i = 1+3^1+3^2$，$f_i = (1+3^1+3^2)\\times(1+5^1)$。\n
+<p>经过推导可知：\n
+<p>$$g_t = 1 + 2 = 1 + prime_j$$\n
+<p>$$ f_t = (1+2^1)\\times(1+3^1+3^2)\\times(1+5^1) = g_t\\times f_i$$\n
+<ul>\n<li>若 $i$ 的唯一分解式中包含 $prime_j$ 时，也就是 $i$ 模 $prime_j$ 为 $0$ 时（情况三）。\n\n<p>则 $g_t = g_i \\times prime_j + 1$， $f_t = \\frac{f_i \\times g_t}{g_i}$\n
+<p>举一个例子：\n
+<p>若此时 $i$ 的唯一分解式为 $2^2\\cdot3^1$，$prime_j=2$，满足情况三。此时 $t$ 的唯一分解式为 $2^3\\cdot3^1$， $g_i = 1+2^1+2^2$，$f_i = (1+2^1+2^2)\\times(1+3^1)$。\n
+<p>经过推导可知：\n
+<p>$$g_t = 1+2^1+2^2+2^3=(1+2^1+2^2)\\times2+1=g_i\\cdot prime_j+1$$\n
+<p>$$f_t= (1+2^1+2^2+2^3)\\times(1+3^1) = \\frac{(1+2^1+2^2)\\times(1+3^1)}{(1+2^1+2^2)}\\times (1+2^1+2^2+2^3) =\\frac{f_i }{g_i}\\times g_t$$\n
+<h4>参考代码\n<pre><code class='\"language-cpp\"'>void sol() {\n    for(int i = 2; i &lt;= n; i++) {\n        if(!vis[i]) p[++p[0]] = i, f[i] = g[i] = 1 + i;\/\/情况一\n        for(int j = 1, t; (t = i * p[j]) &lt;= n &amp;&amp; j &lt;= p[0]; j++) {\n            vis[t] = 1;\n            if(i % p[j]) g[t]  = p[j] + 1, f[t] = f[i] * g[t]; \/\/情况二\n            else {  \/\/情况三\n                g[t] = g[i] * p[j] + 1;\n                f[t] = f[i] \/ g[i]  * g[t];\n                break;\n            }\n        }\n    }\n}\n<h2>不定方程\n<h3>定义\n</h3>
+</h2>
+<p>形如 $ax + by = c$，其中 $a, b, c$ 是已知数的方程被称为二元一次不定方程。\n
+<h3>求解\n</h3>
+<p><strong>定理：方程 $ax + by = c$ 有解当且仅当 $gcd(a, b) | c$<br>\n先考虑如何求 $ax + by = gcd(a, b)$\n<p>$$ax + by = gcd(a, b)$$\n
+<p>$$= gcd(b, a \\bmod {b}) $$\n
+<p>$$=bx′ + (a \\bmod {b})y′$$\n
+<p>$$=bx′ + (a − ⌊ \\frac{a}{b}⌋ × b)y′$$\n
+<p>$$=y′ + b(x′ − ⌊\\frac{a}{b}⌋y′)$$\n
+<p>其中 $x′$ 和 $y′$ 是不定方程 $bx + (a \\bmod {b})y = gcd(b, a \\bmod {b})$的解。\n
+<p>如果求出了 $x′$ 和 $y′$，就可以根据对应系数相等算出 $x = y′$，$y = x′ − ⌊ \\frac{a}{b}⌋y′$。\n
+<h2>同余\n</h2>
+<p>对两个整数 $a, b$，如果它们除以 $d$ 的余数相同，则称它们 模 $d$ 同余，记作:\n
+<p>$$a \\equiv b \\enspace(\\bmod{d})$$\n
+<h2>威尔逊定理\n</h2>
+<p>正整数 $p$ 是质数的充要条件为 $(p − 1)! ≡ −1 (\\bmod p)$。\n
+<h2>欧拉函数\n<h3>定义\n</h3>
+</h2>
+<p>定义欧拉函数 $\\varphi(n)$ 表示小于 $n$ 的数中与 $n$ 互质的数的个数；特别的，$\\varphi(1) = 1$。\n
+<h3>性质\n</h3>
+<p>积性：如果 $gcd(a, b) = 1$，则 $\\varphi(a × b) = \\varphi(a) × \\varphi(b)$。\n
+<p>欧拉反演：$\\sum_{d|n}  \\varphi(d) = n。$\n
+<p>性质3：对任意实数$p，\\varphi(p^k) = p^k − p^{k−1}$。\n
+<h3>计算\n</h3>
+<p><strong>单个欧拉函数：设 $n$ 的唯一分解式是：\n<p>$$n = p_1^{k_1} p_2^{k_2} \\cdots p_s^{k^s}$$\n
+<p>由性质3可得\n
+<p>$$\\varphi (n) =  {\\textstyle \\prod_{i=1}^{s}\\varphi(p_i^{k_i})} $$\n
+<p><strong>线性欧拉函数：在线性筛的同时可以筛出欧拉函数，设 $p$ 是 $i$ 的最小质因子，分三种情况讨论：\n<ol>\n<li>\n<p>$i$ 为质数：$\\varphi (i) = i − 1$\n\n
+</li>
+<li>\n<p>$p$ 是 $\\frac{i}{p}$ 的质因子：$\\varphi (i) = \\varphi(\\frac{i}{p}) × p$。\n\n
+</li>
+<li>\n<p>$p$ 和 $\\frac{i}{p}$ 互质：$\\varphi(i) = \\varphi(\\frac{i}{p})\\varphi(p)$。\n\n\n<span class="argon-hidden-text argon-hidden-text-blur" title="你知道的太多了！">我真的受不了了！！！一个晚上就只写了这么点。数论真™毒瘤QAQ$\\enspace\\enspace\\enspace\\enspace$--20230815\n<h2>逆元\n<h3>定义\n</h3>
+</h2>
+<p>在模 $p$ 同余下，对每个 $x$，能找到一个整数 $x^{−1} ∈ [1, p)$，使任何数除以 $x$ 等价于乘 $x^{−1}$。这样的 $x^{−1}$ 称为 $x$ 在模 $p$ 同余下的逆元。\n
+<p>显然，逆元 $x$ 应满足 $xx^{−1} ≡ 1 (\\bmod p)$。\n
+<p>以容易理解的角度来讲：对于任意整数 $x(\\bmod{p})$ 的逆元表示为：\n
+<p>$$x^{-1}(\\bmod n)$$\n
+<p><strong>逆元存在性定理：$x$ 在模 $p$ 同余下存在逆元当且仅当 $gcd(x, p) = 1$\n<p>可通过反证法进行证明，若需详细步骤请自行查阅资料。\n
+<h3>性质\n</h3>
+<p><strong>定理：模 $p$ 同余下，一个整数 $x$ 的逆元若存在，则唯一。<br>\n<strong>证明：考虑反证法；假设 $x$ 有两个不同的逆元 $i_1，i_2$，满足 $xi_1 \\equiv 1 \\pmod{p} $，$xi_2 \\equiv 1 \\pmod{p} $。根据同<br>\n余的传递性，$xi_1 \\equiv xi_2 \\pmod{p} $在同余号两侧左乘 $i_1$，得到：$(i_1x)i_1 ≡ (i_1x)i_2\\pmod p ⇐⇒ 1i_1 ≡ 1i_2 \\pmod p$\n<p><strong>定理：在模质数 $p$ 同余下，$[1, p − 1]$ 内所有整数的逆元互不相同。<br>\n<strong>证明：反证，假设 $x$, $y$ 的逆元均为 $i$，则 $x_i ≡ y_i \\pmod p$。两侧同乘 $i^{−1}$ 立得 $x ≡ y \\pmod p$，矛盾。\n<p><strong>定理：一个数的逆元的逆元等于它自身。<br>\n<strong>证明：由模意义下乘法交换律和结合律立得。\n<h3>通过扩展欧几里得(exgcd)  计算逆元\n</h3>
+<p>对任意给定的 $x$ 和 $p$，显然 $x × x^{−1} ≡ 1 \\pmod p$ 可以利用这个式子计算 x^{−1}。\n
+<p>上式等价于 $xx^{−1} = kp + 1 ⇐⇒ xx^{−1} + pk = 1$。\n
+<p>其中 $x$ 和 $p$ 是已知量，所以上式是一个不定方程，$x^{−1}$ 和 $k$是变量。用 $exgcd$ 求解可以得到 $x^{−1}$。\n
+<p>根据不定方程有解的条件，$gcd(x, p) | 1 ⇐⇒ gcd(x, p) = 1$。这和逆元存在性定理也是相适应的。\n
+<h3>欧拉定理\n</h3>
+<p><strong>欧拉定理 (Euler Theorem)：对任意正整数 $a$, $m$ 且 $gcd(a, m) = 1$，一定有：$a^{\\varphi (m)} ≡ 1 \\pmod m$\n<p>证明自行查阅资料\n
+<h3>费马小定理\n</h3>
+<p><strong>费马小定理（Fermat’s Little Theorem）：对任意整数 $a$ 和质数 $p$，$a^{p−1} ≡ 1 \\pmod p$。\n<p>证明请自行查阅资料\n
+<h4>通过费马小定理求逆元\n</h4>
+<p>根据费马小定理，$a^{p−1} ≡ 1\\pmod p$。\n
+<p>两侧同乘 $a^{−1}$，得到 $a^{−1} ≡ a^{p−2} \\pmod p$。\n
+<p>这就得到了逆元的第二种求法：快速幂求出 $a^{p−2}\\pmod p$即可。\n
+<p>设 $inv_i$ 表示 $i$ 的逆元，有递推式：\n
+<p>$ inv_{i} ≡ − ⌊\\frac{p}{i} ⌋ × inv _{p \\mod i} \\pmod p $\n
+<p>边界为 $inv_1 = 1$。\n
+<h2>中国剩余定理\n<h3>中国剩余定理问题\n</h3>
+</h2>
+<p>我们给定 $N$ 个线性同余方程组：\n
+<p><math xmlns='\"http:\/\/www.w3.org\/1998\/Math\/MathML\"' display='\"block\"'><mrow><mstyle mathsize='\"1.44em\"'><mrow data-mjx-texclass='\"INNER\"'><mo data-mjx-texclass='\"OPEN\"'>{<mtable columnspacing='\"1em\"' rowspacing='\"4pt\"'><mtr><mtd><mi>x<mo>≡<msub><mi>a<mn>1<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><msub><mi>m<mn>1<mo stretchy='\"false\"'>)<mtr><mtd><mi>x<mo>≡<msub><mi>a<mn>2<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><msub><mi>m<mn>2<mo stretchy='\"false\"'>)<mtr><mtd><mo>…<mtr><mtd><mi>x<mo>≡<msub><mi>a<mi>n<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><msub><mi>m<mi>n<mo stretchy='\"false\"'>)<mo data-mjx-texclass='\"CLOSE\"' fence='\"true\"' stretchy='\"true\"' symmetric='\"true\"'>\n<p>其中保证 $m_1, m_2, \\dots ,m_n$ 两两互质。求 $x$ 的通解\n
+<h3>定理\n</h3>
+<p><strong>中国剩余定理 (Chinese Remainder Theoremm, CRT)：上页方程组有解，且按如下方式构造：\n<p>记 $M = \\prod m_i，M_i = m{\\div m_i} $，$t_i$ 是 $M_i$ 在模 $m_i$ 群下的逆元。\n
+<p>则该方程的唯一通解是：\n
+<p>$$x \\equiv \\sum_{i=1}^{n} a_it_iM_i \\pmod{M} $$\n
+<p>举例来说：对于以下线性同余方程组：\n
+<p><math xmlns='\"http:\/\/www.w3.org\/1998\/Math\/MathML\"' display='\"block\"'><mrow><mstyle mathsize='\"1.44em\"'><mrow data-mjx-texclass='\"INNER\"'><mo data-mjx-texclass='\"OPEN\"'>{<mtable columnspacing='\"1em\"' rowspacing='\"4pt\"'><mtr><mtd><mi>x<mo>≡<mn>1<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><mn>5<mo stretchy='\"false\"'>)<mtr><mtd><mi>x<mo>≡<mn>2<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><mn>5<mo stretchy='\"false\"'>)<mtr><mtd><mi>x<mo>≡<mn>3<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><mn>7<mo stretchy='\"false\"'>)<mo data-mjx-texclass='\"CLOSE\"' fence='\"true\"' stretchy='\"true\"' symmetric='\"true\"'>\n<p>$$M = 3\\cdot 5\\cdot 7=105$$\n
+<p>$$M_1=M\/3=105\/3=35$$\n
+<p>$$M_2=105\/5=21$$\n
+<p>$$M_3=105\/7=15$$\n
+<p>接下来为了确定 $t_i$ 我们需要解以下同余方程：\n
+<p>$$M_it_i \\equiv 1 \\pmod{m_i}$$\n
+<p>所以说我们可以得到：\n
+<p><math xmlns='\"http:\/\/www.w3.org\/1998\/Math\/MathML\"' display='\"block\"'><mrow><mstyle mathsize='\"1.44em\"'><mrow data-mjx-texclass='\"INNER\"'><mo data-mjx-texclass='\"OPEN\"'>{<mtable columnspacing='\"1em\"' rowspacing='\"4pt\"'><mtr><mtd><mn>35<msub><mi>t<mn>1<mo>≡<mn>1<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><mn>3<mo stretchy='\"false\"'>)<mtr><mtd><mn>21<msub><mi>t<mn>2<mo>≡<mn>1<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><mn>5<mo stretchy='\"false\"'>)<mtr><mtd><mn>15<msub><mi>t<mn>3<mo>≡<mn>1<mspace width='\"0.444em\"'><mo stretchy='\"false\"'>(<mi>mod<mspace width='\"0.333em\"'><mn>7<mo stretchy='\"false\"'>)<mo data-mjx-texclass='\"CLOSE\"' fence='\"true\"' stretchy='\"true\"' symmetric='\"true\"'>\n<p>我们可以解得：\n
+<p><math xmlns='\"http:\/\/www.w3.org\/1998\/Math\/MathML\"' display='\"block\"'><mrow><mstyle mathsize='\"1.44em\"'><mrow data-mjx-texclass='\"INNER\"'><mo data-mjx-texclass='\"OPEN\"'>{<mtable columnspacing='\"1em\"' rowspacing='\"4pt\"'><mtr><mtd><msub><mi>t<mn>1<mo>=<mn>2<mtr><mtd><msub><mi>t<mn>2<mo>=<mn>1<mtr><mtd><msub><mi>t<mn>3<mo>=<mn>1<mo data-mjx-texclass='\"CLOSE\"' fence='\"true\"' stretchy='\"true\"' symmetric='\"true\"'>\n<p>最后我们通过上面的那个式子可以算出：\n
+<p>$$x \\equiv 1\\cdot 2\\cdot 35+2\\cdot 1\\cdot 21+3\\cdot 1\\cdot 15 \\equiv157\\equiv52  \\pmod{105}$$\n
+<p>故 $x = 52$\n
+<h1>组合数学\n<h2>排列组合常用公式\n</h2>
+</h1>
+<p>从m个东西中\n
+<p>排列数(在乎顺序)：$A^m_n=\\frac{n!}{(n-m)!} $\n
+<p>组合数（不在乎顺序）：$C^m_n = \\frac{ {\\textstyle \\prod_{n-m+1}^{n}}}{m!}$\n
+<p>简化公式的推理如下:\n
+<p>$$C^m_n=\\frac{n!}{m!(n-m)!} $$\n
+<p>$$= \\frac{ {\\textstyle \\prod_{1}^{n}} }{{\\textstyle \\prod_{1}^{m} } {\\textstyle \\prod_{1}^{n-m} }}$$\n
+<p>$$= \\frac{ {\\textstyle \\prod_{1}^{n-m}}{\\textstyle \\prod_{n-m+1}^{n}} }{{\\textstyle \\prod_{1}^{m} } {\\textstyle \\prod_{1}^{n-m} }}$$\n
+<p>$$= \\frac{ {\\textstyle \\prod_{n-m+1}^{n}} }{{\\textstyle \\prod_{1}^{m}  }}$$\n
+<p>$$= \\frac{ {\\textstyle \\prod_{n-m+1}^{n}}}{m!}$$\n
+<p>隔板法：$C^{m-1}_{n+m-1}$\n
+<p>错位排列公式：$D_n=(n-1)*(D_{n-1}+D_{n-2})$\n
+<p>一个数列的全排列的个数是数列的数的个数的阶乘除以每个数出现的次数的阶乘\n
+<p>*<em>以上公式的详细证明请自行搜索（或者有空了我在写）\n<h2>运用费马小定理求解组合数\n</h2>
+<p>求解 $C^m_n \\mod p $ ($p$ 为质数) 的值\n
+<p>已知：\n
+<p>$$C^m_n=\\frac{n!}{m!(n-m)!} $$\n
+<p>可以转化为 $n!$ 乘上 $m!(n-m)!$ 的逆元\n
+<p>由前文费马小定理可知一个数 $a \\mod p$ 的逆元就是 ${a!}^{p-2}$\n
+<p>用代码实现非常的轻松：\n
+<pre><code class='\"language-cpp\"'>typedef long long ll;\nconst int mod = p; \/\/p是质数\n\nint fac[maxn], inv[maxn]; \/\/ fac[i]，inv[i] 分别代表 i! 和 i 的逆元\n\nll QuiclPow(ll x, ll y) { \/\/快速幂\n    ll ans = 1;\n    while(y != 0) {\n        if(y &amp; 1) ans = ans * x % mod;\n        x = x * x % mod;\n        y &gt;&gt;= 1;\n    }\n    return ans;\n}\n\nvoid init() {\n    fac[0] = 1;\n    \/\/inv[0] = 1;\n    for(int i = 1; i &lt;= maxn - 5; i++) {\n        fac[i] = fac[i - 1] * i % mod; \/\/计算阶乘\n        inv[i] = QuiclPow(fac[i], mod - 2); \/\/费马小定理求解逆元\n    }\n}\n<p>知道了逆元之后我们也知道了阶乘，就可以愉快的求出组合数了awa\n
+<pre><code class='\"language-cpp\"'>C = fac[n] * inv[m] % mod * inv[n - m] % mod;\n<h1>线性代数\n<h2>矩阵\n</h2>
+</h1>
+<p>通俗易懂的说，矩阵在 OI 中就是一个二维数组。\n
+<h3>矩阵乘法\n</h3>
+<p>对于一个矩阵 $A$：\n
+<p><code class='\"katex-inline\"'>\\begin{bmatrix} a_{11} &  a_{12} &  a_{13}\\\\ a_{21}  &  a_{22} &  a_{23}\\end{bmatrix}\n<p>一个矩阵 $B$：\n
+<p><code class='\"katex-inline\"'>\\begin{bmatrix} b_{11} &  b_{12}\\\\ b_{21}  &  b_{22}\\\\ b_{31}  & b_{32}\\end{bmatrix}\n<p>矩阵 $C$ 为 $A、B$ 的乘积，记为 $C = A \\times B$ 。\n
+<p>$A$ 的行数列数分别为 $n、m$ ，$B$ 的行数列数分别为 $x、y$。\n
+<p>当且仅当 $m=x$ 的时候两个矩阵才能相乘，矩阵乘法不满足乘法交换律，但满足乘法结合律。因为若交换两个矩阵，原先的限制条件变为 $n=y$ 不一定成立。\n
+<p>新矩阵的表示方法如下：\n
+<p><code class='\"katex-inline\"'>\\sum_{i=1}^{n} \\sum_{j=1}^{y}c_{ij}=\\sum_{k_1}^{m或x} a_{ik} \\times a_{k_j}\n<p>通俗易懂的来说：\n
+<p><code class='\"katex-inline\"'>\\begin{bmatrix} a_{11}\\times b_{11} +  a_{12}\\times b_{21} + a_{13}\\times b_{31}& \\cdots \\\\  \\cdots & a_{21}\\times b_{12} +  a_{22}\\times b_{22} + a_{23}\\times b_{32}\\end{bmatrix}\n<h3>矩阵加速递推\n</h3>
+<p>众所周知，斐波那契数列的递推式如下：\n
+<p><code class='\"katex-inline\"'>F_n = \\left\\{\\begin{aligned} 1 \\space (n \\le 2) \\\\ F_{n-1}+F_{n-2} \\space (n\\ge 3) \\end{aligned}\\right.\n<p>当 $n \\le 1 \\times 10^9$ 时，通过 $O(n)$ 的方法还是可以勉强计算出 $F_n$ 的值的，但当 $n \\le 1 \\times 10^{18}$ 时呢？很显然这辈子我们都见不到这个问题的答案了。\n
+<p>为了优化这个递推式，我们就可以用到矩阵快速幂，也就是矩阵加速递推的方式来解答。\n
+<p>矩阵乘计算线性递推式时，需要一个数列矩阵和一个参数矩阵。数列矩阵中的一个值就代表着一个项，参数矩阵就是用来转移数列矩阵的矩阵，这样当我们在计算下一个函数值的时候只需要将数列矩阵乘上参数矩阵，通过斐波那契的例子来帮助我们理解这个问题。\n
+<p>数列矩阵如下：\n
+<p><code class='\"katex-inline\"'>\\begin{bmatrix}F_n &F_{n-1}\\end{bmatrix}\n<p>已知 $F<em>{n+1} = F{n} + F_{n-1}$。<br>\n所以参数矩阵为 \n<p><code class='\"katex-inline\"'>\\begin{bmatrix} 1 & 1\\\\ 1 & 0\\end{bmatrix}\n<p>意味着新的数列矩阵为：\n
+<p><code class='\"katex-inline\"'>\\begin{bmatrix} F_n+F_{n-1}& F_n\\\\\\end{bmatrix}\n<p></code></code></em></code></code></code></code></code></code></code></pre></code></pre></em></mo></mn></mo></mn></mi></msub></mtd></mtr></mn></mo></mn></mi></msub></mtd></mtr></mn></mo></mn></mi></msub></mtd></mtr></mtable></mo></mrow></mstyle></mrow></math></mo></mo></mn></mspace></mi></mo></mspace></mn></mo></mn></mi></msub></mn></mtd></mtr></mo></mn></mspace></mi></mo></mspace></mn></mo></mn></mi></msub></mn></mtd></mtr></mo></mn></mspace></mi></mo></mspace></mn></mo></mn></mi></msub></mn></mtd></mtr></mtable></mo></mrow></mstyle></mrow></math></mo></mo></mn></mspace></mi></mo></mspace></mn></mo></mi></mtd></mtr></mo></mn></mspace></mi></mo></mspace></mn></mo></mi></mtd></mtr></mo></mn></mspace></mi></mo></mspace></mn></mo></mi></mtd></mtr></mtable></mo></mrow></mstyle></mrow></math></strong></mo></mo></mi></mi></msub></mspace></mi></mo></mspace></mi></mi></msub></mo></mi></mtd></mtr></mo></mtd></mtr></mo></mn></mi></msub></mspace></mi></mo></mspace></mn></mi></msub></mo></mi></mtd></mtr></mo></mn></mi></msub></mspace></mi></mo></mspace></mn></mi></msub></mo></mi></mtd></mtr></mtable></mo></mrow></mstyle></mrow></math></strong></strong></strong></strong></strong></strong></strong></strong></strong></span>
+</li>
+</ol></strong></strong></strong></code></pre>
+</h4>
+</li>
+</ul>
+</li>
+</ul></strong></strong></code></pre></code></code></pre></code></pre></code></pre>
+</h2>
+</h1></strong>
+</li>
+</ul>

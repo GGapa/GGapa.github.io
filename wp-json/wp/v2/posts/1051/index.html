@@ -1,0 +1,145 @@
+{"id":1051,"date":"2024-02-03T23:18:49","date_gmt":"2024-02-03T15:18:49","guid":{"rendered":"https:\/\/ggapa.github.io\/?p=1051"},"modified":"2024-02-21T11:51:40","modified_gmt":"2024-02-21T03:51:40","slug":"%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0cesc","status":"publish","type":"post","link":"https:\/\/ggapa.github.io\/2024\/02\/03\/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0cesc\/","title":{"rendered":"做题笔记(CSES)"},"content":{"rendered":"<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-1075\"">CSES - 1075 Permutations II\n<p>动态规划好题。\n
+<h4>解法一（recommend)\n</h4>
+<p>定义 $F(i, j, k)$ $1$ 表示在 1 到 $i$ 的排列中，满足有 $j$ 对相邻的 $&lt;i$ 的差为 $1$，$k = 1$ 或 $0$ 分别对应 $i$ 和 $i - 1$ 是否相邻的排列个数，易得 $F(1, 0, 0) = 1$，$F(2, 0, 1) = 2$。设当前已经处理完了前 $i$ 个排列的情况，我们考虑 $i + 1$ 放置的位置。\n
+<ul>\n<li>如果 $i$ 和 $i - 1$ 不相邻，将 $i + 1$ 放到 $i$ 旁边有两种选择，$F(i + 1, j, 1) += 2F(i, j, 0)$。\n</li>
+<li>如果 $i$ 和 $i - 1$ 相邻，将 $i$ 插入到 $i$ 的两侧有两种情况：\n<ol>\n<li>添加到 $i$ 和 $i - 1 $ 外侧，此时产生了一个新的相差为 $1$ 的相邻元素，$F(i + 1, j + 1, 1) += F(i, j, 1)$。\n</li>
+<li>添加到 $i$ 和 $i - 1$ 中间，此时相差为 1 的相邻元素数量并没有改变，$F(i + 1, j, 1) += F(i，j, 1)$\n\n\n</li>
+<li>如果将 $i$ 加入到原本相差 $1$ 的两个元素($&lt;i$)中， 相差的元素会减少一对，此时依然分两种情况：\n<ol>\n<li>$i$ 和 $i - 1$ 是相邻的，$F(i + 1, j, 0) += j \\times F(i, j, 1)$ 。\n</li>
+<li>$i$ 和 $i - 1$ 不相邻，此时会使 $j$ 减少 $1$ ，$F(i + 1, j - 1, 0) += j \\times F(i, j, 0)$。\n\n\n</li>
+<li>如果将 $i + 1$ 放到序列的其他位置（不能放在 $i$ 和 $i - 1$ 之间，上文已经讨论过了这种情况），此时有 $i - j - 1$ 个位置可以用，还是分两种情况：\n<ol>\n<li>若 $i$ 和 $i - 1$ 不相邻，$F(i + 1, j, 0) += (i- j- 1) \\times F(i, j, 0)$ 。\n</li>
+<li>若 $i$ 和 $i - 1$ 是相邻的，$F(i + 1, j + 1, 0) += (i - j - 1) \\times F(i, j, 1)$。\n\n\n\n<p>至此，我们已经分析完了所有的情况，最终的所求答案为 $F(n, 0, 0)$ ，时间复杂度 $O(n^2)$。\n
+<h4>解法二 ❓\n</h4>
+<p>这玩意是有规律的，详见 <a href="\"https:\/\/oeis.org\/A002464\"">OEIS - A002464 ，怎么推出来的等我去问问大佬。\n<p><a href="\"https:\/\/vjudge.net\/solution\/49146336\"">AC code by CYR\n<h4>总结\n</h4>
+<p>一开始做这道题的时候并没有想出来这道题是动态规划，我还以为是数学题，甚至都已经发现了前后两种状态之间的关系，若有很<strong>明显的关系，首先要考虑的就是<strong>动态规划或组合递推。\n<p>关于状态的设计，需要找到多个会影响的维度，大概就是以下几点：\n
+<ol>\n<li>前 $i$ 个元素所求得的答案。\n</li>
+<li>会对后续内容产生影响的 $j$ 。\n</li>
+<li>以及是否存在某些特殊情况会导致规律不适用的布尔值 $k$ 。\n\n<h3>CSES-1077 Sliding Window Cost\n<h4>题目大意\n</h4>
+</h3>
+<p>给定一个包含 $n$ 个整数的数组。你的任务是计算每个由 $k$ 个元素组成的窗口，从左到右，使所有元素相等的最小总成本。\n
+<p>你可以用成本为 $x$ 增加或减少每个元素，其中 $x$ 是新值和原始值之间的差值。总成本是这些成本的总和。\n
+<h4>解题思路\n</h4>
+<p>是滑动窗口，我们定义两个集合 $lq$ 和 $rq$ 分别代表小于等于和大于中位数的元素，其中 $lq$ 的最后一个元素就是区间内的中位数。定义 $m$ 表示区间内第 $m$ 个数为中位数。\n
+<p>在进行窗口滑动时，考虑如何更新 $lq$ 和 $rq$：\n
+<ul>\n<li>若 $|lq| &lt; m$ ，应当先在 $rq$ 中插入当前元素，接着将 $rq$ 中最小的元素转移到 $lq$ 中。\n</li>
+<li>否则，应当在 $lq$ 中插入当前元素，接着嫁给你 $lq$ 中的最大元素转移到 $rq$ 中。\n\n<p>为了计算当当前区间的最小成本，我们定义：\n
+<ul>\n<li>$ls$ 代表 $lq$ 中元素的总和。\n</li>
+<li>$rs$ 代表 $rq$ 中元素的总和。\n</li>
+<li>$med$ 代表中位数，也就是 $ls$ 中最大的元素。\n\n<p>那么可以得到区间最小总成本为：$(med\\cdot lc - ls) + (rs - med\\cdot rc)$ 。\n
+<p><a href="\"https:\/\/vjudge.net\/solution\/49062009\/yGEPyhEqMlS9FX0yr1ND\"">AC code\n<h4>总结\n</h4>
+<p>对于区间滑动窗口中位数问题，可以考虑建立两个集合，来进行求解。对于滑动窗口问题，<code>set 是一个很好的选择。\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-1093\"">CSES - 1093 Two Sets II\n<p>首先考虑无解的情况，记 $N = \\sum_{1}^{n}$，易得若 $2|n$ 则一定有解。\n
+<p>这 $n$ 个数的和为 $\\frac{n(n +1)}{2}$ ，那么每一部分的的和为 $\\frac{n(n +1)}{4}$，题目中 $n$ 的范围较小， 这暗示了用 01 背包来解决问题。\n
+<p>我们令 $\\texttt{dp}{[i][j]}$ 代表在前 $1-i$ 个数中，组成和为 $j$ 的数量，可以得到转移方程为 $\\texttt{dp}{[i][j]} = \\texttt{dp}{[i-1][j]} + \\texttt{dp}[i-1][j - i]$，增添或者不增添的情况。\n
+<p><a href="\"https:\/\/vjudge.net\/solution\/48920960\/rxrommxRnKl5flEe4y9b\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-1194\/origin\"">CSES - 1194 Monsters\n<p>这道题很明显用 BFS，问题在于迷宫中出现了怪物，我们的勇士不能和怪物接触，转换一下就是，勇士不能到达怪物可能所在的区域。\n
+<p>在转换一下，怪物永远比勇士先走一步，勇士不能走到怪物所走过的面积，考虑把怪物和勇士在一起进行 BFS，将怪物先入队，这保证了怪物总是比勇士先走。\n
+<p>注意：不要忘记特判边界条件！\n
+<p>总结：调试优先检查边界条件，做题时可以考虑不同的入队顺序达到所需要的结果\n
+<p><a href="\"https:\/\/vjudge.net\/solution\/49008108\/271sCw0fKPFv5Da33vZq\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-1203\"">CSES - 1203 Visiting Cities\n<p>双向最短路和大数判断相等操作，\n
+<p>若一个点 $i$ 一定处于 $1$ 到 $n$ 的最短路上，那么：\n
+<ul>\n<li>$dis(1, i) + dis(i, n) = dis(1,n)$。\n</li>
+<li>$way(1,i)\\times way(i, n) = way(i ,n)$ 。\n\n<p>其中我们定义 $dis(u, v)$ 代表节点 $u$ 致节点 $v$ 的最短距离， $way(u, v)$ 代表节点 $u$ 到 $v$ 的最短路数量。\n
+<p>考虑令起点分别为 $1$ 和 $n$ ，跑两次 <code>Dijkstra，接着就能解决以上的判断。但是会有一个问题，最短路的数量可能会超过 <code>long long  所承受的，又因为此不要求输出最终的数值，只需要判断是否相等，我们可以挑选两个大质数，分别对两个数组进行操作，若最后结果相同的概率是非常小的。\n<p>这种方法是用于判断大数是否相同的常用套路，我们应当积累常用质数：\n
+<ul>\n<li>998244353、1e9 + 7、1e8 + 7、1e9 + 9\n\n<p>由于这道题卡 9982444353 不能用。<br>\n<a href="\"https:\/\/vjudge.net\/solution\/49114207\/R3p5cDqmTNJRrdImTm8t\"">AC code\n<p>####123123123\n
+<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-1625#author=GPT_zh\"">CSES - 1625 Grid Paths\n<p>一道非常好的搜索题\n
+<h4>朴素算法\n</h4>
+<p>我们简单的使用回溯法进行爆搜，并计算这样的路径数量。\n
+<p>运行时间：483s\n
+<p>递归调用次数：760亿\n
+<h4>优化1\n</h4>
+<p>如果在访问了所有的方格前就到达了终点，又或者是步数已经达到了指定步数却还没有到。满足任意一个就可以退出搜索。\n
+<p>运行时间：119s\n
+<p>递归调用次数：200亿\n
+<h4>优化2\n</h4>
+<p>如果碰到了方格边缘，则会把整个地图分成两个部分，若其中包含还未访问过的方格，则一定无解，退出递归即可。\n
+<p>运行时间：1.8s\n
+<p>递归调用次数：2.21亿\n
+<h4>优化3\n</h4>
+<p>考虑对优化 2 进行拓展，若在搜索时无法继续前进，需要向左或者向右转，网格就会分成两个部分，若两者中包含未被访问过的方格。很明显，此时一定无解。\n
+<p>运行时间：0.6s\n
+<p>递归调用次数：6900万\n
+<hr>\n<p>经过了优化三的优化之后，我们已经可以通过本题，为了达到优化三，我们需要提前将方格的边缘包围起来，俗话说就是将边缘的 <code>vis 数组标记为 <code>true 。\n<blockquote>
+<p>In backtracking, the search tree is usually large and even simple observations can effectively prune the search. Especially useful are optimizations that occur during the first steps of the algorithm, i.e., at the top of the search tree.\n
+<p>在进行回溯算法时，搜索树通常会非常庞大，即使是进行简单的观察也能有效的剪枝。尤其是在回溯算法的前几步非常有效果，也就是搜索树的顶端。\n
+<p>——<a href="\"https:\/\/usaco.guide\/problems\/cses-1625-grid-paths\/solution\"">USACO Guide\n<p><a href="\"https:\/\/vjudge.net\/solution\/49021389\/iDroLWx5FiFH4LSgSuHY\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-1757#author=GPT_zh\"">CSES - 1757 Course Schedule II \n<p>互相有先后关系，连边跑拓扑排序的经典问题，本质上属于贪心。\n
+<p>注意：\n
+<ul>\n<li>需要注意边与边之间的方向，注意输出的方式，可以考虑通过优先队列来维护\n\n<p><a href="\"https:\/\/vjudge.net\/solution\/49117315\/AuUcWmbwfUkyhrIrAsGU\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-2179\"">CSES - 2179 Even Outdegree Edges\n<p>图论\n
+<p>考虑在进行 DFS 生成树时直接贪心构造。\n
+<p>错：\n
+<ul>\n<li>在进行度数修改时把复杂操作直接过于简单化，直接将度数的标记直接规 0，并没有考虑多个儿子对答案造成的影响。\n\n<p>总结：\n
+<ul>\n<li>图论题可以先去一般化，先转换成树上问题，菊花图，链条来分析题目。\n</li>
+<li>边处理边操作，贪心局部解转化为全部解，对于还需要判断有没有解决方案的问题，往往可以从局部到全局，若局部合法但是全局不合法，那么就是无解的。所以说在考虑贪心的时候往往不需要太在意无解的情况，自然而然的就能冒出来无解的情况。\n</li>
+<li>但是这并不代表我们不分析无解情况，往往无解的情况会是一些题目的突破口可以帮助我们解题，但不应该被无解情况限制了思路，从而不敢考虑贪心\n\n<p><a href="\"https:\/\/vjudge.net\/solution\/49104109\/wYuu0QxmINTb1G2dUiTh\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-2228#author=0\"">CSES - 2228\n<p>首先不考虑题目中的限制条件，方案数应该为：$k^n$，那么如果只缺了一个数字呢？如果缺了一个数字所构成的方案为：$(k - 1)^n \\times \\binom 1k$ 。\n
+<p>如何理解？乘号左边代表的剩下的 $k - 1$ 个数字填入 $n$ 个空位的方案数，而乘号右边则代表着，从 $k$ 个数字中挑选 1 个所需要的方案数。\n
+<p>我们类比，如果缺了 $i$ 个数字，构成的方案数为$(k - i)^n \\times \\binom ik$ ，但是呢，由于一定缺少一个数字的情况，已经包含了一定缺少两个数字的情况，所以说我们要用容斥原理。\n
+<p>最终的答案为：\n
+<p>$$k^n - \\sum_{i = 1}^{k - 1} (k - i)^n \\times\\binom ik$$\n
+<p>总结：对于方案数问题可以优先考虑容斥原理；并从没有限制往有限制进行思考。\n
+<p><a href="\"https:\/\/vjudge.net\/solution\/48845881\/5Km8tJ8PuokMY3UyeHff\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-2414\"">CSES - 2414 List of Sums\n<p>考虑序序列 A 是单调递增，将 B 从小到大排序。我们可以推出以下结论：\n
+<ul>\n<li>$A_0 + A_1 = B_0$\n</li>
+<li>$A_0 + A_2 = B_1$\n\n<p>那么我们可以得到：\n
+<ul>\n<li>$A_2 - A_1 = B_1 - B_0$\n\n<p>考虑 $A_1 + A_2$ ，它的值一定是 $B_i,i \\in [2, n]$，这个说明了， $A_0$ 只有 $n - 2$ 种可能。\n
+<p>我们可以得到：$A_1 = \\frac{B_i - B_1 + B_0}{2}$ ，$A_0 = \\frac{B_1 + B_0 - B_i}2$，那么我们就可以便利每一个 $A_0$ 然后判断它能不能使 B 成立，如何测试？\n
+<p>对于每一轮测试，$A\\i$ 就等于 $B{\\min} - A_i$，之后从 B 中判断 $A_j + A_i(j &lt; i)$ 是否在 B 中并删除。\n
+<p><a href="\"https:\/\/vjudge.net\/solution\/48810705\/lpNKpEsYGnYwVRZe8VQh\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-2421\"">CSES - 2421 Counting Reorders \n<p>俗话说“正难则反”，因为直接求合法的情况很明显非常难，所以考虑反着来。我们将一个字符串分成若干个区间，使得每个区间里面的字母都相同。\n
+<p>将所有的字母分成 $x$ 个区间的方案数为 $A(x)$，则对于初始字符串全部重新排列的情况数为 $A(n)$，一定有两个相邻字符重复的数目就是 $A(n - 1)$，此时一定有一个长度为 2 的区间中字母相同，剩余的 $n - 1$ 个区间任意排列\n
+<p>相似的，一定有 $i$ 个字母连续相同的数目是 $A(n - i)$，因为 $A(n)$ 中已经包含了 $A(n - 1)$ 的情况，而 $A(n - 1)$ 中，同样也包含了 $A(n - 2)$ 的情况，所以说考虑容斥原理，最终的答案为:\n
+<p>$$\\sum_{i = 0}^{n} A(n - i) \\times(-1)^n$$\n
+<p>但是该如何计算 $A(x)$ 呢？定义 $D(i, j)$ 代表前 $i$ 中字符，分成 $j$ 个区间的方案数，那么 $A(n) = D(26,n)$，显然 $D(0, 0) = 1$，记第 $i$ 中字符出现的次数为 $c$，显然当 $c = 0$ 时，$D(i, j) = D(i - 1, j)$。否则，这 $c$ 个字符就要分成 $k \\in [1, c]$，个部分和已有的 $j$ 个区间混合，可以得到：\n
+<p>$$D(i, j + k) \\gets D(i, j + k)+D(i - 1,j)\\cdot \\binom {j+k}{k}\\cdot \\binom{c - 1}{k - 1} $$\n
+<p>如何理解以上的式子呢？其中 $\\binom {j+k}{k}$，表示将 $k$ 个区间插入原来的 $j$ 个区间中，就是在 $j + k$ 个区间中选择 $k$ 个，而 $\\binom{c - 1}{k - 1}$ 可以通过插板法理解。\n
+<p>总结：\n
+<ol>\n<li>对于正着求比较困难的组合数学题目，可以考虑反着求解。\n</li>
+<li>对于题目性质进行分析，构造出现不同情况的概率，并考虑容斥\n</li>
+<li>找到当前步骤和上一步骤的关系，进行递推。\n\n<p><a href="\"https:\/\/vjudge.net\/solution\/48862105\/77NzMr61ETRcPBZecWyq\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-2425#author=GPT_zh\"">CSES-2425 Stack Weights\n<p>某位高人曾经说过：对于找充要条件的题目，那就把它所有的必要条件全部列出来。\n
+<p>那么我们就考虑列出充分条件，经过大量的演算算我们发现：\n
+<ul>\n<li>如果堆 1 的重量大于堆 2 的重量，那么 $\\forall i \\in [1,n]$ ，定义 $l_i$ 表示堆 1 编号大于 $i$ 的砝码数，$r_i$ 代表堆 2 编号大于 $i$ 的砝码数，都有 $l_i &gt; r_i$。\n\n<p>对于堆 2 同理，问题就转化成了求解能否在某一时刻，堆 1 、堆 2 都能满足以上条件。\n
+<p>可以通过记录前缀和来快速判断条件是否成立：\n
+<ul>\n<li>若最小值不小于 0，则堆 1 一定重于堆 2\n</li>
+<li>最大值不大于 0，则堆 2 一定重于堆 1\n</li>
+<li>若以上条件均不满足，返回你寄了\n\n<p>可以考虑通过线段树进行区间最大最小值维护，其他数据结构应该也可以，但是我太菜了不会。\n
+<p>时间复杂度 $O(n \\log n)$ ，应该没有错吧。\n
+<p><a href="\"https:\/\/vjudge.net\/solution\/48801685\/Y0FQLG49NbJKhS7CsXR0\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-2426\"">CSES - 2426 Programmers and Artists\n<p>普通的枚举时间复杂度 $O(n^2)$ 会超时，考虑用贪心优化。\n
+<p>将每个人按照 $x - y$ 递减排序，考虑维护两个数组 $suf[i]$ 和 $pre[i]$，分别表示后 $i$ 个人进行的贡献和前 $i$ 个人进行的贡献。枚举时就考虑 $pre[i] + suf[i + 1]$，好像可以称作中途相遇？\n
+<p><a href="\"https:\/\/www.luogu.com.cn\/problem\/P7913\"">[CSP-S 2021] 廊桥分配 也是一道类似的题目，把每一种可能情况枚举出来，接着通过中途相遇来做。\n<p>总结:\n
+<ul>\n<li>什么题目可以通过中途相遇来做？\n<p>有两个集合 $A$、$B$，有一元素 $i$，若 $i \\in A$ 为真，那么 $i\\in B$ 一定为假，反之亦然。接着我们就可以通过某些手段预处理(排序)，接着在计算出 $A$ 和 $B$ 在不同大小的不同答案。接着通过一个 $O(n)$ 的枚举去统计答案即可。\n\n
+<p><a href="\"https:\/\/vjudge.net\/solution\/49116012\/9kTBWeMcuoIZbbUDN2Dz\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/CSES-2430\"">CSES - 2430 Binary Subsequences\n<p>构造神题，依然是经典的反着来，我们先考虑正着推，记 $x$ 和 $y$ 分别代表以 0 结尾和以 1 结尾的子序列个数，如果接下来又是 0，则 $ x = x + y + 1$，如果下一位是 1 那么 $y = x + y + 1$。\n
+<p>由于 $x + y = n$ ，我们可以依次枚举 $x$ 和 $y$，然后反推出对应的 01 串，有点类似于辗转相除法。\n
+<p>均摊时间复杂度 $O(n\\log n)$\n
+<p><a href="\"https:\/\/vjudge.net\/solution\/49155238\"">AC code\n<h3><a href="\"https:\/\/vjudge.net\/problem\/OpenJ_Bailian-2356#author=GPT_zh\"">OpenJ_Bailian - 2356 Find a multiple\n<p>定义 $s<em>i$ 代表 $\\sum{i=1}^{n} a_i$ ，若 $N|s_i$ ，则输出 $a_j,\\forall j[1,i]$ 即可。\n<p>若 $s_i\\equiv s_j\\mod{N}(i&lt;j)$ ，则输出 $a_k,\\forall k\\in[i,j]$ 即可\n","protected":false},"excerpt":{"rendered":"
+<p>CSES &#8211; 1075 Permutations II 动态规划好题。 解法一（recommend) 定义 $ [&hellip;]\n","protected":false},"author":1,"featured_media":0,"comment_status":"open","ping_status":"open","sticky":false,"template":"","format":"standard","meta":{"footnotes":""},"categories":[12],"tags":[33],"_links":{"self":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/1051"}],"collection":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts"}],"about":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/types\/post"}],"author":[{"embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/users\/1"}],"replies":[{"embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/comments?post=1051"}],"version-history":[{"count":46,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/1051\/revisions"}],"predecessor-version":[{"id":1145,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/1051\/revisions\/1145"}],"wp:attachment":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/media?parent=1051"}],"wp:term":[{"taxonomy":"category","embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/categories?post=1051"},{"taxonomy":"post_tag","embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/tags?post=1051"}],"curies":[{"name":"wp","href":"https:\/\/api.w.org\/{rel}","templated":true}]}}</em></a></h3></a></a></h3></a>
+</li>
+</ul></a></a></h3></a>
+</li>
+</ul>
+</li>
+</ul></a></h3></a>
+</li>
+</ol></a></h3></a>
+</li>
+</ul>
+</li>
+</ul></a></h3></a></a></h3></a>
+</li>
+</ul>
+</li>
+</ul></a></h3></a>
+</li>
+</ul></a></h3></a></a>
+</blockquote></code></code></a></h3></a>
+</li>
+</ul></code></code>
+</li>
+</ul></a></h3></a></a></h3></a></a></h3></code></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol></strong></strong></a></a>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul></a></h3>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CodeForces &#8211; GGapa&#039;s website</title>
+	<atom:link href="http://ggapa.net/tag/codeforces/feed/?simply_static_page=1896" rel="self" type="application/rss+xml" />
+	<link>https://ggapa.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 14 Feb 2024 03:44:43 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
+
+<image>
+	<url>https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-32x32.png</url>
+	<title>CodeForces &#8211; GGapa&#039;s website</title>
+	<link>https://ggapa.github.io/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Codeforces Round 925 (Div. 3)(CF1931)</title>
+		<link>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/</link>
+					<comments>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Wed, 14 Feb 2024 03:07:06 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[CodeForces]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1100</guid>
+
+					<description><![CDATA[A- D 简单 F 将题目条件转化一下，相当于就是给了一堆先后关系，考虑将前面的与后面的连边，也就是 $a_{ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>A- D 简单</h1>
+<h1>F</h1>
+<p>将题目条件转化一下，相当于就是给了一堆先后关系，考虑将前面的与后面的连边，也就是 $a_{ij} \rightarrow a_{ij+1}$ 连边，然后用拓扑判环，如果无环则有解，反之亦然。</p>
+<p>总结：</p>
+<ul>
+<li>对于题目中有一堆关系时，可以互相连边，若有环，则说明了关系不成立。 </li>
+<li><img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" />连边还适用于排序类问题。</li>
+</ul>
+<h1>G</h1>
+<p><img decoding="async" src="https://espresso.codeforces.com/d862915ed3dc627101b0e632c1c778b818648879.png" alt="" /></p>
+<p>四个拼图，其个数记为 $c_1,c_2,c_3,c_4$ ，分析拼图的凹凸性，只有拼图 1、2 会改变整个序列的凹凸性，且 1、2 拼图只能交替拼在一起。</p>
+<p>那么可以得到，若 $|c_1-c_2| &gt; 1$ 则问题无解，否则一定有解，而且拼图 3、4 并不会相互影响，我们可以进行分类讨论。</p>
+<ul>
+<li>
+<p>若 $c_1 = c_2 = 0$ ，且 $c_3\neq 0 且 c_4 \neq 0$ ，则无解，否则方案数为 1。</p>
+</li>
+<li>
+<p>若 $c_1 = c_2$ ，有两种情况：</p>
+<ol>
+<li>若 1 开头，那么 3 有 $c_1$ 个地方可以插入，4 有 $c_1 + 1$ 个地方可以插入，方案数为 $\binom{c_1+c_3-1}{c_1-1} \binom{c_2+c_4}{c_1}$ 。</li>
+<li>若 2 开头，那么 3 有 $c_1 + 1$ 个地方可以插入，4 有 $c_1$ 个地方可以插入，方案数为 $\binom{c_1+c_3}{c_1} \binom{c_1+c_4-1}{c_1-1}$。</li>
+</ol>
+<p>总方案数为二者的和 $\binom{c_1+c_3-1}{c_1-1} \binom{c_2+c_4}{c_1} + \binom{c_1+c_3}{c_1}\binom{c_1+c_4-1}{c_1-1}$。</p>
+</li>
+<li>
+<p>若 $c_1 = c_2 + 1$ 拼好 1,2 只有一种方案，3,4 均有 $c_1$ 个地方可以插入，方案数为 $\binom{c_1+c_3 - 1}{c_1 - 1} \binom{c_1+c_4-1}{c_1-1}$。</p>
+</li>
+<li>
+<p>若 $c_1 = c_2 - 1$ 拼好 1,2 也只有一种方案， 3,4 均有 $c_1 + 1 $ 个地方可以插入，方案数为 $\binom{c_1+c_3}{c_1} \binom{c_1+c_4}{c_1}$。</p>
+</li>
+</ul>
+<p>预处理组合数，$O(1)$ 询问即可。</p>
+<p>总结： </p>
+<ul>
+<li>若有无解的情况，可以先分析无解的情况。</li>
+<li>若某项事物对于某些性质没有改变，则无需在意，优先分析情况比较少且对某些性质（比如说有无解）有影响的。</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

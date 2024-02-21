@@ -1,0 +1,67 @@
+{"id":715,"date":"2023-10-19T22:49:14","date_gmt":"2023-10-19T14:49:14","guid":{"rendered":"https:\/\/ggapa.github.io\/?p=715"},"modified":"2023-11-17T20:20:21","modified_gmt":"2023-11-17T12:20:21","slug":"csp-%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e3%80%81%e6%98%93%e9%94%99%e7%82%b9%e4%bb%a5%e5%8f%8a%e4%b8%80%e4%ba%9b%e6%96%b9%e6%b3%95","status":"publish","type":"post","link":"https:\/\/ggapa.github.io\/2023\/10\/19\/csp-%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%e3%80%81%e6%98%93%e9%94%99%e7%82%b9%e4%bb%a5%e5%8f%8a%e4%b8%80%e4%ba%9b%e6%96%b9%e6%b3%95\/","title":{"rendered":"OI 注意事项、易错点以及一些方法"},"content":{"rendered":"<p>按照重要性递减\n
+<h1>注意事项\n</h1>
+<p>*<em>适用于四川\n<ul>\n<li>考试时要在 D 盘 csp 目录下作答，<strong>不能建立子文件夹。\n<li>代码中记得加<code>freopen，考试结束前记得删注释。\n<li>检查“地球”的路径和准考证号是否正确。\n</li>
+<li>注意数据范围选择合适的变量类型，若无法判断变量类型则一律开<code>long long。\n<li>防止乱开 <code>long long 出现的 MLE，TLE等问题。\n<li>若一个测试点中有多个测试数据，记得清空上个测试数据使用过的变量。\n</li>
+<li>代码中的<code>n、<code>m以及<code>i、<code>j不要写反。\n<li>时刻检查数组的大小，手动计算会不会 MLE，如果手算（计算器）算出的结果离限制很接近，建议开小一点。\n</li>
+<li>数组不要在函数里定义。\n</li>
+<li>及时删去不必要的数组防止爆炸。\n</li>
+<li>不要拿英文单词做变量名，可以是缩写。\n</li>
+<li>如果用<code>cin要关同步。\n<li>关同步后的 <code>cin 不要和 <code>printf 一起使用。\n<li>递归注意栈溢出\n</li>
+<li>若题目中要求取模，在程序中应该步步取模，不要使用 <code>A += B; A % mod 类似的修改方法，应该使用<code>A = (A + B) % mod;\n<li>注意判断边界问题，防止内存溢出。\n</li>
+<li>不要乱使用以 <code>_ 开头的函数，或者是比较生僻的函数。\n<li>善用对拍。\n</li>
+<li>考试中若要在Windows环境中使用<code>C++14需要在<code>dev中的<code>编译选项中加上<code>-std=c++14\n<li>注意精度问题，尽量避免除法运算。\n</li>
+<li>写部分分操作完必须退出程序。\n</li>
+<li>不要在代码里写小故事\n</li>
+<li>考完试后请&quot;友善&quot;的对待每一个敲键盘特响的人，别被他们影响心态。\n</li>
+<li>请好好的利用你周围的人，有可能他们很厉害.\n\n<hr>\n<p>NOIP\n
+<ol>\n<li>认真看题，避免题目看错导致心态爆炸，先读完全部四道题，再开始写代码，难度不一定递增。\n</li>
+<li>争取 AC 第一题。\n</li>
+<li>后面的题最好是先写部分分再打正解。\n</li>
+<li>若一道题超过了一个半小时建议跳过，先去打部分分。死磕一道题的性价比一点都不好。\n</li>
+<li>谨记 NOIP 的部分分是相当多的，如果你发现自己打不出来部分分请考虑简化自己的思路。\n</li>
+<li>考试开始的时候应该多拿少的分。\n</li>
+<li>不要太功利。\n\n<h1>技巧\n<h2>测样例\n</h2>
+</h1>
+<p>考试的时候样例很多，我们可以把所有的样例都复制到 csp 文件夹内，然后检查程序的时候直接修改文件操作名。\n
+<p>举个例子一道题目是<code>AKIOI，他的输入是<code>AKIOI.in，假如良心 CCF 给了 10 个样例，就可以将以下内容：\n<pre><code class='\"language-cpp\"'>freopen(&quot;AKIOI.in&quot;, &quot;r&quot;, stdin);\n<p>修改为\n
+<pre><code class='\"language-cpp\"'>freopen(&quot;AKIOI1.in&quot;, &quot;r&quot;, stdin);\nfreopen(&quot;AKIOI2.in&quot;, &quot;r&quot;, stdin);\nfreopen(&quot;AKIOI3.in&quot;, &quot;r&quot;, stdin);\n......\nfreopen(&quot;AKIOI10.in&quot;, &quot;r&quot;, stdin);\n<p>可见非常的方便，你就不用每运行一次就打开一个文本文档复制一下再打开另一个文本文档了。直接修改<code>freopen()_内中的内容即可。\n<h2>对拍\n</h2>
+<p>考试的时候可能会想出来一些奇妙的点子，但是想验证正确性怎么办呢？这时候对拍就发挥用处了。\n
+<p>完成对拍我们需要 4 个 cpp 文件他们的用处分别是：\n
+<ul>\n<li>需要验证的程序\n</li>
+<li>保证绝对正确的程序\n</li>
+<li>数据生成器\n</li>
+<li>校对器\n\n<p>接着我会通过一个例子来详细阐述每个 <code>cpp 的用处\n<blockquote>\n<p>题目描述：输入两个整数，其取值范围为[0, 1e18]，求他们的和。\n\n
+<p>我现在写了一份我不知道正不正确的程序。\n
+<pre><code class='\"language-cpp\"'>#include &lt;bits\/stdc++.h&gt;\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin &gt;&gt; a &gt;&gt; b;\n    cout &lt;&lt; a + b &lt;&lt; endl;\n    return 0;\n}\n<p>我有点不太放心于是我决定验证一下。先将代码另存为一下，并修改一下：\n
+<pre><code class='\"language-cpp\"'>\/\/ Wrong.cpp\n#include &lt;bits\/stdc++.h&gt;\nusing namespace std;\n\nnamespace V {\n    void Main() {\n        \/\/在这个里面放入你需要验证的程序，我拿a + b problem 举例子\n        int a, b;\n        cin &gt;&gt; a &gt;&gt; b;\n        cout &lt;&lt; a + b &lt;&lt; &quot;\\n&quot; ;\n    }\n}\n\nint main() {\n    freopen(&quot;test.in&quot;, &quot;r&quot;, stdin);\n    freopen(&quot;Wrong.out&quot;, &quot;w&quot;, stdout);\n    V::Main();\n    return 0;\n}\n<p>这样子他就能从<code>test.in中读入，在<code>Wrong.out中输出。\n<p>接着写一份你认为完全正确的代码。并对他添加输入输出重定向。\n
+<pre><code class='\"language-cpp\"'>\/\/Answer.cpp\n#include &lt;bits\/stdc++.h&gt;\nusing namespace std;\n#define int long long  \/\/应当一律使用long long 防止一系列问题的产生\n\nnamespace STD {\n    void Main() {\n        \/*这里应该放你认为正确的代码*\/\n        int a, b;\n        cin &gt;&gt; a &gt;&gt; b;\n        cout &lt;&lt; a + b &lt;&lt; &quot;\\n&quot; ;\n\n    }\n}\n\nsigned main() {\n    freopen(&quot;test.in&quot;, &quot;r&quot;, stdin);\n    freopen(&quot;std.out&quot;, &quot;w&quot;, stdout);\n    STD::Main();\n    return 0;\n}\n<p>接着开始生成数据\n
+<pre><code class='\"language-cpp\"'>\/\/data.cpp\n#include &lt;bits\/stdc++.h&gt;\nusing namespace std;\n#define int long long \/\/\/\/应当一律使用long long 防止一系列问题的产生\n\nint rnd(int x, int y) {\n    return ((rand() * rand() * rand()) % y + x) % y; \/\/可用于生成指定范围内的随机数\n}\nvoid Start() {\n    cout &lt;&lt; rnd(1, 1e18)  &lt;&lt; &quot; &quot; &lt;&lt; rnd(1, 1e18) &lt;&lt; &quot;\\n&quot;;\n}\nsigned main() {\n    freopen(&quot;test.in&quot;, &quot;w&quot;, stdout);    \/\/将数据生成到`test.in`中\n    srand(time(0)); \/\/随机数种子\n    Start();\n}\n<p>最重要的地方来了，校对器。校对器主要利用了 Windows cmd 中的 fc 命令，可以比较两个文件。\n
+<pre><code class='\"language-cpp\"'>\/\/check.cpp\n#include&lt;bits\/stdc++.h&gt;\nusing namespace std;\nint main()\n{\n    while (true) \n    {\n                                                \/\/system 可以调用 Windows 相关的指令\n        system(&quot;data.exe&quot;);                       \/\/先运行数据生成器\n        system(&quot;Answer.exe&quot;);                 \/\/运行保证正确的代码\n        system(&quot;Wrong.exe&quot;);                  \/\/运行待验证的代码\n        if (system(&quot;fc std.out Wrong.out&quot;)) { \/\/开始比较\n            system(&quot;pause&quot;);                  \/\/如果有差异则暂停等待操作，pause 就是&quot;按下任意键继续&quot;。\n        }\n    }\n    return 0;\n}\n<p>完成了 4 个 cpp 的编写之后先把他们全部都<strong>编译一遍，一定要编译！！！\n<p>然后运行check.cpp。然后就可以去看其他的题目了，时不时的看一眼有没有问题。\n
+<p>可以看到一开始输出的是\n
+<pre><code class='\"language-cpp\"'>Comparing files std.out and WRONG.OUT\nFC: no differences encountered\n<p>这个代表的没有问题，若你运行了接近 10 分钟你的程序依然没有停止，那么就大概率说明你想出来的做法是可行的。\n
+<p>若显示\n
+<pre><code class='\"language-cpp\"'>Comparing files std.out and WRONG.OUT\n***** std.out\n2874271586\n***** WRONG.OUT\n-1420695710\n*****\n\nPress any key to continue . . .\n<p>这就说明你的代码确确实实存在问题，需要调整，具体的问题已经被指出，可查看 <code>test.in、<code>Wrong.out、<code>std.out的内容，根据输出来判断代码中哪里出现了问题。\n<p>通过分析，我们发现输出负数是没开 long long 造成的，发现问题之后修改代码就不是一件很难的事情了。\n
+<hr>\n<p>对拍还适用于日常code中的debug，可以复制一篇题解来帮助自己调试\n
+<h1>结语\n</h1>
+<p>希望以上内容能够帮助到你。\n
+<p>若你觉得有什么内容你没有懂，或者是不够详细，有遗漏等你可以直接在页面下方评论或发邮件联系我\n
+<p>祝大家：\n
+<p>$${\\Huge \\mathbf{{\\color{Red}CSP2023RP+=+\\infty  } } } $$\n","protected":false},"excerpt":{"rendered":"
+<p>按照重要性递减 注意事项 *适用于四川 考试时要在 D 盘 csp 目录下作答，不能建立子文件夹。 代码中记得 [&hellip;]\n","protected":false},"author":1,"featured_media":0,"comment_status":"open","ping_status":"open","sticky":false,"template":"","format":"standard","meta":{"footnotes":""},"categories":[12],"tags":[],"_links":{"self":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/715"}],"collection":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts"}],"about":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/types\/post"}],"author":[{"embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/users\/1"}],"replies":[{"embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/comments?post=715"}],"version-history":[{"count":18,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/715\/revisions"}],"predecessor-version":[{"id":946,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/posts\/715\/revisions\/946"}],"wp:attachment":[{"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/media?parent=715"}],"wp:term":[{"taxonomy":"category","embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/categories?post=715"},{"taxonomy":"post_tag","embeddable":true,"href":"https:\/\/ggapa.github.io\/wp-json\/wp\/v2\/tags?post=715"}],"curies":[{"name":"wp","href":"https:\/\/api.w.org\/{rel}","templated":true}]}}</code></code></code></code></pre></code></pre></strong></code></pre></code></pre></code></pre></code></code></code></pre></code></pre>
+</blockquote></code>
+</li>
+</ul></code></code></pre></code></pre></code></code>
+</li>
+</ol>
+</li></code></code></code></code>
+</li></code>
+</li></code></code>
+</li></code></code>
+</li></code>
+</li></code></code></code></code>
+</li></code>
+</li></code>
+</li></code>
+</li></strong>
+</li>
+</ul></em>

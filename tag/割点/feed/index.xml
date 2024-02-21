@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>割点 &#8211; GGapa&#039;s website</title>
+	<atom:link href="http://ggapa.net/tag/%E5%89%B2%E7%82%B9/feed/?simply_static_page=1911" rel="self" type="application/rss+xml" />
+	<link>https://ggapa.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 18 Oct 2023 14:12:10 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
+
+<image>
+	<url>https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-32x32.png</url>
+	<title>割点 &#8211; GGapa&#039;s website</title>
+	<link>https://ggapa.github.io/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>无向图的连通性</title>
+		<link>https://ggapa.github.io/2023/10/18/%e6%97%a0%e5%90%91%e5%9b%be%e7%9a%84%e8%bf%9e%e9%80%9a%e6%80%a7/</link>
+					<comments>https://ggapa.github.io/2023/10/18/%e6%97%a0%e5%90%91%e5%9b%be%e7%9a%84%e8%bf%9e%e9%80%9a%e6%80%a7/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Wed, 18 Oct 2023 14:12:10 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[割点]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=705</guid>
+
+					<description><![CDATA[割点 什么是割点 在无向图中所有能够互通的点构成了连通分量，其中有一些关键的点，如果删除它，如果这个联通分量被 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>割点</h1>
+<h2>什么是割点</h2>
+<p>在无向图中所有能够互通的点构成了连通分量，其中有一些关键的点，如果删除它，如果这个联通分量被分成了两个或者更多，则称这个点为割点。</p>
+<p>通俗的讲，现在有很多个主机连在一起构成网络，但是如果有一个主机烂掉了,你就无法访问洛谷，则称则称这个主机是一个割点。</p>
+<h2>求割点</h2>
+<p>在通过 DFS 遍历个图的时候，很容易发现如果一个点是割点，则它的儿子们都无法不通过还没被访问过的边返回割点之前的点，如下图所示：</p>
+<p><img decoding="async" src="https://z1.ax1x.com/2023/10/18/piPsZhd.png" alt="piPsZhd.png" /></p>
+<p>可以发现节点 2、3 都是割点，节点 2 的子节点们不能在不通过节点 2 的情况下到达节点一，节点 3 的子节点们只能通过 3 到达节点 1、2。</p>
+<p>但是节点 4 不是割点，因为节点 5 可以直接跳过节点 4 到达节点 3。</p>
+<p>知道了求割点的原理之后我们考虑算法实现，定义两个数组 $dfn[i]$ 和 $low[i]$。 </p>
+<p>$dfn[i]$ 表示第 $i$ 个节点第一次被访问到的顺序。</p>
+<p>$low[i]$ 表示第 $i$ 个节点和 $i$ 的后代在不经过已经被访问过的边的条件下，能到达的 $dfn[]$ 最小的节点。</p>
+<p>将刚刚的图从节点 1 开始遍历得到的结果如下：</p>
+<p><a href="https://imgse.com/i/piPsGNQ"><img decoding="async" src="https://z1.ax1x.com/2023/10/18/piPsGNQ.png" alt="piPsGNQ.png" /></a></p>
+<p>节点 4、5 都能通过一条另外的边返回节点 3。</p>
+<p>故我们就有了以下的代码：</p>
+<pre><code class="language-cpp">vector&lt;int&gt; G[maxn];
+int dfn[maxn], low[maxn];
+bool iscut[maxn];
+int cutsum = 0;
+int root;
+
+void dfs(int x) {
+    dfn[x] = low[x] = dfn[0]++;
+    int son = 0;
+    for(auto to : G[x]) {
+        if(!dfn[to]) {
+            son++;
+            dfs(to);
+            low[x] = min(low[x], low[to]);                      //如果他的后代能到达，那它也可以 
+            if(low[to] &gt;= dfn[x] &amp;&amp; x != root) cutsum += !iscut[x], iscut[x] = true; /这样子写可以方便去重 
+        }
+        else    //如果边已经被访问过了，回退处理                                               
+            low[x] = min(low[x], dfn[to]);
+    }
+    if(son &gt;= 2 &amp;&amp; x == root) cutsum += !iscut[x], iscut[x] = true;
+}
+</code></pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/10/18/%e6%97%a0%e5%90%91%e5%9b%be%e7%9a%84%e8%bf%9e%e9%80%9a%e6%80%a7/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
