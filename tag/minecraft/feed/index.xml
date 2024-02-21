@@ -9,7 +9,7 @@
 
 <channel>
 	<title>Minecraft &#8211; GGapa&#039;s website</title>
-	<atom:link href="http://ggapa.net/tag/minecraft/feed/?simply_static_page=1902" rel="self" type="application/rss+xml" />
+	<atom:link href="http://ggapa.net/tag/minecraft/feed/?simply_static_page=2735" rel="self" type="application/rss+xml" />
 	<link>https://ggapa.github.io/</link>
 	<description></description>
 	<lastBuildDate>Mon, 14 Aug 2023 09:50:31 +0000</lastBuildDate>
@@ -101,7 +101,7 @@
 </tr>
 </tbody>
 </table>
-<div class='admonition shadow-sm admonition-warning'><div class='admonition-body'>本文章尚未完工！</div></div>
+<p>[admonition color="orange"]本文章尚未完工！[/admonition]</p>
 <h2>iterationT 3.0.0</h2>
 <p><a href="https://www.bilibili.com/read/cv17966453/">官网</a></p>
 <p><strong>介绍</strong></p>

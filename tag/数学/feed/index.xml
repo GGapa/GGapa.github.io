@@ -9,7 +9,7 @@
 
 <channel>
 	<title>数学 &#8211; GGapa&#039;s website</title>
-	<atom:link href="http://ggapa.net/tag/%E6%95%B0%E5%AD%A6/feed/?simply_static_page=1929" rel="self" type="application/rss+xml" />
+	<atom:link href="http://ggapa.net/tag/%E6%95%B0%E5%AD%A6/feed/?simply_static_page=2486" rel="self" type="application/rss+xml" />
 	<link>https://ggapa.github.io/</link>
 	<description></description>
 	<lastBuildDate>Fri, 09 Feb 2024 12:44:42 +0000</lastBuildDate>
@@ -475,7 +475,7 @@ int main() {
 <p>$p$ 和 $\frac{i}{p}$ 互质：$\varphi(i) = \varphi(\frac{i}{p})\varphi(p)$。</p>
 </li>
 </ol>
-<span class='argon-hidden-text argon-hidden-text-blur' title='你知道的太多了！'>我真的受不了了！！！一个晚上就只写了这么点。数论真<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" />毒瘤QAQ$\enspace\enspace\enspace\enspace$--20230815</span>
+<p>[hidden tip="你知道的太多了！"]我真的受不了了！！！一个晚上就只写了这么点。数论真<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" />毒瘤QAQ$\enspace\enspace\enspace\enspace$--20230815[/hidden]</p>
 <h2>逆元</h2>
 <h3>定义</h3>
 <p>在模 $p$ 同余下，对每个 $x$，能找到一个整数 $x^{−1} ∈ [1, p)$，使任何数除以 $x$ 等价于乘 $x^{−1}$。这样的 $x^{−1}$ 称为 $x$ 在模 $p$ 同余下的逆元。</p>

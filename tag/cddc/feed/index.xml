@@ -9,7 +9,7 @@
 
 <channel>
 	<title>CDDC &#8211; GGapa&#039;s website</title>
-	<atom:link href="http://ggapa.net/tag/cddc/feed/?simply_static_page=1893" rel="self" type="application/rss+xml" />
+	<atom:link href="http://ggapa.net/tag/cddc/feed/?simply_static_page=2537" rel="self" type="application/rss+xml" />
 	<link>https://ggapa.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 12 Nov 2023 09:15:28 +0000</lastBuildDate>
@@ -40,8 +40,8 @@
 		<category><![CDATA[成都东辰]]></category>
 		<guid isPermaLink="false">http://10.0.0.2:81/?p=23</guid>
 
-					<description><![CDATA[我是成都东辰初2020级学生，在成都东辰就读三年，在这三年里遇到的现象以及一些问题我尽量真实且客观的表达出来。 [&#8230;]]]></description>
-										<content:encoded><![CDATA[<div class='admonition shadow-sm admonition-warning'><div class='admonition-title'>WARNING</div><div class='admonition-body'>本页面信息可能已失效或过时,不再适用于最新情况，如需了解最新且真实的信息请联系在校学生或学校官网</div></div>
+					<description><![CDATA[[admonition title="WARNING" color="orange"]本页面信息可能已失效或过 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>[admonition title="WARNING" color="orange"]本页面信息可能已失效或过时,不再适用于最新情况，如需了解最新且真实的信息请联系在校学生或学校官网[/admonition]</p>
 <p>我是成都东辰初2020级学生，在成都东辰就读三年，在这三年里遇到的现象以及一些问题我尽量真实且客观的表达出来。</p>
 <h1>学校简介</h1>
 <blockquote>

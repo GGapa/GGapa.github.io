@@ -1,0 +1,1298 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>GGapa&#039;s website</title>
+	<atom:link href="http://ggapa.net/feed/?simply_static_page=2338" rel="self" type="application/rss+xml" />
+	<link>https://ggapa.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 21 Feb 2024 03:51:40 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
+
+<image>
+	<url>https://ggapa.github.io/wp-content/uploads/2023/08/cropped-Untitled-32x32.png</url>
+	<title>GGapa&#039;s website</title>
+	<link>https://ggapa.github.io/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>做题笔记(UVA)</title>
+		<link>https://ggapa.github.io/2024/02/19/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0uva/</link>
+					<comments>https://ggapa.github.io/2024/02/19/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0uva/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Mon, 19 Feb 2024 01:16:48 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1125</guid>
+
+					<description><![CDATA[UVA 12661 Funny Car Racing 一个标准的最短路，但是在计算距离这一方面需要注意，当我们 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h3><a href="https://www.luogu.com.cn/problem/UVA12661">UVA 12661 Funny Car Racing</a></h3>
+<p>一个标准的最短路，但是在计算距离这一方面需要注意，当我们来当一个赛道上时，会有以下几种情况：</p>
+<ul>
+<li>赛道正在开放，且在通过赛道之前赛道不会关闭，时间即为通过赛道的时间</li>
+<li>赛道正在开放，但是剩余时间不足以通过赛道，时间即为等待时间加上关闭时间加上通过时间。</li>
+<li>注意连边的时候，若开放时间小于所通过的时间，那么这条边就不用链接了。</li>
+</ul>
+<p>总结：看到最短路的题目，认真分析新的距离，无需多虑，直接跑最短路就可以，但是对于2023年CSP的一道题目，就需要认真分析性质，然后作答。<br />
+最短路的贪心已经是证明过的了，无需再多虑。</p>
+<h3><a href="https://www.luogu.com.cn/problem/UVA12716">UVA 12716 XOR GCD</a></h3>
+<p>数论题，我们需要知道：</p>
+<ul>
+<li>$a \oplus b = c $ 等价于 $a\oplus c = b$。</li>
+</ul>
+<p>那么我们就可以枚举 $a$ 和枚举 $c$，然后算出 $b$，接着验证是否有 $\gcd(a, b) = c$, 因为 $c$ 时 $a$ 的约数，时间复杂度 $O(n\log n)$，而计算 $\gcd$ 的时间是 $O(\log n)$，总体时间复杂度 $O(n(\log n)^2)$。</p>
+<p>时间复杂度过高，无法通过本题，考虑如何优化。</p>
+<p>此时我们暴力打出 $a$、$b$、$c$ 之间的关系，我们可以发现出一个规律 $c = a - b$。</p>
+<blockquote>
+<p>证明：易得 $a  - b\le a\oplus b$，且 $a\oplus b \ge \gcd(a, b) = c$，考虑使用反证法，假设 $a  -b &gt; c $，可以得到 $c &lt; a - b \le a\oplus b$，与 $c = a\oplus b$ 矛盾，故 $a - b = c$ 得证。</p>
+</blockquote>
+<p>时间复杂度 $O(n \log n)$。</p>
+<p><strong>值得注意的是：$\oplus$ 的运算优先级是低于 $=$ ，在进行判断的时候需要加 $()$。</strong></p>
+<hr />
+<p>但在考场上，我们就不能这么做，我们不需要管证明，我们直接打表看规律！！！</p>
+<p>总结：</p>
+<ul>
+<li>我们应当牢记：<strong>暴力出奇迹，打表出省一！</strong> 谁告诉了我难题一定要推公式才能做呢？</li>
+</ul>
+<ul>
+<li>打表应该是面对数学题/构造题的第一反应。</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/02/19/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0uva/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>LCS</title>
+		<link>https://ggapa.github.io/2024/02/18/lcs/</link>
+					<comments>https://ggapa.github.io/2024/02/18/lcs/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Sun, 18 Feb 2024 12:21:09 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[动态规划]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1118</guid>
+
+					<description><![CDATA[LCS——经典的 DP 问题，给定两个长度为 $n$ 的排列，试问二者的最长公共子序列。这是经典的区间 DP  [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>LCS——经典的 DP 问题，给定两个长度为 $n$ 的排列，试问二者的最长公共子序列。这是经典的区间 DP 问题，</p>
+<p>首先考虑朴素做法，定义 $dp[i][j]$ 来表示第一个串的前 $i$ 位，第二个串的前 $j$ 的 $LCS$ 长度，易得状态转移方程：</p>
+<ul>
+<li>
+<p>如果两个序列没有新的相同元素</p>
+<p>$dp[i][j] = \max(dp[i-1][j],dp[i][j-1])$</p>
+</li>
+<li>
+<p>否则</p>
+<p>$dp[i][j]= \max(dp[i][j],dp[i-1][j-1]+1)$</p>
+<p>时间复杂度 $O(n^2)$ 。</p>
+</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+const int maxn = 1e4 + 5;
+
+int a[maxn], b[maxn], f[maxn][maxn];
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;
+    cin &gt;&gt; n;
+    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i];
+    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; b[i];
+    for(int i = 1; i &lt;= n; i++) {
+        for(int j = 1; j &lt;= n; j++) {
+            f[i][j] = max(f[i-1][j], f[i][j-1]);
+            if(a[i] == b[j]) f[i][j] = max(f[i][j], f[i-1][j-1] + 1);
+        }
+    }
+    cout &lt;&lt; f[n][n] &lt;&lt; &quot;\n&quot;;
+    return 0;
+}</code></pre>
+<p>由于时间复杂度中惨了一份平方，所以说在大多数题目下都不适用，此时考虑进行优化。试着将 $LCS$ 问题转换成 $LIS$ 问题，因为我们两个排列，而排列中的所有元素均不相同，因此可以根据其出现的位置，把元素重新编号。</p>
+<p>解释：</p>
+<blockquote>
+<p>因为<strong>最长公共子序列是按位向后比对的，所以a序列每个元素在b序列中的位置如果递增，就说明b中的这个数在a中的这个数整体位置偏后</strong>。</p>
+<p>—— 离散小波变换</p>
+</blockquote>
+<p>时间复杂度 $O(n \log n)$。</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define rep(i, a, b) for (int i = (a), stOwxc = (b); i &lt;= stOwxc; i++)
+#define per(i, a, b) for (int i = (a), stOwxc = (b); i &gt;= stOwxc; i--)
+using namespace std;
+typedef long long ll;
+
+signed main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n, x;
+    cin &gt;&gt; n;
+    unordered_map&lt;int, int&gt; mp;
+    rep(i, 1, n) cin &gt;&gt; x, mp[x] = i;
+    vector&lt;int&gt; L;
+    rep(i, 1, n) {
+        cin &gt;&gt; x;
+        if (!mp.count(x))
+            continue;
+        int s = mp[x];
+        auto it = lower_bound(L.begin(), L.end(), s);
+        if (it == L.end())
+            L.push_back(s);
+        else
+            *it = s;
+    }
+    cout &lt;&lt; L.size() &lt;&lt; &#039;\n&#039;;
+    return 0;
+}</code></pre>
+<p>注意：</p>
+<ul>
+<li><code>map</code> 的常数稍大，可以考虑 <code>unordered_map</code> 来解决问题，在洛谷模板题中，后者比前者快了 $50\%$ 。</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/02/18/lcs/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>调试技巧 &#038; 警钟敲烂</title>
+		<link>https://ggapa.github.io/2024/02/18/%e8%b0%83%e8%af%95%e6%8a%80%e5%b7%a7-%e5%8f%8d%e6%80%9d%e6%80%bb%e7%bb%93/</link>
+					<comments>https://ggapa.github.io/2024/02/18/%e8%b0%83%e8%af%95%e6%8a%80%e5%b7%a7-%e5%8f%8d%e6%80%9d%e6%80%bb%e7%bb%93/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Sun, 18 Feb 2024 03:58:24 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1114</guid>
+
+					<description><![CDATA[调试技巧 应在平时着重训练！ 对拍法和替换型类对拍法。 先查推导原则。 重构法。 模板总结： （1）减少每次需 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>调试技巧</h1>
+<p>应在平时着重训练！</p>
+<ol>
+<li>对拍法和替换型类对拍法。</li>
+<li>先查推导原则。</li>
+<li>重构法。</li>
+<li>模板总结：<br />
+（1）减少每次需要动的部分。<br />
+（2）记熟不需要动的部分（搞清楚哪些死记哪些理解性记忆）。</li>
+<li>错题本。<br />
+6.小块小块代码调试 </li>
+</ol>
+<h1>警钟撅烂</h1>
+<ul>
+<li>
+<p>注意 <code>set</code> 和 <code>multiset</code> 不要用混了！</p>
+</li>
+<li>
+<p>在连边的时候确定好关系，不要盲目进行连边</p>
+</li>
+</ul>
+<h1>注意</h1>
+<ul>
+<li>只有查找没有修改的话可以使用 <code>vector</code>，常数比 <code>set</code> 要小，<code>set</code> 适用于有修改的。</li>
+<li>BIT 在进行求和时使用 <code>long long</code>。</li>
+</ul>
+<h1>方法论</h1>
+<ul>
+<li>打表是面对数学题/构造题的第一选择</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/02/18/%e8%b0%83%e8%af%95%e6%8a%80%e5%b7%a7-%e5%8f%8d%e6%80%9d%e6%80%bb%e7%bb%93/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Codeforces Round 925 (Div. 3)(CF1931)</title>
+		<link>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/</link>
+					<comments>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Wed, 14 Feb 2024 03:07:06 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[CodeForces]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1100</guid>
+
+					<description><![CDATA[A- D 简单 F 将题目条件转化一下，相当于就是给了一堆先后关系，考虑将前面的与后面的连边，也就是 $a_{ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>A- D 简单</h1>
+<h1>F</h1>
+<p>将题目条件转化一下，相当于就是给了一堆先后关系，考虑将前面的与后面的连边，也就是 $a_{ij} \rightarrow a_{ij+1}$ 连边，然后用拓扑判环，如果无环则有解，反之亦然。</p>
+<p>总结：</p>
+<ul>
+<li>对于题目中有一堆关系时，可以互相连边，若有环，则说明了关系不成立。 </li>
+<li><img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" />连边还适用于排序类问题。</li>
+</ul>
+<h1>G</h1>
+<p><img decoding="async" src="https://espresso.codeforces.com/d862915ed3dc627101b0e632c1c778b818648879.png" alt="" /></p>
+<p>四个拼图，其个数记为 $c_1,c_2,c_3,c_4$ ，分析拼图的凹凸性，只有拼图 1、2 会改变整个序列的凹凸性，且 1、2 拼图只能交替拼在一起。</p>
+<p>那么可以得到，若 $|c_1-c_2| &gt; 1$ 则问题无解，否则一定有解，而且拼图 3、4 并不会相互影响，我们可以进行分类讨论。</p>
+<ul>
+<li>
+<p>若 $c_1 = c_2 = 0$ ，且 $c_3\neq 0 且 c_4 \neq 0$ ，则无解，否则方案数为 1。</p>
+</li>
+<li>
+<p>若 $c_1 = c_2$ ，有两种情况：</p>
+<ol>
+<li>若 1 开头，那么 3 有 $c_1$ 个地方可以插入，4 有 $c_1 + 1$ 个地方可以插入，方案数为 $\binom{c_1+c_3-1}{c_1-1} \binom{c_2+c_4}{c_1}$ 。</li>
+<li>若 2 开头，那么 3 有 $c_1 + 1$ 个地方可以插入，4 有 $c_1$ 个地方可以插入，方案数为 $\binom{c_1+c_3}{c_1} \binom{c_1+c_4-1}{c_1-1}$。</li>
+</ol>
+<p>总方案数为二者的和 $\binom{c_1+c_3-1}{c_1-1} \binom{c_2+c_4}{c_1} + \binom{c_1+c_3}{c_1}\binom{c_1+c_4-1}{c_1-1}$。</p>
+</li>
+<li>
+<p>若 $c_1 = c_2 + 1$ 拼好 1,2 只有一种方案，3,4 均有 $c_1$ 个地方可以插入，方案数为 $\binom{c_1+c_3 - 1}{c_1 - 1} \binom{c_1+c_4-1}{c_1-1}$。</p>
+</li>
+<li>
+<p>若 $c_1 = c_2 - 1$ 拼好 1,2 也只有一种方案， 3,4 均有 $c_1 + 1 $ 个地方可以插入，方案数为 $\binom{c_1+c_3}{c_1} \binom{c_1+c_4}{c_1}$。</p>
+</li>
+</ul>
+<p>预处理组合数，$O(1)$ 询问即可。</p>
+<p>总结： </p>
+<ul>
+<li>若有无解的情况，可以先分析无解的情况。</li>
+<li>若某项事物对于某些性质没有改变，则无需在意，优先分析情况比较少且对某些性质（比如说有无解）有影响的。</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>做题笔记(CSES)</title>
+		<link>https://ggapa.github.io/2024/02/03/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0cesc/</link>
+					<comments>https://ggapa.github.io/2024/02/03/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0cesc/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Sat, 03 Feb 2024 15:18:49 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[做题笔记]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1051</guid>
+
+					<description><![CDATA[CSES - 1075 Permutations II 动态规划好题。 解法一（recommend) 定义 $ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h3><a href="https://vjudge.net/problem/CSES-1075">CSES - 1075 Permutations II</a></h3>
+<p>动态规划好题。</p>
+<h4>解法一（recommend)</h4>
+<p>定义 $F(i, j, k)$ $1$ 表示在 1 到 $i$ 的排列中，满足有 $j$ 对相邻的 $&lt;i$ 的差为 $1$，$k = 1$ 或 $0$ 分别对应 $i$ 和 $i - 1$ 是否相邻的排列个数，易得 $F(1, 0, 0) = 1$，$F(2, 0, 1) = 2$。设当前已经处理完了前 $i$ 个排列的情况，我们考虑 $i + 1$ 放置的位置。</p>
+<ul>
+<li>如果 $i$ 和 $i - 1$ 不相邻，将 $i + 1$ 放到 $i$ 旁边有两种选择，$F(i + 1, j, 1) += 2F(i, j, 0)$。</li>
+<li>如果 $i$ 和 $i - 1$ 相邻，将 $i$ 插入到 $i$ 的两侧有两种情况：
+<ol>
+<li>添加到 $i$ 和 $i - 1 $ 外侧，此时产生了一个新的相差为 $1$ 的相邻元素，$F(i + 1, j + 1, 1) += F(i, j, 1)$。</li>
+<li>添加到 $i$ 和 $i - 1$ 中间，此时相差为 1 的相邻元素数量并没有改变，$F(i + 1, j, 1) += F(i，j, 1)$</li>
+</ol>
+</li>
+<li>如果将 $i$ 加入到原本相差 $1$ 的两个元素($&lt;i$)中， 相差的元素会减少一对，此时依然分两种情况：
+<ol>
+<li>$i$ 和 $i - 1$ 是相邻的，$F(i + 1, j, 0) += j \times F(i, j, 1)$ 。</li>
+<li>$i$ 和 $i - 1$ 不相邻，此时会使 $j$ 减少 $1$ ，$F(i + 1, j - 1, 0) += j \times F(i, j, 0)$。</li>
+</ol>
+</li>
+<li>如果将 $i + 1$ 放到序列的其他位置（不能放在 $i$ 和 $i - 1$ 之间，上文已经讨论过了这种情况），此时有 $i - j - 1$ 个位置可以用，还是分两种情况：
+<ol>
+<li>若 $i$ 和 $i - 1$ 不相邻，$F(i + 1, j, 0) += (i- j- 1) \times F(i, j, 0)$ 。</li>
+<li>若 $i$ 和 $i - 1$ 是相邻的，$F(i + 1, j + 1, 0) += (i - j - 1) \times F(i, j, 1)$。</li>
+</ol>
+</li>
+</ul>
+<p>至此，我们已经分析完了所有的情况，最终的所求答案为 $F(n, 0, 0)$ ，时间复杂度 $O(n^2)$。</p>
+<h4>解法二 <img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" /></h4>
+<p>这玩意是有规律的，详见 <a href="https://oeis.org/A002464">OEIS - A002464</a> ，怎么推出来的等我去问问大佬。</p>
+<p><a href="https://vjudge.net/solution/49146336">AC code by CYR</a></p>
+<h4>总结</h4>
+<p>一开始做这道题的时候并没有想出来这道题是动态规划，我还以为是数学题，甚至都已经发现了前后两种状态之间的关系，若有很<strong>明显的关系</strong>，首先要考虑的就是<strong>动态规划或组合递推</strong>。</p>
+<p>关于状态的设计，需要找到多个会影响的维度，大概就是以下几点：</p>
+<ol>
+<li>前 $i$ 个元素所求得的答案。</li>
+<li>会对后续内容产生影响的 $j$ 。</li>
+<li>以及是否存在某些特殊情况会导致规律不适用的布尔值 $k$ 。</li>
+</ol>
+<h3>CSES-1077 Sliding Window Cost</h3>
+<h4>题目大意</h4>
+<p>给定一个包含 $n$ 个整数的数组。你的任务是计算每个由 $k$ 个元素组成的窗口，从左到右，使所有元素相等的最小总成本。</p>
+<p>你可以用成本为 $x$ 增加或减少每个元素，其中 $x$ 是新值和原始值之间的差值。总成本是这些成本的总和。</p>
+<h4>解题思路</h4>
+<p>是滑动窗口，我们定义两个集合 $lq$ 和 $rq$ 分别代表小于等于和大于中位数的元素，其中 $lq$ 的最后一个元素就是区间内的中位数。定义 $m$ 表示区间内第 $m$ 个数为中位数。</p>
+<p>在进行窗口滑动时，考虑如何更新 $lq$ 和 $rq$：</p>
+<ul>
+<li>若 $|lq| &lt; m$ ，应当先在 $rq$ 中插入当前元素，接着将 $rq$ 中最小的元素转移到 $lq$ 中。</li>
+<li>否则，应当在 $lq$ 中插入当前元素，接着嫁给你 $lq$ 中的最大元素转移到 $rq$ 中。</li>
+</ul>
+<p>为了计算当当前区间的最小成本，我们定义：</p>
+<ul>
+<li>$ls$ 代表 $lq$ 中元素的总和。</li>
+<li>$rs$ 代表 $rq$ 中元素的总和。</li>
+<li>$med$ 代表中位数，也就是 $ls$ 中最大的元素。</li>
+</ul>
+<p>那么可以得到区间最小总成本为：$(med\cdot lc - ls) + (rs - med\cdot rc)$ 。</p>
+<p><a href="https://vjudge.net/solution/49062009/yGEPyhEqMlS9FX0yr1ND">AC code</a></p>
+<h4>总结</h4>
+<p>对于区间滑动窗口中位数问题，可以考虑建立两个集合，来进行求解。对于滑动窗口问题，<code>set</code> 是一个很好的选择。</p>
+<h3><a href="https://vjudge.net/problem/CSES-1093">CSES - 1093 Two Sets II</a></h3>
+<p>首先考虑无解的情况，记 $N = \sum_{1}^{n}$，易得若 $2|n$ 则一定有解。</p>
+<p>这 $n$ 个数的和为 $\frac{n(n +1)}{2}$ ，那么每一部分的的和为 $\frac{n(n +1)}{4}$，题目中 $n$ 的范围较小， 这暗示了用 01 背包来解决问题。</p>
+<p>我们令 $\texttt{dp}{[i][j]}$ 代表在前 $1-i$ 个数中，组成和为 $j$ 的数量，可以得到转移方程为 $\texttt{dp}{[i][j]} = \texttt{dp}{[i-1][j]} + \texttt{dp}[i-1][j - i]$，增添或者不增添的情况。</p>
+<p><a href="https://vjudge.net/solution/48920960/rxrommxRnKl5flEe4y9b">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-1194/origin">CSES - 1194 Monsters</a></h3>
+<p>这道题很明显用 BFS，问题在于迷宫中出现了怪物，我们的勇士不能和怪物接触，转换一下就是，勇士不能到达怪物可能所在的区域。</p>
+<p>在转换一下，怪物永远比勇士先走一步，勇士不能走到怪物所走过的面积，考虑把怪物和勇士在一起进行 BFS，将怪物先入队，这保证了怪物总是比勇士先走。</p>
+<p>注意：不要忘记特判边界条件！</p>
+<p>总结：调试优先检查边界条件，做题时可以考虑不同的入队顺序达到所需要的结果</p>
+<p><a href="https://vjudge.net/solution/49008108/271sCw0fKPFv5Da33vZq">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-1203">CSES - 1203 Visiting Cities</a></h3>
+<p>双向最短路和大数判断相等操作，</p>
+<p>若一个点 $i$ 一定处于 $1$ 到 $n$ 的最短路上，那么：</p>
+<ul>
+<li>$dis(1, i) + dis(i, n) = dis(1,n)$。</li>
+<li>$way(1,i)\times way(i, n) = way(i ,n)$ 。</li>
+</ul>
+<p>其中我们定义 $dis(u, v)$ 代表节点 $u$ 致节点 $v$ 的最短距离， $way(u, v)$ 代表节点 $u$ 到 $v$ 的最短路数量。</p>
+<p>考虑令起点分别为 $1$ 和 $n$ ，跑两次 <code>Dijkstra</code>，接着就能解决以上的判断。但是会有一个问题，最短路的数量可能会超过 <code>long long </code> 所承受的，又因为此不要求输出最终的数值，只需要判断是否相等，我们可以挑选两个大质数，分别对两个数组进行操作，若最后结果相同的概率是非常小的。</p>
+<p>这种方法是用于判断大数是否相同的常用套路，我们应当积累常用质数：</p>
+<ul>
+<li>998244353、1e9 + 7、1e8 + 7、1e9 + 9</li>
+</ul>
+<p>由于这道题卡 9982444353 不能用。<br />
+<a href="https://vjudge.net/solution/49114207/R3p5cDqmTNJRrdImTm8t">AC code</a></p>
+<p>####123123123</p>
+<h3><a href="https://vjudge.net/problem/CSES-1625#author=GPT_zh">CSES - 1625 Grid Paths</a></h3>
+<p>一道非常好的搜索题</p>
+<h4>朴素算法</h4>
+<p>我们简单的使用回溯法进行爆搜，并计算这样的路径数量。</p>
+<p>运行时间：483s</p>
+<p>递归调用次数：760亿</p>
+<h4>优化1</h4>
+<p>如果在访问了所有的方格前就到达了终点，又或者是步数已经达到了指定步数却还没有到。满足任意一个就可以退出搜索。</p>
+<p>运行时间：119s</p>
+<p>递归调用次数：200亿</p>
+<h4>优化2</h4>
+<p>如果碰到了方格边缘，则会把整个地图分成两个部分，若其中包含还未访问过的方格，则一定无解，退出递归即可。</p>
+<p>运行时间：1.8s</p>
+<p>递归调用次数：2.21亿</p>
+<h4>优化3</h4>
+<p>考虑对优化 2 进行拓展，若在搜索时无法继续前进，需要向左或者向右转，网格就会分成两个部分，若两者中包含未被访问过的方格。很明显，此时一定无解。</p>
+<p>运行时间：0.6s</p>
+<p>递归调用次数：6900万</p>
+<hr />
+<p>经过了优化三的优化之后，我们已经可以通过本题，为了达到优化三，我们需要提前将方格的边缘包围起来，俗话说就是将边缘的 <code>vis</code> 数组标记为 <code>true</code> 。</p>
+<blockquote><p>In backtracking, the search tree is usually large and even simple observations can effectively prune the search. Especially useful are optimizations that occur during the first steps of the algorithm, i.e., at the top of the search tree.</p>
+<p>在进行回溯算法时，搜索树通常会非常庞大，即使是进行简单的观察也能有效的剪枝。尤其是在回溯算法的前几步非常有效果，也就是搜索树的顶端。</p>
+<p>——<a href="https://usaco.guide/problems/cses-1625-grid-paths/solution">USACO Guide</a></p></blockquote>
+<p><a href="https://vjudge.net/solution/49021389/iDroLWx5FiFH4LSgSuHY">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-1757#author=GPT_zh">CSES - 1757 Course Schedule II </a></h3>
+<p>互相有先后关系，连边跑拓扑排序的经典问题，本质上属于贪心。</p>
+<p>注意：</p>
+<ul>
+<li>需要注意边与边之间的方向，注意输出的方式，可以考虑通过优先队列来维护</li>
+</ul>
+<p><a href="https://vjudge.net/solution/49117315/AuUcWmbwfUkyhrIrAsGU">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-2179">CSES - 2179 Even Outdegree Edges</a></h3>
+<p>图论</p>
+<p>考虑在进行 DFS 生成树时直接贪心构造。</p>
+<p>错：</p>
+<ul>
+<li>在进行度数修改时把复杂操作直接过于简单化，直接将度数的标记直接规 0，并没有考虑多个儿子对答案造成的影响。</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>图论题可以先去一般化，先转换成树上问题，菊花图，链条来分析题目。</li>
+<li>边处理边操作，贪心局部解转化为全部解，对于还需要判断有没有解决方案的问题，往往可以从局部到全局，若局部合法但是全局不合法，那么就是无解的。所以说在考虑贪心的时候往往不需要太在意无解的情况，自然而然的就能冒出来无解的情况。</li>
+<li>但是这并不代表我们不分析无解情况，往往无解的情况会是一些题目的突破口可以帮助我们解题，但不应该被无解情况限制了思路，从而不敢考虑贪心</li>
+</ul>
+<p><a href="https://vjudge.net/solution/49104109/wYuu0QxmINTb1G2dUiTh">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-2228#author=0">CSES - 2228</a></h3>
+<p>首先不考虑题目中的限制条件，方案数应该为：$k^n$，那么如果只缺了一个数字呢？如果缺了一个数字所构成的方案为：$(k - 1)^n \times \binom 1k$ 。</p>
+<p>如何理解？乘号左边代表的剩下的 $k - 1$ 个数字填入 $n$ 个空位的方案数，而乘号右边则代表着，从 $k$ 个数字中挑选 1 个所需要的方案数。</p>
+<p>我们类比，如果缺了 $i$ 个数字，构成的方案数为$(k - i)^n \times \binom ik$ ，但是呢，由于一定缺少一个数字的情况，已经包含了一定缺少两个数字的情况，所以说我们要用容斥原理。</p>
+<p>最终的答案为：</p>
+<p>$$k^n - \sum_{i = 1}^{k - 1} (k - i)^n \times\binom ik$$</p>
+<p>总结：对于方案数问题可以优先考虑容斥原理；并从没有限制往有限制进行思考。</p>
+<p><a href="https://vjudge.net/solution/48845881/5Km8tJ8PuokMY3UyeHff">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-2414">CSES - 2414 List of Sums</a></h3>
+<p>考虑序序列 A 是单调递增，将 B 从小到大排序。我们可以推出以下结论：</p>
+<ul>
+<li>$A_0 + A_1 = B_0$</li>
+<li>$A_0 + A_2 = B_1$</li>
+</ul>
+<p>那么我们可以得到：</p>
+<ul>
+<li>$A_2 - A_1 = B_1 - B_0$</li>
+</ul>
+<p>考虑 $A_1 + A_2$ ，它的值一定是 $B_i,i \in [2, n]$，这个说明了， $A_0$ 只有 $n - 2$ 种可能。</p>
+<p>我们可以得到：$A_1 = \frac{B_i - B_1 + B_0}{2}$ ，$A_0 = \frac{B_1 + B_0 - B_i}2$，那么我们就可以便利每一个 $A_0$ 然后判断它能不能使 B 成立，如何测试？</p>
+<p>对于每一轮测试，$A\i$ 就等于 $B{\min} - A_i$，之后从 B 中判断 $A_j + A_i(j &lt; i)$ 是否在 B 中并删除。</p>
+<p><a href="https://vjudge.net/solution/48810705/lpNKpEsYGnYwVRZe8VQh">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-2421">CSES - 2421 Counting Reorders </a></h3>
+<p>俗话说“正难则反”，因为直接求合法的情况很明显非常难，所以考虑反着来。我们将一个字符串分成若干个区间，使得每个区间里面的字母都相同。</p>
+<p>将所有的字母分成 $x$ 个区间的方案数为 $A(x)$，则对于初始字符串全部重新排列的情况数为 $A(n)$，一定有两个相邻字符重复的数目就是 $A(n - 1)$，此时一定有一个长度为 2 的区间中字母相同，剩余的 $n - 1$ 个区间任意排列</p>
+<p>相似的，一定有 $i$ 个字母连续相同的数目是 $A(n - i)$，因为 $A(n)$ 中已经包含了 $A(n - 1)$ 的情况，而 $A(n - 1)$ 中，同样也包含了 $A(n - 2)$ 的情况，所以说考虑容斥原理，最终的答案为:</p>
+<p>$$\sum_{i = 0}^{n} A(n - i) \times(-1)^n$$</p>
+<p>但是该如何计算 $A(x)$ 呢？定义 $D(i, j)$ 代表前 $i$ 中字符，分成 $j$ 个区间的方案数，那么 $A(n) = D(26,n)$，显然 $D(0, 0) = 1$，记第 $i$ 中字符出现的次数为 $c$，显然当 $c = 0$ 时，$D(i, j) = D(i - 1, j)$。否则，这 $c$ 个字符就要分成 $k \in [1, c]$，个部分和已有的 $j$ 个区间混合，可以得到：</p>
+<p>$$D(i, j + k) \gets D(i, j + k)+D(i - 1,j)\cdot \binom {j+k}{k}\cdot \binom{c - 1}{k - 1} $$</p>
+<p>如何理解以上的式子呢？其中 $\binom {j+k}{k}$，表示将 $k$ 个区间插入原来的 $j$ 个区间中，就是在 $j + k$ 个区间中选择 $k$ 个，而 $\binom{c - 1}{k - 1}$ 可以通过插板法理解。</p>
+<p>总结：</p>
+<ol>
+<li>对于正着求比较困难的组合数学题目，可以考虑反着求解。</li>
+<li>对于题目性质进行分析，构造出现不同情况的概率，并考虑容斥</li>
+<li>找到当前步骤和上一步骤的关系，进行递推。</li>
+</ol>
+<p><a href="https://vjudge.net/solution/48862105/77NzMr61ETRcPBZecWyq">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-2425#author=GPT_zh">CSES-2425 Stack Weights</a></h3>
+<p>某位高人曾经说过：对于找充要条件的题目，那就把它所有的必要条件全部列出来。</p>
+<p>那么我们就考虑列出充分条件，经过大量的演算算我们发现：</p>
+<ul>
+<li>如果堆 1 的重量大于堆 2 的重量，那么 $\forall i \in [1,n]$ ，定义 $l_i$ 表示堆 1 编号大于 $i$ 的砝码数，$r_i$ 代表堆 2 编号大于 $i$ 的砝码数，都有 $l_i &gt; r_i$。</li>
+</ul>
+<p>对于堆 2 同理，问题就转化成了求解能否在某一时刻，堆 1 、堆 2 都能满足以上条件。</p>
+<p>可以通过记录前缀和来快速判断条件是否成立：</p>
+<ul>
+<li>若最小值不小于 0，则堆 1 一定重于堆 2</li>
+<li>最大值不大于 0，则堆 2 一定重于堆 1</li>
+<li>若以上条件均不满足，返回你寄了</li>
+</ul>
+<p>可以考虑通过线段树进行区间最大最小值维护，其他数据结构应该也可以，但是我太菜了不会。</p>
+<p>时间复杂度 $O(n \log n)$ ，应该没有错吧。</p>
+<p><a href="https://vjudge.net/solution/48801685/Y0FQLG49NbJKhS7CsXR0">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-2426">CSES - 2426 Programmers and Artists</a></h3>
+<p>普通的枚举时间复杂度 $O(n^2)$ 会超时，考虑用贪心优化。</p>
+<p>将每个人按照 $x - y$ 递减排序，考虑维护两个数组 $suf[i]$ 和 $pre[i]$，分别表示后 $i$ 个人进行的贡献和前 $i$ 个人进行的贡献。枚举时就考虑 $pre[i] + suf[i + 1]$，好像可以称作中途相遇？</p>
+<p><a href="https://www.luogu.com.cn/problem/P7913">[CSP-S 2021] 廊桥分配</a> 也是一道类似的题目，把每一种可能情况枚举出来，接着通过中途相遇来做。</p>
+<p>总结:</p>
+<ul>
+<li>什么题目可以通过中途相遇来做？
+<p>有两个集合 $A$、$B$，有一元素 $i$，若 $i \in A$ 为真，那么 $i\in B$ 一定为假，反之亦然。接着我们就可以通过某些手段预处理(排序)，接着在计算出 $A$ 和 $B$ 在不同大小的不同答案。接着通过一个 $O(n)$ 的枚举去统计答案即可。</li>
+</ul>
+<p><a href="https://vjudge.net/solution/49116012/9kTBWeMcuoIZbbUDN2Dz">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-2430">CSES - 2430 Binary Subsequences</a></h3>
+<p>构造神题，依然是经典的反着来，我们先考虑正着推，记 $x$ 和 $y$ 分别代表以 0 结尾和以 1 结尾的子序列个数，如果接下来又是 0，则 $ x = x + y + 1$，如果下一位是 1 那么 $y = x + y + 1$。</p>
+<p>由于 $x + y = n$ ，我们可以依次枚举 $x$ 和 $y$，然后反推出对应的 01 串，有点类似于辗转相除法。</p>
+<p>均摊时间复杂度 $O(n\log n)$</p>
+<p><a href="https://vjudge.net/solution/49155238">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/OpenJ_Bailian-2356#author=GPT_zh">OpenJ_Bailian - 2356 Find a multiple</a></h3>
+<p>定义 $s<em>i$ 代表 $\sum</em>{i=1}^{n} a_i$ ，若 $N|s_i$ ，则输出 $a_j,\forall j[1,i]$ 即可。</p>
+<p>若 $s_i\equiv s_j\mod{N}(i&lt;j)$ ，则输出 $a_k,\forall k\in[i,j]$ 即可</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/02/03/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0cesc/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>做题笔记(洛谷题单)</title>
+		<link>https://ggapa.github.io/2024/02/01/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b01/</link>
+					<comments>https://ggapa.github.io/2024/02/01/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b01/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Thu, 01 Feb 2024 15:11:07 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<category><![CDATA[做题笔记]]></category>
+		<category><![CDATA[洛谷]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1043</guid>
+
+					<description><![CDATA[数据结构（线段树为主） 题单 P6569 [NOI Online #3 提高组] 魔法值 首先看题目数据范围， [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>数据结构（线段树为主）</h1>
+<p><a href="https://www.luogu.com.cn/training/456614">题单</a></p>
+<h3><a href="https://www.luogu.com.cn/problem/P6569">P6569 [NOI Online #3 提高组] 魔法值</a></h3>
+<p>首先看题目数据范围，$n \leq 100$ ，这种情况要么说明这道题的时间复杂度是比较高的，要么就和矩阵乘法脱不开关系。</p>
+<p>阅读题目之后，我们发现可以应用 Floyd 最短路，也就是矩阵乘法的思想去描述每一轮每一个城市的魔法值。</p>
+<p>故这道题应该先用邻接矩阵建图，矩阵快速幂求解。</p>
+<p>结果就超时了，考虑通过倍增，二进制分解优化。</p>
+<p>预处理时间复杂度 $O(n^3\log n)$ ，单次询问时间复杂度 $O(n^2\log n)$ 。</p>
+<p>总结：对于数据范围比较小的图论题要联想到邻接矩阵，对于经常会用到的数据不必重复计算，考虑记录下来优化程序的运行效率。</p>
+<h3><a href="https://www.luogu.com.cn/problem/P8820">P8820 [CSP-S 2022] 数据传输</a></h3>
+<p>试着由易到难，一步一步分析。</p>
+<p>对于 $k = 1$ 的情况，答案就是两点之间的简单路径，考虑通过树链剖分实现。时间复杂度 $O(n \log n)$</p>
+<p>对于 $n \leq 200 $时，可以考虑对于每一个节点，距离不超过 $k$ 的点连无向边，对于每一次询问跑最短路，时间复杂度 $O(q\cdot n^2\log n)$。</p>
+<p>这个特殊性质非常的玄学，不知道是给什么算法的，<del>这都不知道，我太菜了</del>。</p>
+<p>接着分析 $k = 2$ 的情况，额。</p>
+<h3><a href="https://www.luogu.com.cn/problem/P4159">P4159 [SCOI2009] 迷路</a></h3>
+<p>看到题目和数据范围后，不难想到矩阵快速幂求解 $k$ 步内到达某一结点的方案数这一类问题。</p>
+<p>但是问题出现了，因为上述做法只能满足 &quot;01矩阵&quot;。</p>
+<p>那我们就考虑将这个矩阵转化为 01矩阵不久完事了吗？</p>
+<p>考虑给每个节点建立 8 个虚点，我们令 $(i,j)$ 表示距离节点 $i$，$j$ 个距离的点，$(i,0)$ 就代表节点 $i$，我们需要将 $(i, j)$ 和 $(i, j-1 )$ 通过一条有向边连接起来。</p>
+<p>若此时有边连向这个节点，且距离为 $d$，那么我们就将它连接到 $(i, d - 1)$ 的节点处就可以了，此时这个邻接矩阵就转化为了 01 矩阵。</p>
+<p>时间复杂度：$O((9n)^3 \log T)$</p>
+<p>总结：如果一道题目是某类题型的变种，那我们可以将这道题想办法转化为我们熟悉的题型；</p>
+<h3><a href="https://www.luogu.com.cn/problem/P2894">P2894 [USACO08FEB] Hotel G</a></h3>
+<p>简单题。</p>
+<p>一眼可以看出这是一个连续段问题，考虑通过线段树解决。</p>
+<p>我们需要维护以下信息：</p>
+<ul>
+<li>
+<p><code>perl</code> 左端点开始的连续空房间个数</p>
+</li>
+<li>
+<p><code>perr</code> 右端点开始的连续空房间个数</p>
+</li>
+<li>
+<p><code>mx</code> 区间内最长的连续空房间个数</p>
+</li>
+</ul>
+<p>转移和区间最长子序列转移的思想差不多，值得注意的是，题目中要求是最靠左侧的，那么在查询的时候需要有限递归左儿子，接着是左儿子和右儿子，最后才是右儿子。</p>
+<p>其余操作和普通线段树无异。</p>
+<h3><a href="https://www.luogu.com.cn/problem/P8251">P8251 [NOI Online 2022 提高组] 丹钓战</a></h3>
+<p>这道题比较重视思维，观察数据范围，很明显是要让我们先预处理，接着以比较小的复杂度进行查询。</p>
+<p>考虑如何预处理，通过手推样例可以发现，如果一个二元组是成功的，那么它一定能将上一个成功的二元组弹出，而且一个二元组只可能被一个特定的二元组给弹出。</p>
+<p>那么就可以通过栈来维护每一个二元组是由谁将它弹出去的。</p>
+<p>时间复杂度：$O(n)$</p>
+<p>由于预处理已经花费了 $O(n)$ 的时间，查询操作被压榨成了 $\log$ 级或者是常数级。</p>
+<p>由之前的总结可以知道，对于可能会重复用到的数据，我们考虑通过倍增进行优化，这样查询的时间复杂度就变为了 $O(\log n)$ ，可以通过本题。</p>
+<p>总结：对于一个数据范围比较大的题，它的最大时间复杂度一般不会超过 $O(n)$，若此时的询问次数也非常多就需要考虑预处理；若一道题目中，大多数情况下，他叫你找的特殊的东西，小于普通的东西，那么这个时候就可以考虑直接从特殊的东西入手（出现次数比较少的入手），弱化在普通的东西上面所花费的时间。</p>
+<hr />
+<h1>括号序列</h1>
+<p><a href="https://www.luogu.com.cn/training/460433">题单</a></p>
+<h3><a href="https://www.luogu.com.cn/problem/P7914">P7914 [CSP-S 2021] 括号序列</a></h3>
+<p>看到题目，不难想到记忆化搜索。</p>
+<p>类比普通的括号序列记忆化搜索，这道题目非常良心，已经帮我们把所有的情况都摆了出来，那么我们就考虑对这些情况进行考虑就足够了。</p>
+<p>迅速打完记忆化，发现答案莫名其妙非常大，发现边界条件判断漏，寄了。</p>
+<p>总结：若记忆化搜索返回的结果很大，有可能时边界条件没有判断清楚。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/02/01/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b01/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>错题本</title>
+		<link>https://ggapa.github.io/2024/01/27/%e9%94%99%e9%a2%98%e6%9c%ac/</link>
+					<comments>https://ggapa.github.io/2024/01/27/%e9%94%99%e9%a2%98%e6%9c%ac/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Sat, 27 Jan 2024 12:09:46 +0000</pubDate>
+				<category><![CDATA[OI]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1028</guid>
+
+					<description><![CDATA[树链剖分 #include &#60;bits/stdc++.h&#62; using namespace std [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>树链剖分</h1>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N = 1e5 + 5;
+
+int n, m, r, mod;
+int a[N], aa[N],dep[N], size[N], top[N], hson[N], fa[N], dfn[N];
+int cnt;
+
+struct tree {
+    int laz, sum;
+    int l, r;
+}t[N * 4];
+vector&lt;int&gt; G[N];
+
+#define ls (x &lt;&lt; 1)
+#define rs (x &lt;&lt; 1 | 1)
+
+void pushdown(int x) {      //懒标记下传出错
+    if(!t[x].laz) return;    
+    t[ls].sum = (t[ls].sum + t[x].laz * (t[ls].r - t[ls].l + 1) % mod) % mod;
+    t[rs].sum = (t[rs].sum + t[x].laz * (t[rs].r - t[rs].l + 1) % mod) % mod;
+    t[ls].laz = (t[ls].laz + t[x].laz) % mod; t[rs].laz = (t[rs].laz + t[x].laz) % mod;
+    t[x].laz = 0;
+}
+void pushup(int x) {
+    t[x].sum = (t[ls].sum + t[rs].sum) % mod;
+}
+
+void bulid(int x, int l, int r) {
+    t[x].l = l; t[x].r = r;
+    if(l == r) {
+        t[x].sum = a[l] % mod;
+        return ;
+    }
+    int mid = (l + r) &gt;&gt; 1;
+    bulid(ls, l, mid);
+    bulid(rs, mid + 1, r);
+    pushup(x);
+}
+
+void modify(int x, int l, int r, int ch) {
+    if(l &lt;= t[x].l &amp;&amp; t[x].r &lt;= r) {
+        t[x].laz = (t[x].laz + ch) % mod;
+        t[x].sum = (t[x].sum + ch * (t[x].r - t[x].l + 1) % mod) % mod;
+        return ;
+    }
+    pushdown(x);
+    int mid = (t[x].l + t[x].r) &gt;&gt; 1;
+    if(l &lt;= mid) modify(ls, l, r, ch);
+    if(r &gt; mid) modify(rs, l, r, ch);
+    pushup(x);
+}
+
+int qurey(int x, int l, int r) {
+    if(l &lt;= t[x].l &amp;&amp; t[x].r &lt;= r) {
+        return t[x].sum;
+    }
+    pushdown(x);
+    int mid = (t[x].l + t[x].r) &gt;&gt; 1, tmp = 0;
+    if(l &lt;= mid) tmp = (tmp + qurey(ls, l, r)) % mod;
+    if(r &gt; mid) tmp = (tmp + qurey(rs, l, r)) % mod;
+    return tmp;
+}
+
+#undef ls
+#undef rs
+
+void dfs1(int x, int f) {
+    dep[x] = dep[f] + 1; size[x] = 1; fa[x] = f;
+    for(auto to : G[x] ) {
+        if(to == f) continue;
+        dfs1(to, x);
+        size[x] += size[to];
+        if(size[hson[x]] &lt; size[to]) hson[x] = to;
+    }
+}
+
+void dfs2(int x, int tp) {
+    dfn[x] = ++cnt;
+    a[cnt] = aa[x];
+    top[x] = tp;
+    if(!hson[x]) return;
+    dfs2(hson[x], tp);
+    for(auto to : G[x] ) {
+        if(to == fa[x] || to == hson[x]) continue;
+        dfs2(to, to);
+    }
+}
+
+void mrange(int x, int y, int ch) {
+    while(top[x] != top[y]) {
+        if(dep[top[x]] &lt; dep[top[y]]) swap(x, y);
+        modify(1, dfn[top[x]], dfn[x], ch);
+        x = fa[top[x]];
+    }
+    if(dep[x] &gt; dep[y]) swap(x, y);
+    modify(1, dfn[x], dfn[y], ch);
+}
+
+int qrange(int x, int y) {
+    int ans = 0;
+    while(top[x] != top[y])  {
+        if(dep[top[x]] &lt; dep[top[y]]) swap(x, y);
+        ans = (ans + qurey(1, dfn[top[x]], dfn[x])) % mod;  //参数带错
+        x = fa[top[x]];
+    }
+    if(dep[x] &gt; dep[y]) swap(x, y);
+    ans = (ans + qurey(1, dfn[x], dfn[y])) % mod; 
+    return ans;
+}
+
+void mson(int x, int ch) {
+    modify(1, dfn[x], dfn[x] + size[x] - 1, ch);
+}
+
+int qson(int x) {
+   return qurey(1, dfn[x], dfn[x] + size[x] - 1) % mod;
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; r &gt;&gt; mod;
+    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; aa[i];
+    for(int i = 1, u, v; i &lt; n; i++) {
+        cin &gt;&gt; u &gt;&gt; v;
+        G[u].push_back(v);
+        G[v].push_back(u);
+    }
+    dfs1(r, 0);
+    dfs2(r, r);
+    bulid(1, 1, n);
+    // for(int i = 1; i &lt;= n; i++) cout &lt;&lt; dfn[i] &lt;&lt; &#039;\n&#039;;
+    while(m--) {
+        int op, x, y, z;
+        cin &gt;&gt; op;
+        if(op == 1) {
+            cin &gt;&gt; x &gt;&gt; y &gt;&gt; z;
+            mrange(x, y, z);
+        }
+        if(op == 2) {
+            cin &gt;&gt; x &gt;&gt; y;
+            cout &lt;&lt; qrange(x, y) % mod&lt;&lt; &#039;\n&#039;;
+        }
+        if(op == 3) {
+            cin &gt;&gt; x &gt;&gt; z;
+            mson(x, z);
+        }
+        if(op == 4) {
+            cin &gt;&gt; x;
+
+            cout &lt;&lt; qson(x) % mod&lt;&lt; &#039;\n&#039;;
+        }
+    }
+    return 0;
+}</code></pre>
+<h1>网络最大流</h1>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define rep(i, a, b) for(int i = (a); i &lt;= (b); i++)
+#define per(i, a, b) for(int i = (a); i &gt;= (b); i--)
+using namespace std;
+typedef long long ll;
+const int N = 200 + 5, M = 5000 + 5;
+#define int long long
+
+int n, m, s, t;
+int tot = 1, head[M], cur[M];
+int dep[M];
+ll ans;
+
+struct edge {
+    int v, nxt;
+    ll val;
+}e[M * 2];
+
+void add(int u, int v, ll w) {
+    e[++tot].v = v;
+    e[tot].val = w;
+    e[tot].nxt = head[u];
+    head[u] = tot;
+
+    e[++tot].v = u;
+    e[tot].val = 0;
+    e[tot].nxt = head[v];
+    head[v] = tot;
+}
+
+int bfs() {
+    queue&lt;int&gt; q;
+    memset(dep, 0, sizeof(dep));    //数组没有清空，表现：死循环退不出去。
+    q.push(s);
+    dep[s] = 1;
+    cur[s] = head[s];
+    while(!q.empty()) {
+        int u = q.front();
+        q.pop();
+        for(int i = head[u]; i; i = e[i].nxt) {
+            int v = e[i].v;
+            if(e[i].val &gt; 0 &amp;&amp; !dep[v]) {
+                q.push(v);
+                cur[v] = head[v];
+                dep[v] = dep[u] + 1;
+                if(v == t) return 1;
+            }
+        }
+    }
+    return dep[t];
+}
+
+int dfs(int u, ll sum) {
+    if(u == t || !sum) return sum;
+    ll k, res = 0;
+    for(int i = cur[u]; i &amp;&amp; sum; i = e[i].nxt) {
+        int v = e[i].v;
+        cur[u] = i; //没有加弧优化TLE
+        if(e[i].val &gt; 0 &amp;&amp; dep[v] == dep[u] + 1) {
+            k = dfs(v, min(sum, e[i].val));
+            if(k == 0) dep[v] = 0;
+            e[i].val -= k;
+            e[i^1].val += k;    //val错写成v，表现：可能死循环，也可能有一些其他的问题，尚不确定。
+            res += k;
+            sum -= k;
+        }
+    }
+    return res;
+}
+
+signed main()  {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s &gt;&gt; t;
+    rep(i, 1, m) {
+        int u, v; ll w;
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        add(u, v, w);
+    }
+    while(bfs()) {
+        ans +=  dfs(s, LLONG_MAX);
+    }
+    cout &lt;&lt; ans &lt;&lt; &#039;\n&#039;;
+
+    return 0;
+}</code></pre>
+<h1>历史最值线段树</h1>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define rep(i, a, b) for(int i = (a); i &lt;= (b); i++)
+#define per(i ,a ,b) for(int i = (a); i &gt;= (b); i--)
+
+using namespace std;
+const int N = 5e5 + 5;
+typedef long long ll;
+
+int n, m;
+int a[N];
+
+struct tree{
+    ll sum; 
+    int l, r, maxa, cnt, se, maxb;
+    int add1, add2, add3, add4;
+}t[N &lt;&lt; 4];
+
+#define ls x &lt;&lt; 1
+#define rs x &lt;&lt; 1 | 1
+
+void pushup(int x) {
+    t[x].sum = t[ls].sum + t[rs].sum;
+    t[x].maxa = max(t[ls].maxa, t[rs].maxa);
+        t[x].maxb = max(t[ls].maxb, t[rs].maxb);
+        if(t[ls].maxa == t[rs].maxa) {
+        t[x].cnt = t[ls].cnt + t[rs].cnt;
+        t[x].se = max(t[ls].se, t[rs].se);
+    }
+    if(t[ls].maxa &gt; t[rs].maxa)  {
+        t[x].cnt = t[ls].cnt;
+        t[x].se = max(t[ls].se, t[rs].maxa);
+    }
+    if(t[ls].maxa &lt; t[rs].maxa) {
+        t[x].cnt = t[rs].cnt;
+        t[x].se = max(t[ls].maxa, t[rs].se);
+    }
+}
+
+void apply(int x, int tag1, int tag2, int tag3, int tag4) {
+    t[x].sum += 1ll * tag1 * t[x].cnt + 1ll * tag2 * (t[x].r - t[x].l + 1 - t[x].cnt);
+    t[x].maxb = max(t[x].maxb, t[x].maxa + tag3);       //在给maxb赋值的时候，将 = 写成 +=，表现：区间历史最大值莫名其妙很大。
+    t[x].maxa += tag1;
+    if(t[x].se != -2e9) t[x].se += tag2;
+    t[x].add3 = max(t[x].add3, t[x].add1 + tag3);
+    t[x].add4 = max(t[x].add4, t[x].add2 + tag4);
+    t[x].add1 += tag1; t[x].add2 += tag2;
+} 
+
+void pushdown(int x) {
+
+    int mxn = max(t[ls].maxa, t[rs].maxa);
+    if(t[ls].maxa == mxn) 
+        apply(ls, t[x].add1, t[x].add2, t[x].add3, t[x].add4);
+    else apply(ls, t[x].add2, t[x].add2, t[x].add4, t[x].add4);     //else 的赋值错误，若不是最大值则应该赋非最大值的懒标记，表现：极少情况下（有可能是数据范围太小了）会偶尔冒出来一个错误的求和操作。
+    if(t[rs].maxa == mxn) 
+        apply(rs, t[x].add1, t[x].add2, t[x].add3, t[x].add4);
+    else apply(rs, t[x].add2, t[x].add2, t[x].add4, t[x].add4);     // else 的赋值错误，若不是最大值则应该赋非最大值的懒标记，表现：极少情况下（有可能是数据范围太小了）会偶尔冒出来一个错误的求和操作。
+    t[x].add1 = t[x].add2 = t[x].add3 = t[x].add4 = 0; 
+}
+void bulid(int x, int l, int r) {
+    t[x].l = l; t[x].r = r;
+    t[x].add1 = t[x].add2 = t[x].add3 = t[x].add4 = 0;
+    if(l == r) {
+        t[x].maxa =  t[x].maxb = t[x].sum = a[l];
+        t[x].se = -2e9; t[x].cnt = 1; 
+        return ;
+    }
+    int mid = (l + r) &gt;&gt; 1;
+    bulid(ls, l, mid);
+    bulid(rs, mid + 1, r);
+    pushup(x);
+}
+
+void modify_add(int x, int l, int r, int v) {
+    if(t[x].r &lt; l || t[x].l &gt; r) return ;
+    if(l &lt;= t[x].l &amp;&amp; t[x].r &lt;= r) {
+        apply(x, v, v, v, v);
+        return ;
+    }
+    pushdown(x);    
+    modify_add(ls, l, r, v); modify_add(rs, l, r, v);
+    pushup(x);
+}
+
+void modify_min(int x, int l, int r, int v) {
+    if(t[x].r &lt; l || t[x].l &gt; r || v &gt;= t[x].maxa) return ;     //退出条件少写了，表现：把最小值改大了。
+    if(l &lt;= t[x].l &amp;&amp; t[x].r &lt;= r &amp;&amp; t[x].se &lt; v) {             //条件少写了，表现：把最小值改大了。
+        int tmp = t[x].maxa - v;
+        // t[x].sum -= 1ll * t[x].cnt * tmp;
+        // t[x].maxa = v; t[x].add1 -= tmp;
+        apply(x, -tmp, 0, -tmp, 0);
+        // apply(x, v - t[x].maxa, 0, v - t[x].maxa, 0);
+        return ;
+    }
+    pushdown(x);
+    modify_min(ls, l, r, v); modify_min(rs, l, r, v);
+    pushup(x);
+}
+
+ll query_sum(int x, int l, int r) {
+    if(t[x].r &lt; l || t[x].l &gt; r) return 0;
+    if(l &lt;= t[x].l &amp;&amp; t[x].r &lt;= r) 
+        return t[x].sum;
+    pushdown(x);
+    return query_sum(ls, l, r) + query_sum(rs, l, r);
+}
+
+int query_maxa(int x, int l, int r) {
+    if(t[x].r &lt; l || t[x].l &gt; r) return -2e9;   //不小心 return 0，而不是返回-inf，表现：最大值输出0
+    if(l &lt;= t[x].l &amp;&amp; t[x].r &lt;= r) 
+        return t[x].maxa;
+    pushdown(x);
+    return max(query_maxa(ls, l, r), query_maxa(rs, l, r));
+}
+
+int query_maxb(int x, int l, int r) {
+    if(t[x].r &lt; l || t[x].l &gt; r) return -2e9;   //不小心 return 0，而不是返回-inf，表现：最大值输出0
+    if(l &lt;= t[x].l &amp;&amp; t[x].r &lt;= r) 
+        return t[x].maxb;
+    pushdown(x);
+    return max(query_maxb(ls, l, r),query_maxb(rs, l, r));
+}
+
+#undef ls
+#undef rs
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; n &gt;&gt; m;
+    rep(i, 1, n) cin &gt;&gt; a[i];
+    bulid(1, 1, n);
+    while(m--) {
+        int op, l, r, v;
+        cin &gt;&gt; op &gt;&gt; l &gt;&gt; r;
+        if(op == 1) {
+            cin &gt;&gt; v;
+            modify_add(1, l, r, v);
+        }
+        if(op == 2) {
+            cin &gt;&gt; v;
+            modify_min(1, l, r, v);
+        } 
+        if(op == 3) cout &lt;&lt; query_sum(1, l, r) &lt;&lt; &#039;\n&#039;;
+        if(op == 4) cout &lt;&lt; query_maxa(1, l, r) &lt;&lt; &#039;\n&#039;;
+        if(op == 5) cout &lt;&lt; query_maxb(1, l, r) &lt;&lt; &#039;\n&#039;;
+    }
+
+    return 0;
+}
+
+// P6242 【模板】线段树 3（区间最值操作、区间历史最值）
+</code></pre>
+<h1>主席树</h1>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+#define int long long
+const int maxn = 4e5 + 10, N = 2e5;
+int n, m, tot, a[maxn &lt;&lt; 5], b[maxn &lt;&lt; 5], rt[maxn &lt;&lt; 5];
+int siz;
+struct node{
+    int ls, rs, sum;
+}t[maxn &lt;&lt; 5];
+void init(){
+    cin &gt;&gt; n &gt;&gt; m;
+    for (int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i], b[i] = a[i];
+    sort(b + 1, b + n + 1);
+    siz = unique(b + 1, b + n + 1) - b - 1;
+    for (int i = 1; i &lt;= n; i++) a[i] = lower_bound(b + 1, b + siz + 1, a[i]) - b;
+}
+inline void modify(int&amp; id, int pre, int l, int r, int x){
+    id = ++tot;
+    t[id] = t[pre];
+    t[id].sum++;
+    if (l == r) return;
+    int mid = (l + r) &gt;&gt; 1;
+    if (x &lt;= mid) modify(t[id].ls, t[pre].ls, l, mid, x);
+    else modify(t[id].rs, t[pre].rs, mid + 1, r, x);
+}
+inline int query(int id1, int id2, int l, int r, int k){
+    if (l == r) return l;
+    int mid = (l + r) &gt;&gt; 1;
+    int sum1 = t[t[id1].ls].sum - t[t[id2].ls].sum;
+    if (sum1 &gt;= k) return query(t[id1].ls, t[id2].ls, l, mid, k);
+    else return query(t[id1].rs, t[id2].rs, mid + 1, r, k - sum1);
+}
+void build_tree(){
+    for (int i = 1; i &lt;= n; i++){
+        modify(rt[i], rt[i - 1], 1, siz, a[i]);     // 警钟
+    }
+}
+void work(){
+    for (int i = 1; i &lt;= m; i++){
+        int l, r, k;
+        cin &gt;&gt; l &gt;&gt; r &gt;&gt; k;
+        cout &lt;&lt; b[query(rt[r], rt[l - 1], 1, siz, k)] &lt;&lt; &#039;\n&#039;;      
+    }
+}
+signed main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    init();
+    build_tree();
+    work();
+    return 0;
+}</code></pre>
+<h1>最短路</h1>
+<h2>Floyd</h2>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define rep(i, a, b) for(int i = (a); i &lt;= (b); i++)
+#define per(i, a, b) for(int i = (a); i &gt;= (b); i--)
+using namespace std;
+typedef long long ll;
+const int N = 500 + 5;
+#define int long long
+
+ll a[N][N];
+int n, m, q;
+
+signed main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;
+    rep(i, 1, n) rep(j, 1, n) a[i][j] = LLONG_MAX;
+    for(int i = 1, u, v, w; i &lt;= m; i++) {
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        a[u][v] = a[v][u] = min(a[u][v], w);    //重边处理
+    }
+    rep(i, 1, n) a[i][i] = 0;               //自己到自己
+    rep(k, 1, n) rep(i, 1, n) rep(j ,1 ,n)
+        if(a[i][k] != LLONG_MAX &amp;&amp; a[k][j] != LLONG_MAX &amp;&amp; i != k &amp;&amp; j != k)        //ik, jk 不同 
+            a[i][j] = min(a[i][j], a[i][k] + a[k][j]);
+    for(int i = 1, u, v; i &lt;= q; i++) {
+        cin &gt;&gt; u &gt;&gt; v;
+        cout &lt;&lt; (a[u][v] == LLONG_MAX ? -1 : a[u][v]) &lt;&lt; &#039;\n&#039;;
+    }
+    return 0;
+}</code></pre>
+<h2>Dijkstra</h2>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define rep(i, a, b) for(int i = (a), stOwxc = (b); i &lt;= stOwxc; i++)
+#define per(i, a, b) for(int i = (a), stOwxc = (b); i &gt;= stOwxc; i--)
+using namespace std;
+typedef long long ll;
+#define int long long
+typedef pair&lt;int, int&gt; pii;
+const int N = 1e5 + 5;
+
+int n, m, s = 1;
+vector&lt;pii&gt; G[N];
+ll dis[N];
+bool vis[N];
+
+void Dijkstra() {
+    for(int i = 1; i &lt;= n; i++) dis[i] = 1e18;
+    priority_queue&lt;pii, vector&lt;pii&gt;, greater&lt;pii&gt;&gt; q;
+    dis[s] = 0; 
+    q.push({0, s});
+
+    while(!q.empty()) {
+        int x = q.top().second; q.pop();
+        if(vis[x]) continue;            //vis数组
+        vis[x] = true;
+        for(auto to : G[x] ){
+            if(dis[to.first] &gt; dis[x] + to.second) {
+                dis[to.first] = dis[x] + to.second;
+                if(!vis[to.first])
+                    q.push({dis[to.first], to.first});
+
+            }
+        }
+    }
+}
+
+signed main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;
+    for(int i = 1, u, v, w; i &lt;= m; i++) {
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        G[u].push_back({v, w});
+    }
+    Dijkstra();
+    rep(i, 1, n) cout &lt;&lt; dis[i] &lt;&lt; &quot; \n&quot;[i == n];
+
+    return 0;
+}</code></pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/01/27/%e9%94%99%e9%a2%98%e6%9c%ac/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>2023年终总结</title>
+		<link>https://ggapa.github.io/2024/01/25/2023%e5%b9%b4%e7%bb%88%e6%80%bb%e7%bb%93/</link>
+					<comments>https://ggapa.github.io/2024/01/25/2023%e5%b9%b4%e7%bb%88%e6%80%bb%e7%bb%93/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Thu, 25 Jan 2024 04:29:30 +0000</pubDate>
+				<category><![CDATA[总结]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1025</guid>
+
+					<description><![CDATA[2023年终总结 岁月不居，时节如流。伴随着高一上调研考试的结束，寒假的生活正式到来。但在这之前，我们必须梳理 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>2023年终总结</h1>
+<p>岁月不居，时节如流。伴随着高一上调研考试的结束，寒假的生活正式到来。但在这之前，我们必须梳理一下去年的一些遗憾和不足，使今年的生活更加的多姿多彩。</p>
+<p>由期末考试的结果来看，这次考试的化学是有待进步的，我对比了我的优势科目数理生之后，得到的结论如下：</p>
+<ul>
+<li>知识点是是而非</li>
+<li>熟练度不够</li>
+<li>不会变通</li>
+</ul>
+<p>这次的语文考试同样也是较为弱的一门科目，在接下来的寒假生活中，我会对语文进行加训。</p>
+<p>三个优势科目应继续保持，英语要多背单词。</p>
+<p>在2023年终，我并没有心平气和并且有礼貌的对待我身边的每一个人，我对您们说一声对不起。</p>
+<p>参加完七中东部的集训之后，我发现我缺少了一种坚持，和一个轻松的心态，在2024年中，我不应该把自己压得太紧，劳逸结合，有的放矢。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/01/25/2023%e5%b9%b4%e7%bb%88%e6%80%bb%e7%bb%93/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>鲜花</title>
+		<link>https://ggapa.github.io/2024/01/06/%e9%b2%9c%e8%8a%b1/</link>
+					<comments>https://ggapa.github.io/2024/01/06/%e9%b2%9c%e8%8a%b1/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Sat, 06 Jan 2024 10:55:23 +0000</pubDate>
+				<category><![CDATA[鲜花]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=1010</guid>
+
+					<description><![CDATA[$$一$$ 银杏树的叶子开始掉落了。 光秃的银杏树披着寒霜的外衣，一切早已失去了往日的光泽，曾经历历在目的过往 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>$$一$$</p>
+<p>银杏树的叶子开始掉落了。</p>
+<p>光秃的银杏树披着寒霜的外衣，一切早已失去了往日的光泽，曾经历历在目的过往，如今已经伴随着漫天的银杏叶而消逝，唯余一个棕黑的轮廓和躺在地上的画板，供来去匆匆的人们观赏，亦或是供慢慢悠悠的学生玩乐。</p>
+<p>教室中，一双手掠过灰色背景时留下的短暂残影，黑板上苍白的文字、千年来人类璀璨的结晶，在一涂一抹中变得模糊，最终消失，留下了深邃的黑。七零八落的白色粉笔头掉在黑灰色的地上，化作余烬一般的灰雪。我对上一节课的记忆随着漫天飞舞的灰雪埋葬。</p>
+<p>记忆是人类最好的宝物，唯有消逝的痛苦与遗忘的悲哀才能激起潜藏于大脑深处的记忆，它就是沉入地底的宝藏，只有正确的时间和地点才能发现它的踪迹，爆发出人类顽强的斗志和磅礴的力量。</p>
+<p>一个人忘记和不知道的事情有很多，在英语考试时我永远也想不出来这个单词的意思是什么，正在板书的老师永远也不会知道自己的身后发生着什么，一个动人的女同学也不会知道有多少双闪着光的眼睛正在偷偷的看她。</p>
+<p>$$？$$</p>
+<p>戛然而止，心如死灰。</p>
+<hr />
+<p>$$二$$</p>
+<p>课间的时光越发的难熬了。</p>
+<p>不知昔日的温暖去了哪里，剩下了一丝丝湿冷，就像在相框里静静的躺了半个世纪还受潮了的黑白照，残损破败，我毅然决定离开。</p>
+<p>我觉得还是走廊上更加的适合我把，阳光透过一道道铁栏杆，艰难的来到走廊上去，被来来往往的人们切割开来，为这个阴冷的走廊带来了一点点光明，但放在整个走廊上却显得无能为力了。自私的阳光不愿意穿过那厚重的水泥构成的屋子，更不愿启迪水泥屋子里面的一个个灵魂，还欺软怕硬，只穿过了那虚无缥缈的空气，在一个个活生生的人面前却显得弱小无比，任由黑暗一直跟随着他们。</p>
+<p>我来到了厕所。</p>
+<p>厕所里也有光，但厕所里面的光是苍白的，甚至在门帘面前都是唯唯诺诺的，早就看门帘不顺眼了，用力的一踢，门帘重重的砸在墙上。</p>
+<p>光消失了。</p>
+<p>我不知道发生了什么，但现在留给我的只剩下黑暗了，我在那黑暗中上完了厕所，正准备走出门时看到一个人走了进来。</p>
+<p>他同样也很疑惑，为什么厕所里被黑暗笼罩，接着他按了一下了门帘背后墙上的开关。</p>
+<p>光回来了。</p>
+<hr />
+<p>$$三$$</p>
+<p>再次回到教室中，上课铃再次被打响。门被打开，老师进来。人们的嘴上仿佛被贴上了胶布，想说点什么但又说不出来。老师的手在黑板上抽动，迎接我的会是天堂亦或者是地狱？</p>
+<p>我直勾勾地看着黑板上苍白的文字，和我手上奋战了两个小时的收获，而现在是时候验证我这两个小时的劳作是不是合格的了。</p>
+<p>不知为何，感觉老师板书的速度愈加缓慢了，他就不能写快一点吗？究竟是那刚性，毫无情感的方块文字还是弯弯曲曲的圆形文字能够更胜一筹呢？</p>
+<p>很显然，方块文字赢了，但我选择的是圆形文字，为什么圆形文字中会有一个短小而精炼的横线呢？那分明就是为方块准备的标准，只有毫无人性的机器才喜欢死板的方块。</p>
+<p>我输的彻彻底底，人生仿佛就像一场动态规划，但很不巧的是有人在设计我的时候把状态转移方程写错了。</p>
+<p>-12</p>
+<p>-4</p>
+<p>可以说晚安了。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2024/01/06/%e9%b2%9c%e8%8a%b1/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>物质的量</title>
+		<link>https://ggapa.github.io/2023/11/19/%e7%89%a9%e8%b4%a8%e7%9a%84%e9%87%8f/</link>
+					<comments>https://ggapa.github.io/2023/11/19/%e7%89%a9%e8%b4%a8%e7%9a%84%e9%87%8f/#respond</comments>
+		
+		<dc:creator><![CDATA[GGapa]]></dc:creator>
+		<pubDate>Sun, 19 Nov 2023 12:55:27 +0000</pubDate>
+				<category><![CDATA[笔记]]></category>
+		<category><![CDATA[化学]]></category>
+		<guid isPermaLink="false">https://ggapa.github.io/?p=967</guid>
+
+					<description><![CDATA[1 物质的量 概念：表示含有一定数目粒子的集合体。 符号及单位：符号为 $n$，单位为摩尔，符号为 $mol$ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>1 物质的量</h1>
+<p>概念：表示含有一定数目粒子的集合体。</p>
+<p>符号及单位：符号为 $n$，单位为摩尔，符号为 $mol$。</p>
+<p>计量对象：微观粒子。</p>
+<h1>2 阿伏伽德罗常数</h1>
+<p>定义：$1$ $mol$ 粒子集合体所含的粒子数约为 $6.02 \times 10^{23}$ ，$1$ $mol$  任何粒子的粒子数叫做阿伏伽德罗常数，符号为 $N_A$，通常用 $6.02 \times 10^{23} mol^{-1}$ 表示。</p>
+<p>$n = \frac{N}{N_A}$ </p>
+<h1>3 摩尔质量</h1>
+<p>定义：单位物质的量的物质所具有的质量，符号为 $M$，单位为 $g/mol$。</p>
+<p>当摩尔质量以 <strong>$g/mol$</strong> 为单位时，在数值上等于该粒子的<strong>相对原子质量</strong>或<strong>相对分子质量</strong></p>
+<p>$n = \frac{m}{M}$ </p>
+<h1>4 气体摩尔体积</h1>
+<p>定义：单位物质的量的气体所占的体积，符号为 $V_m$ ，$V_m = \frac{v}{n}$ ;单位为 $L/mol $ 。</p>
+<p>气体摩尔体积与气体所处的<strong>温度</strong>与<strong>压强</strong>有关。</p>
+<p>在<strong>标况</strong>下，气体的摩尔体积约为 $22.4L/mol$ ，$1$ $mol$ <strong>任何气体</strong>所占据的体积都为 $22.4L$ 。</p>
+<p>需要注意的几点：</p>
+<ul>
+<li>水在标况下不是气体。</li>
+<li>气体可以是混合气体。</li>
+</ul>
+<h2>4.2 阿伏伽德罗定律</h2>
+<p>同温同压下，相同体积的任何气体都含有相同数目的粒子。</p>
+<h3>4.2.2 阿伏伽德罗定律的推论</h3>
+<p>该定律的一些推论：</p>
+<ul>
+<li>同温同压时，体积之比等于物质的量之比等于分子数之比。</li>
+<li>同温同体积时，压强之比等于物质的量之比，等于分子数之比。</li>
+<li>同温同压时，密度之比等于摩尔质量之比等于相对分子质量之比。</li>
+<li>同温同压下同体积时，质量与摩尔质量成正比。</li>
+</ul>
+<h3>4.2.3 理想气体状态方程</h3>
+<p>$$<br />
+PV = nRT<br />
+$$</p>
+<p>其中 $R$ 是一个常数，$T$ 代表温度， $n$ 代表物质的量，$P$ 代指压强，$V$ 代表体积。</p>
+<p>该方程可以推导一些比例关系，也可以推出 4.2.2 中的推论。</p>
+<hr />
+<p>该方程还有一个变形：<br />
+$$<br />
+PM= \rho RT<br />
+$$<br />
+$\rho$ 代表密度，$M$ 代表摩尔质量，其余字母的表示同上。</p>
+<blockquote>
+<p>推导：$PV=nRT \Rightarrow PV=\frac{m}{M }RT \Rightarrow PM = \frac{m}{v} RT \Rightarrow \rho RT$</p>
+</blockquote>
+<hr />
+<p>$\mathrm{{\Large Example1} } $</p>
+<p><strong>问题描述</strong></p>
+<p>同温同压下，等质量的 $CH_4、CO_2、O_2、SO_2$ ，将他们的体积从小到大排列，$CH_4$ 位于第几个？</p>
+<p><strong>分析与解答</strong></p>
+<p>将 $PM=nRT$ 带入该题目，$V=n=\frac{m}{M}$ ，易得答案为 $4$。</p>
+<h1>5 物质的量浓度</h1>
+<p>定义：单位提及溶液里所含溶质 $B$ 的物质的量来表示溶液组成的物理量，叫做溶质 B 的物质的量浓度</p>
+<p>表达式： $c_B = \frac{n<em>B}{V</em>{液}}$ </p>
+<p>单位： $mol/L$</p>
+<p>注意：</p>
+<ul>
+<li>溶液的体积和水的体积不相同。</li>
+<li>不同物质的量浓度相互混合的体积不一定是二者体积之和</li>
+</ul>
+<p><strong>强电解质</strong>在水溶液中完全电离，离子浓度之比等于化学式中粒子的数目之比。</p>
+<p>电解质溶液中 $阳离子所带正电荷的总数 = 阴离子所带的负电荷总数$。</p>
+<h2>5.2 物质的量浓度与质量分数的比较和换算</h2>
+<p>物质的量浓度 $c_B = \frac{n_B}{V_{液}}$  ，质量分数 $w = \frac{m_{溶质}}{m_{溶液}} \times 100\%$ 。</p>
+<p>则有：</p>
+<p>$$c = \frac{1000pw}{M}$$</p>
+<p>$M$  为溶质的摩尔质量，$\rho$ 为溶液的密度。<del>我怎么知道他的密度？</del></p>
+<h2>5.3 溶液的稀释</h2>
+<p>溶质的质量在稀释前后保持不变。</p>
+<p>溶质物质的量在稀释前后保持不变。</p>
+<p>溶液的质量守恒，但体积不守恒。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://ggapa.github.io/2023/11/19/%e7%89%a9%e8%b4%a8%e7%9a%84%e9%87%8f/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
