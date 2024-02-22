@@ -9,10 +9,10 @@
 
 <channel>
 	<title>OI &#8211; GGapa&#039;s website</title>
-	<atom:link href="http://ggapa.net/category/oi/feed/?simply_static_page=1863" rel="self" type="application/rss+xml" />
+	<atom:link href="http://ggapa.net/category/oi/feed/?simply_static_page=4747" rel="self" type="application/rss+xml" />
 	<link>https://ggapa.github.io/</link>
 	<description></description>
-	<lastBuildDate>Wed, 21 Feb 2024 03:51:40 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 21 Feb 2024 15:11:38 +0000</lastBuildDate>
 	<language>zh-CN</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -220,9 +220,9 @@ signed main() {
 		
 			</item>
 		<item>
-		<title>Codeforces Round 925 (Div. 3)(CF1931)</title>
-		<link>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/</link>
-					<comments>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/#respond</comments>
+		<title>做题笔记（CodeForces）</title>
+		<link>https://ggapa.github.io/2024/02/14/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0%ef%bc%88codeforces%ef%bc%89/</link>
+					<comments>https://ggapa.github.io/2024/02/14/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0%ef%bc%88codeforces%ef%bc%89/#respond</comments>
 		
 		<dc:creator><![CDATA[GGapa]]></dc:creator>
 		<pubDate>Wed, 14 Feb 2024 03:07:06 +0000</pubDate>
@@ -230,16 +230,18 @@ signed main() {
 		<category><![CDATA[CodeForces]]></category>
 		<guid isPermaLink="false">https://ggapa.github.io/?p=1100</guid>
 
-					<description><![CDATA[A- D 简单 F 将题目条件转化一下，相当于就是给了一堆先后关系，考虑将前面的与后面的连边，也就是 $a_{ [&#8230;]]]></description>
-										<content:encoded><![CDATA[<h1>A- D 简单</h1>
-<h1>F</h1>
-<p>将题目条件转化一下，相当于就是给了一堆先后关系，考虑将前面的与后面的连边，也就是 $a_{ij} \rightarrow a_{ij+1}$ 连边，然后用拓扑判环，如果无环则有解，反之亦然。</p>
+					<description><![CDATA[比赛补题 Codeforces Round 925 (Div. 3)(CF1931) A- D 简单 F 将题 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h1>比赛补题</h1>
+<h2>Codeforces Round 925 (Div. 3)(CF1931)</h2>
+<h3>A- D 简单</h3>
+<h3>F</h3>
+<p>将题目条件转化一下，相当于就是给了一堆先后关系，考虑将前面的与后面的连边，也就是 $a<em>{ij} \rightarrow a</em>{ij+1}$ 连边，然后用拓扑判环，如果无环则有解，反之亦然。</p>
 <p>总结：</p>
 <ul>
 <li>对于题目中有一堆关系时，可以互相连边，若有环，则说明了关系不成立。 </li>
 <li><img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" />连边还适用于排序类问题。</li>
 </ul>
-<h1>G</h1>
+<h3>G</h3>
 <p><img decoding="async" src="https://espresso.codeforces.com/d862915ed3dc627101b0e632c1c778b818648879.png" alt="" /></p>
 <p>四个拼图，其个数记为 $c_1,c_2,c_3,c_4$ ，分析拼图的凹凸性，只有拼图 1、2 会改变整个序列的凹凸性，且 1、2 拼图只能交替拼在一起。</p>
 <p>那么可以得到，若 $|c_1-c_2| &gt; 1$ 则问题无解，否则一定有解，而且拼图 3、4 并不会相互影响，我们可以进行分类讨论。</p>
@@ -268,9 +270,22 @@ signed main() {
 <li>若有无解的情况，可以先分析无解的情况。</li>
 <li>若某项事物对于某些性质没有改变，则无需在意，优先分析情况比较少且对某些性质（比如说有无解）有影响的。</li>
 </ul>
+<h1>杂题选做</h1>
+<h3><a href="https://codeforces.com/problemset/problem/837/D">837D Round Subset</a></h3>
+<p>一眼和 2、5 因数有关系。</p>
+<p><del>额，然后就不会了。</del></p>
+<p>我们定义 $p5$ 代表数字 5 的最大次幂，$p5(i)$ 代表数字 $i$ 5 次幂的数量；$p2$ 同理。</p>
+<p>定义 $dp(i, j, k)$ 代表我们已经遍历了 $i$ 个数，选择了 $j$ 个所得到的 5 的次幂的数量为 $k$ ，所得到 $2$ 的次幂的最大值。这就是经典的背包问题。我们分为两种情况，列出如下转移方程。</p>
+<ul>
+<li>$dp(i + 1, j + 1, k + p5(i)) = \max(dp(i + 1, j + 1, l + p5(i)), dp(i, j, k)  + p2(i))$ </li>
+<li>$dp(i + 1, j, k) = max(dp(i + 1, j, k ), dp(i, j, k))$</li>
+</ul>
+<p>因为一个 0 是由 一个 2 和 5 相乘得到的，最终的答案为 $\min(i, dp(n, k, i))$ ，这里的 $k$ 是题目中给定的 $k$ ，但是上文的不是，<del>我懒得改了将就看</del>。<br />
+时间复杂度 $O(n^3)$</p>
+<p><del>总结：分析性质，尝试将某些值看成贡献</del></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>https://ggapa.github.io/2024/02/14/codeforces-round-925-div-3cf1931/feed/</wfw:commentRss>
+					<wfw:commentRss>https://ggapa.github.io/2024/02/14/%e5%81%9a%e9%a2%98%e7%ac%94%e8%ae%b0%ef%bc%88codeforces%ef%bc%89/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
@@ -286,14 +301,16 @@ signed main() {
 		<category><![CDATA[做题笔记]]></category>
 		<guid isPermaLink="false">https://ggapa.github.io/?p=1051</guid>
 
-					<description><![CDATA[CSES - 1075 Permutations II 动态规划好题。 解法一（recommend) 定义 $ [&#8230;]]]></description>
-										<content:encoded><![CDATA[<h3><a href="https://vjudge.net/problem/CSES-1075">CSES - 1075 Permutations II</a></h3>
+					<description><![CDATA[我也不知道为什么下划线一多 Latex 就要崩掉，我已经不想管了。 CSES - 1075 Permutati [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p><del>我也不知道为什么下划线一多 Latex 就要崩掉，我已经不想管了。</del></p>
+<h3><a href="https://vjudge.net/problem/CSES-1075">CSES - 1075 Permutations II</a></h3>
 <p>动态规划好题。</p>
 <h4>解法一（recommend)</h4>
 <p>定义 $F(i, j, k)$ $1$ 表示在 1 到 $i$ 的排列中，满足有 $j$ 对相邻的 $&lt;i$ 的差为 $1$，$k = 1$ 或 $0$ 分别对应 $i$ 和 $i - 1$ 是否相邻的排列个数，易得 $F(1, 0, 0) = 1$，$F(2, 0, 1) = 2$。设当前已经处理完了前 $i$ 个排列的情况，我们考虑 $i + 1$ 放置的位置。</p>
 <ul>
 <li>如果 $i$ 和 $i - 1$ 不相邻，将 $i + 1$ 放到 $i$ 旁边有两种选择，$F(i + 1, j, 1) += 2F(i, j, 0)$。</li>
-<li>如果 $i$ 和 $i - 1$ 相邻，将 $i$ 插入到 $i$ 的两侧有两种情况：
+<li>
+<p>如果 $i$ 和 $i - 1$ 相邻，将 $i$ 插入到 $i$ 的两侧有两种情况：</p>
 <ol>
 <li>添加到 $i$ 和 $i - 1 $ 外侧，此时产生了一个新的相差为 $1$ 的相邻元素，$F(i + 1, j + 1, 1) += F(i, j, 1)$。</li>
 <li>添加到 $i$ 和 $i - 1$ 中间，此时相差为 1 的相邻元素数量并没有改变，$F(i + 1, j, 1) += F(i，j, 1)$</li>
@@ -302,19 +319,21 @@ signed main() {
 <li>如果将 $i$ 加入到原本相差 $1$ 的两个元素($&lt;i$)中， 相差的元素会减少一对，此时依然分两种情况：
 <ol>
 <li>$i$ 和 $i - 1$ 是相邻的，$F(i + 1, j, 0) += j \times F(i, j, 1)$ 。</li>
-<li>$i$ 和 $i - 1$ 不相邻，此时会使 $j$ 减少 $1$ ，$F(i + 1, j - 1, 0) += j \times F(i, j, 0)$。</li>
+<li>$i$  和 $i - 1$ 不相邻，此时会使 $j$ 减少 $1$ ，$F(i + 1, j - 1, 0) += j \times F(i, j, 0)$。</li>
 </ol>
 </li>
-<li>如果将 $i + 1$ 放到序列的其他位置（不能放在 $i$ 和 $i - 1$ 之间，上文已经讨论过了这种情况），此时有 $i - j - 1$ 个位置可以用，还是分两种情况：
+<li>如果将 $i + 1$ 放到序列的其他位置（不能放在 $i$ 和  $i - 1$ 之间，上文已经讨论过了这种情况），此时有 $i - j - 1$ 个位置可以用，还是分两种情况：
 <ol>
-<li>若 $i$ 和 $i - 1$ 不相邻，$F(i + 1, j, 0) += (i- j- 1) \times F(i, j, 0)$ 。</li>
+<li>若 $i$ 和 $i - 1$ 不相邻，$F(i + 1, j, 0) += (i-  j-  1) \times F(i, j, 0)$ 。</li>
 <li>若 $i$ 和 $i - 1$ 是相邻的，$F(i + 1, j + 1, 0) += (i - j - 1) \times F(i, j, 1)$。</li>
 </ol>
 </li>
 </ul>
-<p>至此，我们已经分析完了所有的情况，最终的所求答案为 $F(n, 0, 0)$ ，时间复杂度 $O(n^2)$。</p>
+<p>至此，我们已经分析完了所有的情况，最终的所求答案为 $F(n, 0, 0)$ ，时间复杂度  $O(n^2)$。</p>
 <h4>解法二 <img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" /></h4>
 <p>这玩意是有规律的，详见 <a href="https://oeis.org/A002464">OEIS - A002464</a> ，怎么推出来的等我去问问大佬。</p>
+<p>我拿到大佬的答复了，但好像没有看太懂，我先放原话在这里。</p>
+<p><img decoding="async" src="https://s11.ax1x.com/2024/02/21/pFtjltK.png" alt="" /></p>
 <p><a href="https://vjudge.net/solution/49146336">AC code by CYR</a></p>
 <h4>总结</h4>
 <p>一开始做这道题的时候并没有想出来这道题是动态规划，我还以为是数学题，甚至都已经发现了前后两种状态之间的关系，若有很<strong>明显的关系</strong>，首先要考虑的就是<strong>动态规划或组合递推</strong>。</p>
@@ -350,6 +369,20 @@ signed main() {
 <p>这 $n$ 个数的和为 $\frac{n(n +1)}{2}$ ，那么每一部分的的和为 $\frac{n(n +1)}{4}$，题目中 $n$ 的范围较小， 这暗示了用 01 背包来解决问题。</p>
 <p>我们令 $\texttt{dp}{[i][j]}$ 代表在前 $1-i$ 个数中，组成和为 $j$ 的数量，可以得到转移方程为 $\texttt{dp}{[i][j]} = \texttt{dp}{[i-1][j]} + \texttt{dp}[i-1][j - i]$，增添或者不增添的情况。</p>
 <p><a href="https://vjudge.net/solution/48920960/rxrommxRnKl5flEe4y9b">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-1097#author=GPT_zh">CSES - 1097 Removal Game</a></h3>
+<p>定义 $F(i, j)$ 代表 $[i, j]$ 中先手的最大值，$S(a, b)$ 代表区间$[a, b]$ 的元素和。</p>
+<p>有 $F(i, i) = X_i, F(i, j)  = \max(S(i + 1, j) - F(i + 1, j)+ X_i, S(i, j - 1) - F(i, j - 1) + X_j)$ 。</p>
+<p>以上式子代表了先手的两种决策，分别是选左端或右端，接着减去对手（由于对手在上一轮算作先手，所以依然是 $F$ 数组）在剩余区间的最大得分。</p>
+<h4>无关</h4>
+<p>我隐约记得还有一道题类似于这种从两端开始取，但是那道题我是记录上一次取的是左侧还是右侧。</p>
+<h4>总结</h4>
+<p>取数游戏，经典的区间 DP，常规做法就是拿 DP 数组记录左右端点。</p>
+<p><a href="https://vjudge.net/solution/49207881">AC code</a></p>
+<h3><a href="https://vjudge.net/problem/CSES-1140#author=GPT_zh">CSES - 1140 Projects</a></h3>
+<p>由于天数很大， 所以考虑离散化。</p>
+<p>令 $dp_i = 在第 i天之前我们可以赚到的最大金额$，若现有一任务 $i$，其开始时间为 $l_i$，结束时间为 $r_i$，所获得的奖金为 $v_i$。第 $i - 1$ 天所赚的钱会迁移到第 $i$ 天，则 $dp<em>i = dp</em>{i - 1}$。</p>
+<p>则状态转移方程为：$dp_i = \max{dp_l{<em>j} + v</em>{j},dp_i}$ ，其中 $r_j$ 应等于 $i$。</p>
+<p>总结：数值过大的可以考虑离散化，这一类某段时间单个问题可以考虑差分数组解决。</p>
 <h3><a href="https://vjudge.net/problem/CSES-1194/origin">CSES - 1194 Monsters</a></h3>
 <p>这道题很明显用 BFS，问题在于迷宫中出现了怪物，我们的勇士不能和怪物接触，转换一下就是，勇士不能到达怪物可能所在的区域。</p>
 <p>在转换一下，怪物永远比勇士先走一步，勇士不能走到怪物所走过的面积，考虑把怪物和勇士在一起进行 BFS，将怪物先入队，这保证了怪物总是比勇士先走。</p>
@@ -358,12 +391,12 @@ signed main() {
 <p><a href="https://vjudge.net/solution/49008108/271sCw0fKPFv5Da33vZq">AC code</a></p>
 <h3><a href="https://vjudge.net/problem/CSES-1203">CSES - 1203 Visiting Cities</a></h3>
 <p>双向最短路和大数判断相等操作，</p>
-<p>若一个点 $i$ 一定处于 $1$ 到 $n$ 的最短路上，那么：</p>
+<p>若一个点 $i$ 一定处于 $1$  到  $n$ 的最短路上，那么：</p>
 <ul>
 <li>$dis(1, i) + dis(i, n) = dis(1,n)$。</li>
 <li>$way(1,i)\times way(i, n) = way(i ,n)$ 。</li>
 </ul>
-<p>其中我们定义 $dis(u, v)$ 代表节点 $u$ 致节点 $v$ 的最短距离， $way(u, v)$ 代表节点 $u$ 到 $v$ 的最短路数量。</p>
+<p>其中我们定义 $dis(u, v)$ 代表节点 $u$ 致节点 $v$  的最短距离， $way(u, v)$ 代表节点 $u$ 到 $v$ 的最短路数量。</p>
 <p>考虑令起点分别为 $1$ 和 $n$ ，跑两次 <code>Dijkstra</code>，接着就能解决以上的判断。但是会有一个问题，最短路的数量可能会超过 <code>long long </code> 所承受的，又因为此不要求输出最终的数值，只需要判断是否相等，我们可以挑选两个大质数，分别对两个数组进行操作，若最后结果相同的概率是非常小的。</p>
 <p>这种方法是用于判断大数是否相同的常用套路，我们应当积累常用质数：</p>
 <ul>
@@ -371,7 +404,6 @@ signed main() {
 </ul>
 <p>由于这道题卡 9982444353 不能用。<br />
 <a href="https://vjudge.net/solution/49114207/R3p5cDqmTNJRrdImTm8t">AC code</a></p>
-<p>####123123123</p>
 <h3><a href="https://vjudge.net/problem/CSES-1625#author=GPT_zh">CSES - 1625 Grid Paths</a></h3>
 <p>一道非常好的搜索题</p>
 <h4>朴素算法</h4>
@@ -392,9 +424,11 @@ signed main() {
 <p>递归调用次数：6900万</p>
 <hr />
 <p>经过了优化三的优化之后，我们已经可以通过本题，为了达到优化三，我们需要提前将方格的边缘包围起来，俗话说就是将边缘的 <code>vis</code> 数组标记为 <code>true</code> 。</p>
-<blockquote><p>In backtracking, the search tree is usually large and even simple observations can effectively prune the search. Especially useful are optimizations that occur during the first steps of the algorithm, i.e., at the top of the search tree.</p>
+<blockquote>
+<p>In backtracking, the search tree is usually large and even simple observations can effectively prune the search. Especially useful are optimizations that occur during the first steps of the algorithm, i.e., at the top of the search tree.</p>
 <p>在进行回溯算法时，搜索树通常会非常庞大，即使是进行简单的观察也能有效的剪枝。尤其是在回溯算法的前几步非常有效果，也就是搜索树的顶端。</p>
-<p>——<a href="https://usaco.guide/problems/cses-1625-grid-paths/solution">USACO Guide</a></p></blockquote>
+<p>——<a href="https://usaco.guide/problems/cses-1625-grid-paths/solution">USACO Guide</a></p>
+</blockquote>
 <p><a href="https://vjudge.net/solution/49021389/iDroLWx5FiFH4LSgSuHY">AC code</a></p>
 <h3><a href="https://vjudge.net/problem/CSES-1757#author=GPT_zh">CSES - 1757 Course Schedule II </a></h3>
 <p>互相有先后关系，连边跑拓扑排序的经典问题，本质上属于贪心。</p>
@@ -412,9 +446,15 @@ signed main() {
 </ul>
 <p>总结：</p>
 <ul>
-<li>图论题可以先去一般化，先转换成树上问题，菊花图，链条来分析题目。</li>
-<li>边处理边操作，贪心局部解转化为全部解，对于还需要判断有没有解决方案的问题，往往可以从局部到全局，若局部合法但是全局不合法，那么就是无解的。所以说在考虑贪心的时候往往不需要太在意无解的情况，自然而然的就能冒出来无解的情况。</li>
-<li>但是这并不代表我们不分析无解情况，往往无解的情况会是一些题目的突破口可以帮助我们解题，但不应该被无解情况限制了思路，从而不敢考虑贪心</li>
+<li>
+<p>图论题可以先去一般化，先转换成树上问题，菊花图，链条来分析题目。</p>
+</li>
+<li>
+<p>边处理边操作，贪心局部解转化为全部解，对于还需要判断有没有解决方案的问题，往往可以从局部到全局，若局部合法但是全局不合法，那么就是无解的。所以说在考虑贪心的时候往往不需要太在意无解的情况，自然而然的就能冒出来无解的情况。</p>
+</li>
+<li>
+<p>但是这并不代表我们不分析无解情况，往往无解的情况会是一些题目的突破口可以帮助我们解题，但不应该被无解情况限制了思路，从而不敢考虑贪心</p>
+</li>
 </ul>
 <p><a href="https://vjudge.net/solution/49104109/wYuu0QxmINTb1G2dUiTh">AC code</a></p>
 <h3><a href="https://vjudge.net/problem/CSES-2228#author=0">CSES - 2228</a></h3>
@@ -437,7 +477,7 @@ signed main() {
 </ul>
 <p>考虑 $A_1 + A_2$ ，它的值一定是 $B_i,i \in [2, n]$，这个说明了， $A_0$ 只有 $n - 2$ 种可能。</p>
 <p>我们可以得到：$A_1 = \frac{B_i - B_1 + B_0}{2}$ ，$A_0 = \frac{B_1 + B_0 - B_i}2$，那么我们就可以便利每一个 $A_0$ 然后判断它能不能使 B 成立，如何测试？</p>
-<p>对于每一轮测试，$A\i$ 就等于 $B{\min} - A_i$，之后从 B 中判断 $A_j + A_i(j &lt; i)$ 是否在 B 中并删除。</p>
+<p>对于每一轮测试，$A<em>i$ 就等于 $B</em>{\min} - A_i$，之后从 B 中判断 $A_j + A_i(j &lt; i)$ 是否在 B 中并删除。</p>
 <p><a href="https://vjudge.net/solution/48810705/lpNKpEsYGnYwVRZe8VQh">AC code</a></p>
 <h3><a href="https://vjudge.net/problem/CSES-2421">CSES - 2421 Counting Reorders </a></h3>
 <p>俗话说“正难则反”，因为直接求合法的情况很明显非常难，所以考虑反着来。我们将一个字符串分成若干个区间，使得每个区间里面的字母都相同。</p>
@@ -476,14 +516,16 @@ signed main() {
 <p><a href="https://www.luogu.com.cn/problem/P7913">[CSP-S 2021] 廊桥分配</a> 也是一道类似的题目，把每一种可能情况枚举出来，接着通过中途相遇来做。</p>
 <p>总结:</p>
 <ul>
-<li>什么题目可以通过中途相遇来做？
-<p>有两个集合 $A$、$B$，有一元素 $i$，若 $i \in A$ 为真，那么 $i\in B$ 一定为假，反之亦然。接着我们就可以通过某些手段预处理(排序)，接着在计算出 $A$ 和 $B$ 在不同大小的不同答案。接着通过一个 $O(n)$ 的枚举去统计答案即可。</li>
+<li>
+<p>什么题目可以通过中途相遇来做？</p>
+<p>有两个集合 $A$、$B$，有一元素 $i$，若 $i \in A$ 为真，那么 $i\in B$ 一定为假，反之亦然。接着我们就可以通过某些手段预处理(排序)，接着在计算出 $A$ 和 $B$ 在不同大小的不同答案。接着通过一个 $O(n)$ 的枚举去统计答案即可。</p>
+</li>
 </ul>
 <p><a href="https://vjudge.net/solution/49116012/9kTBWeMcuoIZbbUDN2Dz">AC code</a></p>
 <h3><a href="https://vjudge.net/problem/CSES-2430">CSES - 2430 Binary Subsequences</a></h3>
 <p>构造神题，依然是经典的反着来，我们先考虑正着推，记 $x$ 和 $y$ 分别代表以 0 结尾和以 1 结尾的子序列个数，如果接下来又是 0，则 $ x = x + y + 1$，如果下一位是 1 那么 $y = x + y + 1$。</p>
 <p>由于 $x + y = n$ ，我们可以依次枚举 $x$ 和 $y$，然后反推出对应的 01 串，有点类似于辗转相除法。</p>
-<p>均摊时间复杂度 $O(n\log n)$</p>
+<p>均摊时间复杂度 $O(n\log n)$ </p>
 <p><a href="https://vjudge.net/solution/49155238">AC code</a></p>
 <h3><a href="https://vjudge.net/problem/OpenJ_Bailian-2356#author=GPT_zh">OpenJ_Bailian - 2356 Find a multiple</a></h3>
 <p>定义 $s<em>i$ 代表 $\sum</em>{i=1}^{n} a_i$ ，若 $N|s_i$ ，则输出 $a_j,\forall j[1,i]$ 即可。</p>
