@@ -18,10 +18,10 @@
         "syysongyuyang": [
             "#ffc116"
         ],
-        "zyt": [
-            "#7e84f7"
+        "zhouchuan": [
+            "#e6e6fa"
         ],
-        "GGapa": [
+        "zyt": [
             "#7e84f7"
         ],
         "yolanda_yxr": [
@@ -119,16 +119,16 @@
                 "text": "boring"
             }
         ],
+        "zhouchuan": [
+            {
+                "color": "#e6e6fa",
+                "text": "Feyn"
+            }
+        ],
         "zyt": [
             {
                 "color": "#7e84f7",
                 "text": "啊。"
-            }
-        ],
-        "GGapa": [
-            {
-                "color": "#7e84f7",
-                "text": "qwq"
             }
         ],
         "yolanda_yxr": [
