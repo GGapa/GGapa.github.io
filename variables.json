@@ -18,6 +18,9 @@
         "syysongyuyang": [
             "#ffc116"
         ],
+        "zhouchuan": [
+            "#e6e6fa"
+        ],
         "zyt": [
             "#7e84f7"
         ],
@@ -116,6 +119,12 @@
                 "text": "boring"
             }
         ],
+        "zhouchuan": [
+            {
+                "color": "#e6e6fa",
+                "text": "Feyn"
+            }
+        ],
         "zyt": [
             {
                 "color": "#7e84f7",
@@ -126,12 +135,6 @@
             {
                 "color": "#91bada",
                 "text": "啊？"
-            }
-        ],
-        "GGapa": [
-            {
-                "color": "#91bada",
-                "text": "test text"
             }
         ],
         "2020sq_19": [
