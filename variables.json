@@ -51,6 +51,9 @@
         "Demeanor_Roy": [
             "#FAFFF0"
         ],
+        "hym": [
+            "#00A1F1"
+        ],
         "root": [
             "#000000"
         ]
@@ -180,6 +183,12 @@
             {
                 "color": "#DA70D6",
                 "text": "valorant"
+            }
+        ],
+        "hym": [
+            {
+                "color": "A349A4",
+                "text": "Pollux"
             }
         ],
         "root": [
