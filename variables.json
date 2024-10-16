@@ -88,12 +88,6 @@
         "zrf": [
             "#b87333"
         ],
-        "wxccd2z": [
-            "#FF0000"
-        ],
-        "Alex": [
-            "#fadb14"
-        ],
         "zym417": [
             "#c0c0c0"
         ]
@@ -101,6 +95,12 @@
     "FFCBadgeList": {
         "2745518585": [
             "#c0c0c0"
+        ],
+        "wxccd2z": [
+            "#FF0000"
+        ],
+        "Alex": [
+            "#fadb14"
         ]
     },
     "TagBadgeList": {
