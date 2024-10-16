@@ -39,6 +39,18 @@
             "transparent",
             "#e74c3c"
         ],
+        "wxccd2z": [
+            "#FF7D40"
+        ],
+        "Alex": [
+            "#8e44ad"
+        ],
+        "GGapa": [
+            "#66baff"
+        ],
+        "Demeanor_Roy": [
+            "#FAFFF0"
+        ],
         "root": [
             "#000000"
         ]
@@ -73,6 +85,9 @@
         "zrf": [
             "#b87333"
         ],
+        "wxccd2z": [
+            "#FF0000"
+        ],
         "zym417": [
             "#c0c0c0"
         ]
@@ -87,6 +102,12 @@
             {
                 "color": "#996600",
                 "text": "作弊者"
+            }
+        ],
+        "wxccd2z": [
+            {
+                "color": "#00C78C",
+                "text": "orz"
             }
         ],
         "Sukwants": [
@@ -141,6 +162,24 @@
             {
                 "color": "rand",
                 "text": "922"
+            }
+        ],
+        "Alex": [
+            {
+                "color": "#fadb14",
+                "text": "Minecraft"
+            }
+        ],
+        "GGapa": [
+            {
+                "color": "#66baff",
+                "text": "dandelion"
+            }
+        ],
+        "Demeanor_Roy": [
+            {
+                "color": "#DA70D6",
+                "text": "valorant"
             }
         ],
         "root": [
