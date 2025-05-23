@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>高级随机点名器</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #display {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 2rem 0;
+            perspective: 1000px;
+        }
+
+        .name-card {
+            position: absolute;
+            padding: 2rem;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2d3748;
+            opacity: 0;
+            transform: scale(0.8) rotateX(-30deg);
+            transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            pointer-events: none;
+        }
+
+        .name-card.active {
+            opacity: 1;
+            transform: scale(1) rotateX(0deg);
+            z-index: 1;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0.5rem;
+        }
+
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .loading {
+            display: none;
+            color: #4a5568;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            margin: 1rem 0;
+            padding: 0.5rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="file" id="fileInput" accept=".txt" title="请选择名单文件">
+        <div id="display">
+            <div class="loading">正在加载名单...</div>
+        </div>
+        <div style="text-align: center;">
+            <button id="startBtn">开始点名</button>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const display = document.getElementById('display');
+        const startBtn = document.getElementById('startBtn');
+        const loading = document.querySelector('.loading');
+        let names = [];
+        let isRunning = false;
+
+        // 增强随机函数
+        function secureRandom(max) {
+            const array = new Uint32Array(1);
+            window.crypto.getRandomValues(array);
+            return array[0] % max;
+        }
+
+        function createNameCards() {
+            display.innerHTML = names
+                .map(name => `<div class="name-card">${name}</div>`)
+                .join('');
+        }
+
+        function startAnimation() {
+            if (!names.length || isRunning) return;
+            
+            isRunning = true;
+            startBtn.disabled = true;
+            startBtn.textContent = '随机选择中...';
+            
+            // 预先生成随机结果
+            const targetIndex = secureRandom(names.length);
+            const cards = display.querySelectorAll('.name-card');
+            
+            // 初始状态
+            cards.forEach(card => card.classList.remove('active'));
+            
+            // 动画过程
+            let current = 0;
+            const totalSteps = 5;
+            const interval = 100;
+            
+            const animate = () => {
+                if (current >= totalSteps) {
+                    // 显示最终结果
+                    cards[targetIndex].classList.add('active');
+                    isRunning = false;
+                    startBtn.disabled = false;
+                    startBtn.textContent = '开始点名';
+                    return;
+                }
+                
+                // 随机显示中间过程
+                const randomIndex = secureRandom(names.length);
+                cards.forEach((card, i) => {
+                    card.classList.toggle('active', i === randomIndex);
+                });
+                
+                current++;
+                setTimeout(animate, interval + (current * 10)); // 逐渐减速
+            };
+            
+            animate();
+        }
+
+        fileInput.addEventListener('change', function(e) {
+            loading.style.display = 'block';
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                names = e.target.result.split('\n')
+                    .map(name => name.trim())
+                    .filter(name => name !== '');
+                
+                if (names.length) {
+                    createNameCards();
+                    loading.style.display = 'none';
+                } else {
+                    loading.textContent = '没有找到有效名单，请检查文件内容';
+                }
+            };
+            
+            reader.readAsText(file);
+        });
+
+        startBtn.addEventListener('click', startAnimation);
+    </script>
+</body>
+</html>
