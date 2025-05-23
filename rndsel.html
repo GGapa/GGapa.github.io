@@ -208,20 +208,24 @@
         const countSpan = document.getElementById('count');
         const lastLoadedSpan = document.getElementById('last-loaded');
         const fullList = document.getElementById('fullList');
-        let names = [];
+    
+        let names = []; // 存储完整的原始名单
+        let availableNames = []; // 存储当前可供点名的名单
         let isRunning = false;
-
+    
         // 初始化时加载上次的名单
         window.addEventListener('DOMContentLoaded', () => {
             const savedNames = localStorage.getItem('lastNameList');
             const lastLoadedTime = localStorage.getItem('lastLoadedTime');
-
+    
             if (savedNames) {
                 names = JSON.parse(savedNames);
-                createNameCards();
-                updateCount();
-                updateFullList();
-
+                // 初始化 availableNames 为完整的名单
+                availableNames = [...names]; // 使用展开运算符进行浅拷贝
+                createNameCards(); // 创建所有名字的卡片
+                updateCount(); // 更新显示当前可点名人数
+                updateFullList(); // 更新显示完整名单
+    
                 if (lastLoadedTime) {
                     const time = new Date(parseInt(lastLoadedTime));
                     lastLoadedSpan.textContent = `加载时间: ${time.toLocaleString()}`;
@@ -232,7 +236,7 @@
                  loading.style.display = 'block';
             }
         });
-
+    
         // 增强随机函数
         function secureRandom(max) {
             if (max <= 0) return 0; // Handle empty list case
@@ -240,7 +244,8 @@
             window.crypto.getRandomValues(array);
             return array[0] % max;
         }
-
+    
+        // 创建名字卡片 (显示所有原始名单中的名字)
         function createNameCards() {
              // Clear previous cards
             display.innerHTML = '';
@@ -250,17 +255,30 @@
                  return;
             }
             loading.style.display = 'none'; // Hide loading if names are loaded
-
-            // Create new cards
+    
+            // Create new cards from the full names list
             names
                 .map(name => `<div class="name-card">${name}</div>`)
                 .forEach(cardHtml => display.innerHTML += cardHtml); // Append cards
+    
+            // 确保所有卡片都没有 'active' 或 'selected' 类
+            const cards = display.querySelectorAll('.name-card');
+            cards.forEach(card => {
+                card.classList.remove('active');
+                card.classList.remove('selected'); // 移除已选择的标记
+            });
+    
+            // 重置开始按钮状态
+            startBtn.disabled = false;
+            startBtn.textContent = '开始点名';
         }
-
+    
+        // 更新当前可点名人数
         function updateCount() {
-            countSpan.textContent = names.length;
+            countSpan.textContent = availableNames.length;
         }
-
+    
+        // 更新显示完整名单
         function updateFullList() {
             if (names.length > 0) {
                  // Join names with comma and space
@@ -269,139 +287,191 @@
                 fullList.innerHTML = '名单为空';
             }
         }
-
+    
         function startAnimation() {
-            if (!names.length || isRunning) {
-                 if (!names.length) {
-                    alert('请先加载名单！');
+            // 若名单已经完成则刷新页面
+            if(availableNames.length == 0) {
+                location.reload();
+                return;
+            }
+
+            // 检查当前可点名名单是否为空或动画是否正在运行
+            if (!availableNames.length || isRunning) {
+                 if (!availableNames.length) {
+                    alert('当前名单已点完，请重新加载名单！');
+                    // 可以进一步禁用按钮或改变其样式
+                    startBtn.textContent = '名单已点完';
+                    startBtn.disabled = true;
                  }
                  return;
             }
-
+    
             isRunning = true;
             startBtn.disabled = true;
             startBtn.textContent = '随机选择中...';
-
+    
             const cards = display.querySelectorAll('.name-card');
             if (cards.length === 0) {
                  isRunning = false;
                  startBtn.disabled = false;
                  startBtn.textContent = '开始点名';
-                 alert('没有可供点名的人员卡片！');
+                 alert('没有可供点名的人员卡片！'); // 这通常不应该发生如果 names 不为空
                  return;
             }
-
-            // 预先生成随机结果
-            const targetIndex = secureRandom(names.length);
-
-            // 初始状态
+    
+            // 预先从 availableNames 中生成随机结果的索引
+            const targetIndexInAvailable = secureRandom(availableNames.length);
+            const selectedName = availableNames[targetIndexInAvailable];
+    
+            // 找到 selectedName 在原始 names 数组中的索引，以便高亮对应的卡片
+            // 注意：如果原始名单有重复名字，这里会找到第一个匹配项
+            const targetIndexInFull = names.indexOf(selectedName);
+    
+            // 初始状态：移除所有卡片的 active 类
             cards.forEach(card => card.classList.remove('active'));
-
+    
             // Animation parameters
-            const totalDuration = 500; // Total animation duration in ms
-            const initialInterval = 100; // Initial interval
+            const totalDuration = 500; // 增加动画时长，让效果更明显
+            const initialInterval = 50; // 初始间隔
             let elapsed = 0;
-            let lastIndex = -1;
-
+            let lastIndex = -1; // 用于避免连续两次选中同一个卡片（视觉上）
+    
             const animate = () => {
                 elapsed += initialInterval;
-
-                if (elapsed >= totalDuration) {
-                    // Ensure the final card is the target one
-                    cards.forEach((card, i) => {
-                        card.classList.toggle('active', i === targetIndex);
-                    });
-
-                    isRunning = false;
-                    startBtn.disabled = false;
-                    startBtn.textContent = '开始点名';
-                    return;
-                }
-
-                // Select a random index different from the last one if possible
-                let randomIndex;
-                do {
-                    randomIndex = secureRandom(names.length);
-                } while (names.length > 1 && randomIndex === lastIndex);
-
+    
+                // 计算当前动画应该高亮的卡片索引 (在 full names 数组中)
+                // 为了视觉效果，可以在所有卡片中随机滚动
+                let currentVisualIndex;
+                 do {
+                     currentVisualIndex = secureRandom(names.length); // 在所有卡片中随机
+                 } while (names.length > 1 && currentVisualIndex === lastIndex);
+    
+    
                 cards.forEach((card, i) => {
-                    card.classList.toggle('active', i === randomIndex);
+                    card.classList.toggle('active', i === currentVisualIndex);
                 });
-                lastIndex = randomIndex;
-
-                // Calculate next interval (slowing down)
+                lastIndex = currentVisualIndex;
+    
+    
+                // 计算下一个间隔 (slowing down)
                 const progress = elapsed / totalDuration;
-                const easing = 1 - Math.pow(1 - progress, 2);
-                const nextInterval = initialInterval + (totalDuration * easing * 0.1);
-                const clampedNextInterval = Math.min(500, Math.max(initialInterval, nextInterval));
-
-                setTimeout(animate, clampedNextInterval);
+                // 使用一个缓动函数，例如 ease-out
+                const easing = 1 - Math.pow(1 - progress, 3); // 使用3次方让减速更明显
+                const nextInterval = initialInterval + (totalDuration * easing * 0.2); // 调整系数控制减速程度
+                const clampedNextInterval = Math.min(500, Math.max(initialInterval, nextInterval)); // 限制间隔范围
+    
+                if (elapsed < totalDuration) {
+                     setTimeout(animate, clampedNextInterval);
+                } else {
+                    // 动画结束，高亮最终选中的卡片 (使用在 full names 数组中的索引)
+                    cards.forEach((card, i) => {
+                        card.classList.toggle('active', i === targetIndexInFull);
+                    });
+    
+                    // *** 移除选中的名字从 availableNames 数组 ***
+                    availableNames.splice(targetIndexInAvailable, 1);
+    
+                    // *** 更新显示的人数 ***
+                    updateCount();
+    
+                    // *** 给选中的卡片添加一个标记样式 ***
+                    cards[targetIndexInFull].classList.add('selected');
+    
+    
+                    isRunning = false;
+                    // 检查是否还有可点名的人
+                    if (availableNames.length > 0) {
+                        startBtn.disabled = false;
+                        startBtn.textContent = '开始点名';
+                    } else {
+                        startBtn.disabled = false;
+                        startBtn.textContent = '名单已点完（点我重置）';
+                        // location.reload();   
+                    }
+                }
             };
-
+    
             animate();
         }
-
+    
         fileInput.addEventListener('change', function(e) {
             loading.style.display = 'block';
             loading.textContent = '正在加载名单...';
             const file = e.target.files[0];
-
+    
             if (!file) {
                  loading.style.display = 'none';
                  display.innerHTML = '<div class="loading">请加载名单文件</div>';
                  loading.style.display = 'block';
                  return;
             }
-
+    
             const reader = new FileReader();
-
+    
             reader.onload = function(e) {
                 names = e.target.result.split('\n')
                     .map(name => name.trim())
                     .filter(name => name !== '');
-
+    
                 if (names.length > 0) {
-                    createNameCards();
-                    updateCount();
-                    updateFullList();
+                    // *** 加载新名单时，重置 availableNames ***
+                    availableNames = [...names];
+    
+                    createNameCards(); // 重新创建卡片 (会清除旧的 selected 标记)
+                    updateCount(); // 更新人数显示
+                    updateFullList(); // 更新完整名单显示
                     loading.style.display = 'none';
-
+    
                     localStorage.setItem('lastNameList', JSON.stringify(names));
                     const now = new Date().getTime();
                     localStorage.setItem('lastLoadedTime', now.toString());
-
+    
                     lastLoadedSpan.textContent = `加载时间: ${new Date(now).toLocaleString()}`;
+    
+                    // 确保开始按钮可用
+                    startBtn.disabled = false;
+                    startBtn.textContent = '开始点名';
+    
                 } else {
                     loading.textContent = '没有找到有效名单，请检查文件内容';
                     display.innerHTML = '';
+                    names = []; // 清空原始名单
+                    availableNames = []; // 清空可点名名单
                     updateCount();
                     updateFullList();
                     localStorage.removeItem('lastNameList');
                     localStorage.removeItem('lastLoadedTime');
                     lastLoadedSpan.textContent = '';
+                    // 名单为空时禁用按钮
+                    startBtn.disabled = true;
+                    startBtn.textContent = '开始点名'; // 或者显示其他文本
                 }
             };
-
+    
             reader.onerror = function() {
                  loading.textContent = '文件读取失败！';
                  display.innerHTML = '';
                  names = [];
+                 availableNames = [];
                  updateCount();
                  updateFullList();
                  localStorage.removeItem('lastNameList');
                  localStorage.removeItem('lastLoadedTime');
                  lastLoadedSpan.textContent = '';
+                 // 文件读取失败时禁用按钮
+                 startBtn.disabled = true;
+                 startBtn.textContent = '开始点名'; // 或者显示其他文本
             }
-
+    
             reader.readAsText(file);
         });
-
+    
         startBtn.addEventListener('click', startAnimation);
-
+    
         showListBtn.addEventListener('click', function() {
             fullList.classList.toggle('show');
             this.textContent = fullList.classList.contains('show') ? '隐藏名单' : '显示名单';
         });
-    </script>
+    </script>    
 </body>
 </html>
